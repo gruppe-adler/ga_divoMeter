@@ -81,16 +81,16 @@ _HeTisTot = 0;
 _pHeAlv = 0;
 
 while {alive player && _psi >= 0} do {
-	if (underwater player) then {													
+	if (((eyePos player) select 2) < 0) then {													
 		_diveTime = _diveTime + 1;
-		_depth = (((getPosASL player) select 2)* -3.28); //Conversion to feet (inverted for pressure calculation)
-		_pressure = ((_depth / 33) + 1);			
+		_depth = (abs ((getPosASL player) select 2)); //in meter
+		_pressure = ((_depth / 10) + 1);			
 		_depth2deco = _depth - _AscCeil;
 		_airConsumption = (_pressure * _sacRT);
 		_psi = (_psi - (_airConsumption /60));
 		_timeleft = ((_psi / _airConsumption) *60);
-		_depthA = (((getPosASL player) select 2)* -3.28);
-		_pressureA = ((_depthA / 33) + 1);
+		_depthA = (abs ((getPosASL player) select 2));
+		_pressureA = ((_depthA / 10) + 1);
 		_depth2deepStop = _depth - _deepStopCeil;
 		_ObarPercent = (_pOAlv/_maxppO) *0.065;
 		_HbarPercent = (_pHeAlv/8) *0.065;
@@ -106,7 +106,7 @@ while {alive player && _psi >= 0} do {
 		_oPercent = ((_oTot /1000)/5) *100;
 		_HePercent = ((_HeTot /1000)/5) *100;			
 		_narcFactor = _pOAlv +_pNAlv +(0.23 *_pHeAlv);
-		_eNdepth = ((_narcFactor -1) *10) *3.28;		
+		_eNdepth = ((_narcFactor -1) *10);		
 		_narcEffectNeg = 1 -(_narcFactor /10);			
 		
 		//Main display elements				
@@ -124,50 +124,30 @@ while {alive player && _psi >= 0} do {
 		(_displayUI displayCtrl 1121) ctrlSetText format["%1",(round(_dDepth *10))/10];
 		(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
 		(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
-		(_displayUI displayCtrl 1127) ctrlSetText format["%1 C | %2 F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
+		(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
 		(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
 		(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
 		(_displayUI displayCtrl 1130) ctrlSetText format["%1",[((_decoTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
 		(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
 		(_displayUI displayCtrl 1132) ctrlSetText format["%1",[((_deepStopTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1FT",round(((_maxppO/_percentO2) -1) *33)];
-		(_displayUI displayCtrl 1134) ctrlSetPosition [safeZoneX+(safeZoneW*0.845),safeZoneY+(safeZoneH*0.645),_ObarPercent,safeZoneH* 0.005];
+		(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1FT",round(((_maxppO/_percentO2) -1) *10)];
+		(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
 		(_displayUI displayCtrl 1134) ctrlCommit 0.0;
-		(_displayUI displayCtrl 1135) ctrlSetPosition [safeZoneX+(safeZoneW*0.9178),safeZoneY+(safeZoneH*0.645),_HbarPerc,safeZoneH* 0.005];
+		(_displayUI displayCtrl 1135) ctrlSetPosition [(safeZoneX+(safeZoneW*0.9178)),(safeZoneY+(safeZoneH*0.645)), _HbarPerc, (safeZoneH* 0.005)];
 		(_displayUI displayCtrl 1135) ctrlCommit 0.0;
 			
 		//Display elements for tissue saturation
 		switch (true) do {
-			case (_nTisTot <= 0): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";					
-			};	
-			case ((_nTisTot > 0) && (_nTisTot <= 0.44)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";					
-			};
-			case ((_nTisTot > 0.44) && (_nTisTot <= 0.66)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_2.paa";					
-			};
-			case ((_nTisTot > 0.66) && (_nTisTot <= 0.88)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_3.paa";					
-			};
-			case ((_nTisTot > 0.88) && (_nTisTot <= 1.1)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_4.paa";					
-			};
-			case ((_nTisTot > 1.1) && (_nTisTot <= 1.32)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_5.paa";					
-			};
-			case ((_nTisTot > 1.32) && (_nTisTot <= 1.54)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_6.paa";					
-			};
-			case ((_nTisTot > 1.54) && (_nTisTot <= 1.96)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_7.paa";					
-			};
-			case ((_nTisTot > 1.96) && (_nTisTot <= 2.15)): {					
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_8.paa";					
-			};
-			case ((_nTisTot > 2.15) && (_nTisTot <= 2.38)): {
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";					
-			};
+			case (_nTisTot <= 0): {(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";};	
+			case ((_nTisTot > 0) && (_nTisTot <= 0.44))		: 	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";};
+			case ((_nTisTot > 0.44) && (_nTisTot <= 0.66))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_2.paa";};
+			case ((_nTisTot > 0.66) && (_nTisTot <= 0.88))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_3.paa";};
+			case ((_nTisTot > 0.88) && (_nTisTot <= 1.1))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_4.paa";};
+			case ((_nTisTot > 1.1) && (_nTisTot <= 1.32))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_5.paa";};
+			case ((_nTisTot > 1.32) && (_nTisTot <= 1.54))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_6.paa";};
+			case ((_nTisTot > 1.54) && (_nTisTot <= 1.96))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_7.paa";};
+			case ((_nTisTot > 1.96) && (_nTisTot <= 2.15))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_8.paa";};
+			case ((_nTisTot > 2.15) && (_nTisTot <= 2.38))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";};
 			case (_nTisTot > 2.38): {
 				playSound "dispWarn";	
 				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";					
@@ -176,12 +156,8 @@ while {alive player && _psi >= 0} do {
 			
 		//Display for PPO2			
 		switch (true)do {
-			case ((_Obarpercent > 0.059) && (_ObarPercent < 0.079)): {					
-				(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 1, 0, 0.5];					
-			};	
-			case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {				
-				(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];
-			};	
+			case ((_Obarpercent > 0.059) && (_ObarPercent < 0.079)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 1, 0, 0.5];};	
+			case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};	
 			case (_ObarPercent > 0.119): {				
 				_ObarPercent = 0.119;
 				playSound "dispWarn";
@@ -191,12 +167,8 @@ while {alive player && _psi >= 0} do {
 		
 		//Display for He			
 		switch (true)do {
-			case ((_HbarPercent > 0.059) && (_HbarPercent < 0.079)): {					
-				(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 1, 0, 0.5];					
-				};		
-			case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {				
-				(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];
-			};			
+			case ((_HbarPercent > 0.059) && (_HbarPercent < 0.079)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 1, 0, 0.5];};		
+			case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};			
 			case (_HbarPercent > 0.118): {				
 				_HbarPercent = 0.118;
 				playSound "dispWarn";
@@ -263,8 +235,8 @@ while {alive player && _psi >= 0} do {
 						
 		sleep 1; //DO NOT CHANGE  All time based calculations dependent on value.			
 			
-		_depthB = (((getPosASL player) select 2)* -3.28);
-		_pressureB = ((_depthB / 33) + 1);		
+		_depthB = (abs ((getPosASL player) select 2));
+		_pressureB = ((_depthB / 10) + 1);		
 		_dDepth = _depthA - _depthB;			
 		
 		//Simulate Tissue Saturation
@@ -367,7 +339,7 @@ while {alive player && _psi >= 0} do {
 		};
 		
 		//Check if player surpasses Maximum Operating Depth and init O2 Tox effects			
-		if (_depth > ((_maxppO/_percentO2) -1) *33) then {	
+		if (_depth > ((_maxppO/_percentO2) -1) *10) then {	
 			_O2DamMult = _O2TisTot/6;
 			_O2ToxCntdn = _O2ToxCntdn - 1;
 			if (_O2ToxCntdn == 0) then {

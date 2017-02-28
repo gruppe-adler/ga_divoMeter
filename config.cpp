@@ -5,16 +5,16 @@ class CfgPatches {
 		author = "Salbei";
 
 		requiredVersion = 1.0;
-		requiredAddons[] = {};
+		requiredAddons[] = {"ace_main"};
 
 		units[] = {};
 		weapons[] = {};
 	};
 };
 
-#include "functions\CfgFunctions.hpp"
+#include "functions\cfgFunctions.hpp"
 #include "dialog\define.hpp"
-#include "CfgWeapons.hpp"
+#include "cfgWeapons.hpp"
 #include "defines.hpp"
 
 class RscTitles {

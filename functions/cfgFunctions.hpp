@@ -1,8 +1,9 @@
 class CfgFunctions {
-	class grad_divoMeter {
+	class ga_divoMeter {
 		class common {
 			class checkAir {};
 			class divoMeter {};
+			class emergencyAscent {};
 			class gasCalc {};
 			class init {};
 			class initTissues {};

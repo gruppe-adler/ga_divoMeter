@@ -1,4 +1,4 @@
-params ["_DCSRunScript", "_DCSRunEffect", "_DCSAffDiver", "_DCSAffDiverDam"];
+params ["_DCSRunScript", "_DCSRunEffect", "_DCSAffDiverDam"];
 _DCSRunTimes = 0;
 
 _handle = [{
