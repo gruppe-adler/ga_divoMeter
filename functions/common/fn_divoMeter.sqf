@@ -1,7 +1,10 @@
 if (!hasInterface) exitWith {};
 params [["_sacRT", 25], ["_maxppO", 1.1], ["_tempC", 20]];
 
-_value = _obj getVariable "Air";
+_value = (backpackContainer player) getVariable "Air";
+if (isNil "_value") then {_value = (vestContainer player) getVariable "Air";}
+if (isNil "_value") exitWith {};
+
 _value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
 
 //Check if gear has valid percentages for breathing gas
@@ -109,88 +112,86 @@ while {alive player && _psi >= 0} do {
 		_eNdepth = ((_narcFactor -1) *10);		
 		_narcEffectNeg = 1 -(_narcFactor /10);			
 		
-		//Main display elements				
-		disableSerialization;
-		2 cutRsc ["disp","PLAIN"];
-		_displayUI = uiNamespace getVariable 'disp';
-		(_displayUI displayCtrl 1111) ctrlSetText format["%1",[((round(_ascTime))/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1112) ctrlSetText format["%1",(round(_depth *10))/10];
-		(_displayUI displayCtrl 1113) ctrlSetText format["%1",[((_diveTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
-		(_displayUI displayCtrl 1115) ctrlSetText format["%1",[((_timeleft)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
-		(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
-		(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
-		(_displayUI displayCtrl 1121) ctrlSetText format["%1",(round(_dDepth *10))/10];
-		(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
-		(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
-		(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
-		(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
-		(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
-		(_displayUI displayCtrl 1130) ctrlSetText format["%1",[((_decoTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
-		(_displayUI displayCtrl 1132) ctrlSetText format["%1",[((_deepStopTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-		(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1FT",round(((_maxppO/_percentO2) -1) *10)];
-		(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
-		(_displayUI displayCtrl 1134) ctrlCommit 0.0;
-		(_displayUI displayCtrl 1135) ctrlSetPosition [(safeZoneX+(safeZoneW*0.9178)),(safeZoneY+(safeZoneH*0.645)), _HbarPerc, (safeZoneH* 0.005)];
-		(_displayUI displayCtrl 1135) ctrlCommit 0.0;
-			
-		//Display elements for tissue saturation
-		switch (true) do {
-			case (_nTisTot <= 0): {(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";};	
-			case ((_nTisTot > 0) && (_nTisTot <= 0.44))		: 	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_1.paa";};
-			case ((_nTisTot > 0.44) && (_nTisTot <= 0.66))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_2.paa";};
-			case ((_nTisTot > 0.66) && (_nTisTot <= 0.88))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_3.paa";};
-			case ((_nTisTot > 0.88) && (_nTisTot <= 1.1))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_4.paa";};
-			case ((_nTisTot > 1.1) && (_nTisTot <= 1.32))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_5.paa";};
-			case ((_nTisTot > 1.32) && (_nTisTot <= 1.54))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_6.paa";};
-			case ((_nTisTot > 1.54) && (_nTisTot <= 1.96))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_7.paa";};
-			case ((_nTisTot > 1.96) && (_nTisTot <= 2.15))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_8.paa";};
-			case ((_nTisTot > 2.15) && (_nTisTot <= 2.38))	:	{(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";};
-			case (_nTisTot > 2.38): {
+		if (DIVOMETEROPEN) then {
+			//Main display elements				
+			disableSerialization;
+			2 cutRsc ["disp","PLAIN"];
+			_displayUI = uiNamespace getVariable 'disp';
+			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[((round(_ascTime))/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1112) ctrlSetText format["%1",(round(_depth *10))/10];
+			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[((_diveTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
+			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[((_timeleft)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
+			(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
+			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
+			(_displayUI displayCtrl 1121) ctrlSetText format["%1",(round(_dDepth *10))/10];
+			(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
+			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
+			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
+			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
+			(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
+			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[((_decoTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
+			(_displayUI displayCtrl 1132) ctrlSetText format["%1",[((_deepStopTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1FT",round(((_maxppO/_percentO2) -1) *10)];
+			(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
+			(_displayUI displayCtrl 1134) ctrlCommit 0.0;
+			(_displayUI displayCtrl 1135) ctrlSetPosition [(safeZoneX+(safeZoneW*0.9178)),(safeZoneY+(safeZoneH*0.645)), _HbarPerc, (safeZoneH* 0.005)];
+			(_displayUI displayCtrl 1135) ctrlCommit 0.0;
+				
+			//Display elements for tissue saturation	
+			if (_nTisTot <= 2.38) then {
+				_getDivoMeterTexture = {
+					_tisIndex = { 
+						if (_this <= _x) { exitWith(_x);}  } 
+					forEach [0.44, 0.66, 0.88, 1.1, 1.32, 1.54, 1.96, 2.15, 2.38];   
+					format[ "ga_divoMeter\images\tis_%1.paa", _tisIndex]; 
+				}; 
+				(_displayUI displayCtrl 1124) ctrlSetText (_nTisTot call _getDivoMeterTexture);
+			}else {
 				playSound "dispWarn";	
-				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";					
-			};	
-		};			
+				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";	
+			};
+				
+			//Display for PPO2			
+			switch (true)do {
+				case ((_Obarpercent > 0.059) && (_ObarPercent < 0.079)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 1, 0, 0.5];};	
+				case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};	
+				case (_ObarPercent > 0.119): {				
+					_ObarPercent = 0.119;
+					playSound "dispWarn";
+					(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0, 0, 0.5];
+				};
+			};
 			
-		//Display for PPO2			
-		switch (true)do {
-			case ((_Obarpercent > 0.059) && (_ObarPercent < 0.079)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 1, 0, 0.5];};	
-			case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};	
-			case (_ObarPercent > 0.119): {				
-				_ObarPercent = 0.119;
-				playSound "dispWarn";
-				(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0, 0, 0.5];
+			//Display for He			
+			switch (true)do {
+				case ((_HbarPercent > 0.059) && (_HbarPercent < 0.079)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 1, 0, 0.5];};		
+				case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};			
+				case (_HbarPercent > 0.118): {				
+					_HbarPercent = 0.118;
+					playSound "dispWarn";
+					(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0, 0, 0.5];
+				};
 			};
-		};
-		
-		//Display for He			
-		switch (true)do {
-			case ((_HbarPercent > 0.059) && (_HbarPercent < 0.079)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 1, 0, 0.5];};		
-			case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};			
-			case (_HbarPercent > 0.118): {				
-				_HbarPercent = 0.118;
-				playSound "dispWarn";
-				(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0, 0, 0.5];
+				
+			//Display elements for ascent indicators			
+			switch (true) do{
+				case (_dDepth > 0): {
+					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\upArrow.paa";
+					(_displayUI displayCtrl 1120) ctrlSetText "^";
+				};
+				case (_dDepth < 0): {
+					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\downArrow.paa";
+					(_displayUI displayCtrl 1120) ctrlSetText "v";						
+				};
+				case (_dDepth == 0): {
+					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\noArrow.paa";
+					(_displayUI displayCtrl 1120) ctrlSetText "";
+					(_displayUI displayCtrl 1134) ctrlSetText "";
+				};						 					
 			};
-		};
-			
-		//Display elements for ascent indicators			
-		switch (true) do{
-			case (_dDepth > 0): {
-				(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\upArrow.paa";
-				(_displayUI displayCtrl 1120) ctrlSetText "^";
-			};
-			case (_dDepth < 0): {
-				(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\downArrow.paa";
-				(_displayUI displayCtrl 1120) ctrlSetText "v";						
-			};
-			case (_dDepth == 0): {
-				(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\noArrow.paa";
-				(_displayUI displayCtrl 1120) ctrlSetText "";
-				(_displayUI displayCtrl 1134) ctrlSetText "";
-			};						 					
 		};
 			
 		//Display element for ascent warning and init DCS effects
@@ -241,24 +242,14 @@ while {alive player && _psi >= 0} do {
 		
 		//Simulate Tissue Saturation
 		switch (true) do {
-			case (_depthB > _depthA): {						 
-				 _nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				 _HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				 _O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				_tempC = _tempC + (_dDepth *0.0004);				
-			};
-			case (_depthA > _depthB): {
-				_nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				_HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				_O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;										
-			};
-			case (_depthA == _depthB): {
-				_nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				_HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
-				_O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;						
-			};	
-		};		
-			
+			case (_depthA < _depthB): {_tempC = _tempC + (_dDepth *0.0004);};
+			case (_depthA > _depthB): {_tempC = _tempC - (_dDepth *0.0004);};
+		};	
+		
+		_nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
+		_HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
+		_O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
+					
 		//Calculate Max Depth so far
 		if ((_depthB > _depthA) && (_maxDepth < _depthB)) then {_maxDepth = _depthB;};			
 			

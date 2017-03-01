@@ -29,7 +29,9 @@ _handle = [{
 			_DCSChroma ppEffectCommit 1;
 			_DCSBlur ppEffectCommit 1;
 			_DCSDynBlur ppEffectCommit 1;
-			player setDamage ((getDammage player) + _DCSAffDiverDam);
+			_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]]; 
+			_bodyPart = random ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
+			[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + _DCSAffDiverDam, player, "explosive", -1] call ace_medical_fnc_handleDamage;
 			[{
 				titleText ["","BLACK OUT",1];
 				[{

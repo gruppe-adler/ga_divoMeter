@@ -47,5 +47,3 @@ _handle = [{
 		_HeToxRunTimes = 0;			
 	};
 }, 0, [_HeToxRunEffect, _HeToxRunTimes]] call CBA_fnc_addPerFrameHandler;
-
-[{_HeToxRunScript != "true"}, {[_this] call CBA_fnc_removePerFrameHandler;}, [_handle]] call CBA_fnc_waitUntilAndExecute

@@ -7,6 +7,7 @@ class CfgFunctions {
 			class gasCalc {};
 			class init {};
 			class initTissues {};
+			class openDivoMeter{};
 			class toggleOverlay {};
 		};
 		

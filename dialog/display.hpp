@@ -1,12 +1,12 @@
 //Originally created Carl Gustaffa
-//Edited for Diver Stats by slbiscourge
+//Edited for Diver Stats by trin scourge
 //Edited for Diver Mod by Salbei
 
 
 class slb_disp {
 	idd = 1109;
-	name=__slb;
-	onLoad = "uiNamespace setVariable ['slb_disp', _this select 0]";
+	name=_slb;
+	onLoad = "uiNamespace setVariable ['disp', _this select 0]";
 	fadein = 0;
 	fadeout = 0;
 	duration = 10e10;
@@ -25,7 +25,7 @@ class slb_disp {
 			y = safeZoneY+(safeZoneH*0.32);
 			w = safeZoneW* 0.32;
 			h = safeZoneH* 0.48;
-			text = "divingMod\images\divingWatch.paa";
+			text = "\images\divingWatch.paa";
 		};
 		class slb_ascTime: RscText {
 			idc = 1111;

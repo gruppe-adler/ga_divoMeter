@@ -29,7 +29,9 @@ _handle = [{
 			_O2ToxChroma ppEffectCommit 4;
 			_O2ToxBlur ppEffectCommit 4;
 			_O2ToxDynBlur ppEffectCommit 4;
-			player setDamage ((getDammage player) + _O2ToxAffDiverDam);
+			_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]]; 
+			_bodyPart = random ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
+			[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + _DCSAffDiverDam, player, "explosive", -1] call ace_medical_fnc_handleDamage;
 				[{
 				titleText ["","BLACK OUT",4];
 				[{
@@ -49,5 +51,3 @@ _handle = [{
 		_O2ToxRunTimes = 0;		
 	};
 }, 0, [_O2ToxRunEffect, _O2ToxAffDiverDam, _O2ToxRunTimes]] call CBA_fnc_addPerFrameHandler;
-
-[{_O2ToxRunScript != "true"}, {[_this] call CBA_fnc_removePerFrameHandler;}, [_handle]] call CBA_fnc_waitUntilAndExecute

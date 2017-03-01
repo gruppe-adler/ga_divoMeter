@@ -33,6 +33,14 @@
             <English>Emergency Asent</English>
             <German>Notfallauftauchen</German>
         </Key>
+		<Key ID="$STR_ga_divoMeter_divoMeter_open">
+            <English>Open DivoMeter</English>
+            <German>DivoMeter öffnen</German>
+        </Key>
+		<Key ID="$STR_ga_divoMeter_divoMeter_close">
+            <English>Close DivoMeter</English>
+            <German>DivoMeter schließen</German>
+        </Key>
     </Package>
 </Project>
 
