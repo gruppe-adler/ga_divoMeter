@@ -118,14 +118,14 @@ while {alive player && _psi >= 0} do {
 			2 cutRsc ["disp","PLAIN"];
 			_displayUI = uiNamespace getVariable 'disp';
 			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[((round(_ascTime))/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1112) ctrlSetText format["%1",(round(_depth *10))/10];
+			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[((_diveTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
 			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[((_timeleft)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
 			(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
 			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
-			(_displayUI displayCtrl 1121) ctrlSetText format["%1",(round(_dDepth *10))/10];
+			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
 			(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
 			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
 			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
@@ -134,7 +134,7 @@ while {alive player && _psi >= 0} do {
 			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[((_decoTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
 			(_displayUI displayCtrl 1132) ctrlSetText format["%1",[((_deepStopTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1FT",round(((_maxppO/_percentO2) -1) *10)];
+			(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1m",round(((_maxppO/_percentO2) -1) *10)];
 			(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
 			(_displayUI displayCtrl 1134) ctrlCommit 0.0;
 			(_displayUI displayCtrl 1135) ctrlSetPosition [(safeZoneX+(safeZoneW*0.9178)),(safeZoneY+(safeZoneH*0.645)), _HbarPerc, (safeZoneH* 0.005)];
