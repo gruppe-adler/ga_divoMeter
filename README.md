@@ -1,4 +1,5 @@
 # Divo Meter
+## Work In Progress!
 <p align="center">
     <a href="https://github.com/gruppe-adler/ga_divoMeter/releases/latest">
         <img src="https://img.shields.io/badge/Version-0.1-blue.svg?style=flat-square" alt="Version">
@@ -10,7 +11,6 @@
         <img src="https://img.shields.io/badge/GitHub-Wiki-d26911.svg?style=flat-square" alt="BIF Thread">
     </a>
 </p>
-## Work In Progress!
 
 ### Features
 - Diving Computer
