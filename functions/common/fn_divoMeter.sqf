@@ -117,11 +117,11 @@ while {alive player && _psi >= 0} do {
 			disableSerialization;
 			2 cutRsc ["disp","PLAIN"];
 			_displayUI = uiNamespace getVariable 'disp';
-			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[((round(_ascTime))/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[((_diveTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[(_diveTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
-			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[((_timeleft)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[(_timeleft)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
 			(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
 			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
@@ -131,9 +131,9 @@ while {alive player && _psi >= 0} do {
 			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
 			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
 			(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
-			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[((_decoTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[(_decoTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
-			(_displayUI displayCtrl 1132) ctrlSetText format["%1",[((_deepStopTime)/60)+.01,"HH:MM"] call bis_fnc_timetostring];
+			(_displayUI displayCtrl 1132) ctrlSetText format["%1",[(_deepStopTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1m",round(((_maxppO/_percentO2) -1) *10)];
 			(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
 			(_displayUI displayCtrl 1134) ctrlCommit 0.0;
@@ -343,7 +343,7 @@ while {alive player && _psi >= 0} do {
 		};				
 		
 		//Prevent huge numbers from clogging diaplay
-		if(_ascTime > 600) then { _ascTime = 0;};
+		if(_ascTime > 6000) then { _ascTime = 0;};
 			
 		//Running out of air results in tank being discarded.
 		if (_psi <= 0) then {
