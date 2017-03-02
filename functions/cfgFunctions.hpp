@@ -8,7 +8,6 @@ class CfgFunctions {
 			class init {};
 			class initTissues {};
 			class openDivoMeter{};
-			class toggleOverlay {};
 		};
 		
 		class effects {
