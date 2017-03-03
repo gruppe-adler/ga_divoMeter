@@ -1,16 +1,5 @@
 # Divo Meter
 ## Work In Progress!
-<p align="center">
-    <a href="https:- github.com/gruppe-adler/ga_divoMeter/releases/latest">
-        <img src="https:- img.shields.io/badge/Version-0.1-blue.svg?style=flat-square" alt="Version">
-    </a>
-    <a href="https:- github.com/gruppe-adler/ga_divoMeter/issues">
-        <img src="https:- img.shields.io/github/issues-raw/gruppe-adler/ga_divoMeter.svg?style=flat-square&label=Issues" alt="Issues">
-    </a>
-    <a href="https:- github.com/gruppe-adler/ga_divoMeter/wiki">
-        <img src="https:- img.shields.io/badge/GitHub-Wiki-d26911.svg?style=flat-square" alt="BIF Thread">
-    </a>
-</p>
 
 ## Features
 - Diving Computer
@@ -44,7 +33,12 @@ These addons are required to run the scenario:
 	
 ## Credits
 Visuals: 			Carl Gustaffa, trin scourge
+
 Effects:			trin scourge
+
 Sound: 				Sounds obtained from Freesound.org
-Sound creators: 	Eternitys, Empty Bell, qubodup
-Help with code: 	McDiod, Fusselwurm, Nomisum, DerZade, trin scourge
+
+Sound creators: 		Eternitys, Empty Bell, qubodup
+
+Help with code: 		McDiod, Fusselwurm, Nomisum, DerZade, trin scourge
+
