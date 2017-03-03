@@ -1,22 +1,4 @@
 if (!hasInterface) exitWith {};
-params [["_sacRT", 25], ["_maxppO", 1.1], ["_tempC", 20]];
-
-_value = (backpackContainer player) getVariable "Air";
-if (isNil "_value") then {_value = (vestContainer player) getVariable "Air";}
-if (isNil "_value") exitWith {};
-
-_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
-
-//Check if gear has valid percentages for breathing gas
-if ((_percentO2 +_percentN2 +_percentHe) != 1) exitWith {
-	systemChat "Error in init argument: Sum of breathing gasses should equal 1"; 
-	systemChat format ["O2 percentage: %1, N2 percentage: %2, HE percentage: %3", _percentO2, _percentN2, _percentHe];
-};
-
-if (_percentO2 < 0.09) exitWith {systemChat format ["Error in init argument: You need at least 9% O2 in your tank. O2 percentage = %1", _percentO2];};
-
-PSI = _psi;
-publicVariable "PSI";
 
 //Starting vars
 _airConsumption = 0;
@@ -83,8 +65,14 @@ _HeTot = 0;
 _HeTisTot = 0; 
 _pHeAlv = 0;
 
-while {alive player && _psi >= 0} do {
-	if (((eyePos player) select 2) < 0) then {													
+[{
+	params ["_args","_handle"];
+	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
+	if (((eyePos player) select 2 && DIVOMETERGEARON) < 0) then {	
+		if (isNil "_size") then {
+			_value = [] call ga_divoMeter_fnc_checkGear;
+			_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
+		};
 		_diveTime = _diveTime + 1;
 		_depth = (abs ((getPosASL player) select 2)); //in meter
 		_pressure = ((_depth / 10) + 1);			
@@ -115,17 +103,24 @@ while {alive player && _psi >= 0} do {
 		if (DIVOMETEROPEN) then {
 			//Main display elements				
 			disableSerialization;
-			2 cutRsc ["disp","PLAIN"];
 			_displayUI = uiNamespace getVariable 'disp';
 			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
+			//if (DIVOMETERMETRIC) then {
 			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[(_diveTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
+			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
+			/*
+			}else {
+				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",(round((_depth * 3.28) *10))/10];
+				(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round((_maxDepth * 3.28) *10))/10];
+				(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round((_dDepth * 3.28) *10))/10];
+			};
+			*/
+			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[(_diveTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[(_timeleft)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
 			(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
 			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
-			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
 			(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
 			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
 			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
@@ -150,7 +145,7 @@ while {alive player && _psi >= 0} do {
 				}; 
 				(_displayUI displayCtrl 1124) ctrlSetText (_nTisTot call _getDivoMeterTexture);
 			}else {
-				playSound "dispWarn";	
+				if (DIVIOMETERHEAD) then {playSound "dispWarn";	
 				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";	
 			};
 				
@@ -160,7 +155,7 @@ while {alive player && _psi >= 0} do {
 				case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};	
 				case (_ObarPercent > 0.119): {				
 					_ObarPercent = 0.119;
-					playSound "dispWarn";
+					if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 					(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0, 0, 0.5];
 				};
 			};
@@ -171,7 +166,7 @@ while {alive player && _psi >= 0} do {
 				case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};			
 				case (_HbarPercent > 0.118): {				
 					_HbarPercent = 0.118;
-					playSound "dispWarn";
+					if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 					(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0, 0, 0.5];
 				};
 			};
@@ -196,7 +191,7 @@ while {alive player && _psi >= 0} do {
 			
 		//Display element for ascent warning and init DCS effects
 		if (_dDepth > 8) then {						
-			playSound "dispExit";
+			if (DIVIOMETERHEAD) then {playSound "dispExit";};
 			(_displayUI displayCtrl 1133) ctrlSetText "";
 			(_displayUI displayCtrl 1125) ctrlSetText "FAST ASCENT!";
 			_fAscCntdn = _fAscCntdn - 1;					
@@ -261,20 +256,20 @@ while {alive player && _psi >= 0} do {
 			_decoTime = _AscCeil *(round(_totalTis *4));				
 			_doDeco = 1;
 			_diveCnt = _diveCnt - 1;
-			playSound "dispStart";
+			if (DIVIOMETERHEAD) then {playSound "dispStart";};
 		};
 			
 		if((_AscCeilB > 10) && (_doDeepStop < 1)) then {				
 			_deepStopCeil = _depth /2;				
 			_deepStopTime = _AscCeil *(round(_totalTis *3.5));				
-			playSound "dispStart";
+			if (DIVIOMETERHEAD) then {playSound "dispStart";};
 			_doDeepStop = 1;
 		};
 			
 		// Start deco countdown once unit is with range
 		if ((_doDeco == 1) && !(_depth2deco > 3) && !(_depth2deco < -3)) then {
 			_decoTime = _decoTime - 1;
-			playSound "dispCount";
+			if (DIVIOMETERHEAD) then {playSound "dispCount";};
 		};			
 			
 		//Stop deco countdown and reset timer
@@ -282,13 +277,13 @@ while {alive player && _psi >= 0} do {
 			_decoTime = 0;
 			_AscCeil = 0;
 			_doDeco = 0;
-			playSound "dispClear";
+			if (DIVIOMETERHEAD) then {playSound "dispClear";};
 		};
 			
 		// Start deep stop countdown once unit is with range
 		if ((_doDeepStop == 1) && !(_depth2deepStop > 3) && !(_depth2deepStop < -3)) then {
 			_deepStopTime = _deepStopTime - 1;
-			playSound "dispCount";
+			if (DIVIOMETERHEAD) then {playSound "dispCount";};
 		};
 			
 		//Stop deep stop countdown and reset timer
@@ -296,7 +291,7 @@ while {alive player && _psi >= 0} do {
 			_deepStopTime = 0;
 			_deepStopCeil = 0;
 			_doDeepStop = 0;
-			playSound "dispClear";	
+			if (DIVIOMETERHEAD) then {playSound "dispClear";};	
 		};
 			
 		//Narcotic Effects kick in if toxicity threshold passed.
@@ -337,7 +332,7 @@ while {alive player && _psi >= 0} do {
 				[true, true, _O2DamMult] call ga_divoMeter_fnc_O2ToxEffects.sqf;					
 				_O2ToxCntdn = 33;
 			};
-			playSound "dispWarn";
+			if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 		}else {
 			_O2ToxCntdn = 1;
 		};				
@@ -345,7 +340,7 @@ while {alive player && _psi >= 0} do {
 		//Prevent huge numbers from clogging diaplay
 		if(_ascTime > 6000) then { _ascTime = 0;};
 			
-		//Running out of air results in tank being discarded.
+		//Running out of air results in big Problems
 		if (_psi <= 0) then {
 			PSI = 0;
 			player setStamina 0; 
@@ -354,7 +349,5 @@ while {alive player && _psi >= 0} do {
 			PSI = _psi;
 		};		
 	};
-		
-	2 cutText ["","PLAIN"];
 	_diveCnt = 0;			
-};
+}, 1, []] call CBA_fnc_addPerFrameHandler;
