@@ -38,7 +38,7 @@ These addons are required to run the scenario:
 
 **Sound:** Sounds obtained from Freesound.org
 
-** Sound creators:** Eternitys, Empty Bell, qubodup
+**Sound creators:** Eternitys, Empty Bell, qubodup
 
 **Help with code:** McDiod, Fusselwurm, Nomisum, DerZade, trin scourge
 
