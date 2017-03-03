@@ -32,13 +32,13 @@ These addons are required to run the scenario:
    - [ACE](https://github.com/acemod/ACE3/releases)
 	
 ## Credits
-Visuals: 			Carl Gustaffa, trin scourge
+**Visuals:** Carl Gustaffa, trin scourge
 
-Effects:			trin scourge
+**Effects:** trin scourge
 
-Sound: 				Sounds obtained from Freesound.org
+**Sound:** Sounds obtained from Freesound.org
 
-Sound creators: 		Eternitys, Empty Bell, qubodup
+** Sound creators:** Eternitys, Empty Bell, qubodup
 
-Help with code: 		McDiod, Fusselwurm, Nomisum, DerZade, trin scourge
+**Help with code:** McDiod, Fusselwurm, Nomisum, DerZade, trin scourge
 
