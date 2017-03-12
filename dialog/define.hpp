@@ -146,7 +146,7 @@ class RscPicture
     style = ST_PICTURE;
     colorBackground[] = {0,0,0,0};
     colorText[] = {1,1,1,1};
-    font = "Bitstream";
+    font = "PuristaLight";
     sizeEx = 0;
     lineSpacing = 0;
     text = "";
@@ -183,7 +183,7 @@ class RscButton
     w = 0.055589;
     h = 0.039216;
     shadow = 2;
-    font = "Bitstream";
+    font = "PuristaLight";
     sizeEx = 0.02921;
     offsetX = 0.003;
     offsetY = 0.003;
@@ -200,7 +200,7 @@ class RscFrame
     shadow = 2;
     colorBackground[] = {1,1,1,1};
     colorText[] = {1,1,1,0.9};
-    font = "Bitstream";
+    font = "PuristaLight";
     sizeEx = 0.03;
     text = "";
 };
@@ -212,7 +212,7 @@ class BOX
     style = ST_CENTER;
     shadow = 2;
     colorText[] = {1,1,1,1};
-    font = "Bitstream";
+    font = "PuristaLight";
     sizeEx = 0.02;
     colorBackground[] = { 0.5,0.7,0.2, 0.9 }; 
     text = ""; 
