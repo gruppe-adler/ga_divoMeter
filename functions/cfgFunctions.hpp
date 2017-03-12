@@ -1,6 +1,7 @@
 class CfgFunctions {
 	class ga_divoMeter {
 		class common {
+			file = "ga_divoMeter\functions\common";
 			class addRefillMenu {};
 			class checkAir {};
 			class checkGear {};
@@ -16,6 +17,7 @@ class CfgFunctions {
 		};
 		
 		class effects {
+			file = "ga_divoMeter\functions\effects";
 			class DCSEffects {};
 			class HeToxEffects {};
 			class narcEffects {};
