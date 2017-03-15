@@ -11,11 +11,10 @@ if (isNil "_value") then {
 };
 _value params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc"];
 
-
 if (_bool) then {	
 	[{
 		params ["_args","_handle"]; 
-		_args ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
+		_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
 		if (_psiTank == _sizeTank) exitWith {
 			[_handle] call CBA_fnc_removePerFrameHandler;
 			_obj setVariable ["Air", [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc]];
@@ -32,7 +31,7 @@ if (_bool) then {
 	if (_psiTank > 0) then {
 		[{
 			params ["_args","_handle"]; 
-			_args ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
+			_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
 			if (_psiTank == 0) exitWith {
 				[_handle] call CBA_fnc_removePerFrameHandler;
 				_obj setVariable ["Air", [_sizeTank, _psi, _o2Perc, _n2Perc, _hePerc]];
@@ -60,7 +59,7 @@ if (_bool) then {
 	  
 	[{
 		params ["_args","_handle"]; 
-		_args ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
+		_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
 		if (_psiTank == _sizeTank) exitWith {
 			[_handle] call CBA_fnc_removePerFrameHandler;
 			_obj setVariable ["Air", [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc]];

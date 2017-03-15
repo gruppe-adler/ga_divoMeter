@@ -1,3 +1,4 @@
+/*
 class divingAirSetup {
 	class V_GA_DivingTank_Blk {
 		_class = 2;
@@ -14,3 +15,4 @@ class divingAirSetup {
 		_size = 3000;
 	};
 };
+/*

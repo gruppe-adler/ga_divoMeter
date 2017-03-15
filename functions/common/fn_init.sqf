@@ -21,4 +21,4 @@ player addEventHandler ["PUT",
 	}
 ];
 
-[] call ga_divoMeter_fnc_divometer;
+[] call ga_divoMeter_common_fn_divometer;
