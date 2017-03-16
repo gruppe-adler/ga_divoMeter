@@ -1,5 +1,6 @@
 class CfgFunctions {
 	class ga_divoMeter {
+		tag = "ga_divoMeter";
 		class common {
 			file = "ga_divoMeter\functions\common";
 			class addRefillMenu {};

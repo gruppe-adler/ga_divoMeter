@@ -27,7 +27,7 @@ class slb_disp {
 			h = safeZoneH* 0.48;
 			text = "\images\divingWatch.paa";
 		};
-		class slb_ascTime: RscText {
+		class slb_ascTime: SLBRscText {
 			idc = 1111;
 			text = "";
 			font = puristaLight;
@@ -38,7 +38,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_diveDepth: RscText {
+		class slb_diveDepth: SLBRscText {
 			idc = 1112;
 			text = "";
 			font = puristaLight;
@@ -49,7 +49,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_diveTime: RscText {
+		class slb_diveTime: SLBRscText {
 			idc = 1113;
 			text = "";
 			font = puristaLight;
@@ -60,7 +60,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_maxDepth: RscText {
+		class slb_maxDepth: SLBRscText {
 			idc = 1114;
 			text = "";
 			font = puristaLight;
@@ -72,7 +72,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_timeLeft: RscText {
+		class slb_timeLeft: SLBRscText {
 			idc = 1115;
 			text = "";
 			font = puristaLight;
@@ -83,7 +83,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_pressure: RscText {
+		class slb_pressure: SLBRscText {
 			idc = 1116;
 			text = "";
 			font = puristaLight;
@@ -94,7 +94,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_acr: RscText {
+		class slb_acr: SLBRscText {
 			idc = 1117;
 			text = "";
 			font = puristaLight;
@@ -105,7 +105,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_psi: RscText {
+		class slb_psi: SLBRscText {
 			idc = 1118;
 			text = "";
 			font = puristaLight;
@@ -116,7 +116,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_upArrow: RscPicture {
+		class slb_upArrow: SLBRscPicture {
 			idc = 1119;
 			colorText[] = { };
 			font = puristaLight;
@@ -127,7 +127,7 @@ class slb_disp {
 			h = safeZoneH* 0.6;
 			text = "";
 		};
-		class slb_downArrow: RscPicture {
+		class slb_downArrow: SLBRscPicture {
 			idc = 1123;
 			colorText[] = { };
 			font = puristaLight;
@@ -138,7 +138,7 @@ class slb_disp {
 			h = safeZoneH* 0.6;
 			text = "";
 		};
-		class slb_arrowUpDepth: RscText {
+		class slb_arrowUpDepth: SLBRscText {
 			idc = 1120;
 			text = "";
 			font = puristaLight;
@@ -149,7 +149,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_UpDepth: RscText {
+		class slb_UpDepth: SLBRscText {
 			idc = 1121;
 			text = "";
 			font = puristaLight;
@@ -160,7 +160,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_N2Amt: RscText {
+		class slb_N2Amt: SLBRscText {
 			idc = 1122;
 			text = "";
 			font = puristaLight;
@@ -172,7 +172,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_tisSat: RscPicture {
+		class slb_tisSat: SLBRscPicture {
 			idc = 1124;
 			colorText[] = { };
 			font = puristaLight;
@@ -183,7 +183,7 @@ class slb_disp {
 			h = safeZoneH* 0.5;
 			text = "";
 		};
-		class slb_warnTxt: RscText {
+		class slb_warnTxt: SLBRscText {
 			idc = 1125;
 			text = "";
 			font = puristaMedium;
@@ -195,7 +195,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_bearingTxt: RscText {
+		class slb_bearingTxt: SLBRscText {
 			idc = 1126;
 			text = "";
 			font = puristaMedium;
@@ -207,7 +207,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_tempTxt: RscText {
+		class slb_tempTxt: SLBRscText {
 			idc = 1127;
 			text = "";
 			font = puristaLight;
@@ -219,7 +219,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_gridTxt: RscText {
+		class slb_gridTxt: SLBRscText {
 			idc = 1128;
 			text = "";
 			font = puristaLight;
@@ -231,7 +231,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_decostopTxt: RscText {
+		class slb_decostopTxt: SLBRscText {
 			idc = 1129;
 			text = "";
 			font = puristaLight;
@@ -243,7 +243,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_decotimeTxt: RscText {
+		class slb_decotimeTxt: SLBRscText {
 			idc = 1130;
 			text = "";
 			font = puristaLight;
@@ -255,7 +255,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_deepstopTxt: RscText {
+		class slb_deepstopTxt: SLBRscText {
 			idc = 1131;
 			text = "";
 			font = puristaLight;
@@ -267,7 +267,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_deeptimeTxt: RscText {
+		class slb_deeptimeTxt: SLBRscText {
 			idc = 1132;
 			text = "";
 			font = puristaLight;
@@ -279,7 +279,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_MODTxt: RscText {
+		class slb_MODTxt: SLBRscText {
 			idc = 1133;
 			text = "";
 			font = puristaMedium;
@@ -291,7 +291,7 @@ class slb_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class slb_ppO: Box {
+		class slb_ppO: SLBBox {
 			idc = 1134;
 			text = "";
 			font = puristaMedium;
@@ -302,7 +302,7 @@ class slb_disp {
 			w = safeZoneW* 0.0001;
 			h = safeZoneH* 0.005;
 		};
-		class slb_ppHe: Box {
+		class slb_ppHe: SLBBox {
 			idc = 1135;
 			text = "";
 			font = puristaMedium;
@@ -313,7 +313,7 @@ class slb_disp {
 			w = safeZoneW* 0.0001;
 			h = safeZoneH* 0.005;
 		};
-		class slb_n2lvl: Box {
+		class slb_n2lvl: SLBBox {
 			idc = 1136;
 			text = "";
 			font = puristaMedium;
@@ -324,6 +324,5 @@ class slb_disp {
 			w = safeZoneW* 0.005;
 			h = safeZoneH* 0.0001;
 		};
-		
 	};
 };

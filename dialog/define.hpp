@@ -96,7 +96,7 @@
 //Base Classes//
 ////////////////
 
-class RscTextBold
+class SLBRscTextBold
 {
     access = 0;
     idc = -1;
@@ -117,7 +117,7 @@ class RscTextBold
    
 };
 
-class RscText
+class SLBRscText
 {
     access = 0;
     idc = -1;
@@ -138,7 +138,7 @@ class RscText
    
 };
 
-class RscPicture
+class SLBRscPicture
 {
     access = 0;
     idc = -1;
@@ -158,7 +158,7 @@ class RscPicture
     h = 0.15;
 };
 
-class RscButton
+class SLBRscButton
 {
     
     access = 0;
@@ -192,7 +192,7 @@ class RscButton
     borderSize = 0;
 };
 
-class RscFrame
+class SLBRscFrame
 {
     type = CT_STATIC;
     idc = -1;
@@ -205,7 +205,7 @@ class RscFrame
     text = "";
 };
 
-class BOX
+class SLBBOX
 { 
     type = CT_STATIC;
     idc = -1;

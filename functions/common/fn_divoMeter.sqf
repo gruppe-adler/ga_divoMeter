@@ -70,7 +70,7 @@ _pHeAlv = 0;
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	if (((eyePos player) select 2 && DIVOMETERGEARON) < 0) then {	
 		if (isNil "_size") then {
-			_value = [] call ga_divoMeter_common_fnc_checkGear;
+			_value = [] call ga_divoMeter_fnc_checkGear;
 			_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
 		};
 		_diveTime = _diveTime + 1;
@@ -86,9 +86,9 @@ _pHeAlv = 0;
 		_ObarPercent = (_pOAlv/_maxppO) *0.065;
 		_HbarPercent = (_pHeAlv/8) *0.065;
 		_NbarPercent = (_nTisTot/2.38) * 0.24;			
-		_nTot = [_pressure, _percentN2, 1600, _tempC, 28, _pNAlv] call ga_divoMeter_common_fnc_gasCalc;
-		_oTot = [_pressure, _percentO2, 756.7, _tempC, 32, _pOAlv] call ga_divoMeter_common_fnc_gasCalc;
-		_HeTot = [_pressure, _percentHe, 2865, _tempC, 8, _pHeAlv] call ga_divoMeter_common_fnc_gasCalc;
+		_nTot = [_pressure, _percentN2, 1600, _tempC, 28, _pNAlv] call ga_divoMeter_fnc_gasCalc;
+		_oTot = [_pressure, _percentO2, 756.7, _tempC, 32, _pOAlv] call ga_divoMeter_fnc_gasCalc;
+		_HeTot = [_pressure, _percentHe, 2865, _tempC, 8, _pHeAlv] call ga_divoMeter_fnc_gasCalc;
 		_totalTis = _nTisTot + _HeTisTot + _O2TisTot;
 		_pNAlv = _percentN2 *(_pressure - 0.0567);
 		_pHeAlv = _percentHe *(_pressure - 0.0567);
@@ -196,7 +196,7 @@ _pHeAlv = 0;
 			(_displayUI displayCtrl 1125) ctrlSetText "FAST ASCENT!";
 			_fAscCntdn = _fAscCntdn - 1;					
 			if (_fAscCntdn == 0) then {
-				[true, true, (1-(_nTisTot *1.25))]call ga_divoMeter_effects_fnc_DCSEffects.sqf;					
+				[true, true, (1-(_nTisTot *1.25))]call ga_divoMeter_fnc_DCSEffects.sqf;					
 				_fAscCntdn = 5;
 			};					
 		}else {
@@ -241,9 +241,9 @@ _pHeAlv = 0;
 			case (_depthA > _depthB): {_tempC = _tempC - (_dDepth *0.0004);};
 		};	
 		
-		_nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_common_fnc_initTissues;
-		_HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_common_fnc_initTissues;
-		_O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_common_fnc_initTissues;
+		_nTisTot = [_percentN2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
+		_HeTisTot = [_percentHe, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
+		_O2TisTot = [_percentO2, ((ln 2)/4), _pressure, ((_pressureB - _pressureA)/60), _diveTime] call ga_divoMeter_fnc_initTissues;
 					
 		//Calculate Max Depth so far
 		if ((_depthB > _depthA) && (_maxDepth < _depthB)) then {_maxDepth = _depthB;};			
@@ -298,7 +298,7 @@ _pHeAlv = 0;
 		if (_narcFactor > 8) then {
 			_narcCntdn = _narcCntdn - 1;					
 			if (_narcCntdn == 0) then {
-				[true, true, (_narcFactor/50)] call ga_divoMeter_effects_fnc_narcEffects.sqf;					
+				[true, true, (_narcFactor/50)] call ga_divoMeter_fnc_narcEffects.sqf;					
 			_narcCntdn = 33;
 			};					
 		}else {
@@ -309,7 +309,7 @@ _pHeAlv = 0;
 		if (_pHeAlv > 8) then {	
 			_HeToxCntdn = _HeToxCntdn - 1;				
 			if (_HeToxCntdn == 0) then {
-				[true, true] call dm_fnc_HeToxEffects.sqf;					
+				[true, true] call ga_divoMeter_fnc_HeToxEffects.sqf;					
 				_HeToxCntdn = 33;
 			};				
 		}else {
@@ -329,7 +329,7 @@ _pHeAlv = 0;
 			_O2DamMult = _O2TisTot/6;
 			_O2ToxCntdn = _O2ToxCntdn - 1;
 			if (_O2ToxCntdn == 0) then {
-				[true, true, _O2DamMult] call ga_divoMeter_effects_fnc_O2ToxEffects.sqf;					
+				[true, true, _O2DamMult] call ga_divoMeter_fnc_O2ToxEffects.sqf;					
 				_O2ToxCntdn = 33;
 			};
 			if (DIVIOMETERHEAD) then {playSound "dispWarn";};

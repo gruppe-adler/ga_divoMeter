@@ -7,7 +7,7 @@ class CfgPatches {
 		requiredVersion = 1.0;
 		requiredAddons[] = {"ace_main"};
 
-		units[] = {};
+		units[] = {"ga_divoMeter_params"};
 		weapons[] = {};
 	};
 };
