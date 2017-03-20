@@ -23,7 +23,7 @@
 The mod will be activ when you put on one of these vests: V_GA_DivingTank_Blk, V_GA_DivingTank_Oli, V_GA_DivingTank_Rgr
 Audio output is possible if the user wears: G_B_Diving
 The diving computer can be opend using the Ace Selfinteraction.
-To add the RefillMenu to an Objekt, add this in the init: `[_this] call ga_divoMeter_addRefillMenu`
+To add the RefillMenu to an Objekt, add this in the init: `[_this] call ga_divoMeter_addRefillMenu;`
 
 ## Dependencies
 These addons are required to run the scenario:
