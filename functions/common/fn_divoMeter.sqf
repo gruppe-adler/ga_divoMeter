@@ -68,7 +68,7 @@ _pHeAlv = 0;
 [{
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
-	if (((eyePos player) select 2 && DIVOMETERGEARON) < 0) then {	
+	if (((eyePos player) select 2  < 0) && DIVOMETERGEARON) then {	
 		if (isNil "_size") then {
 			_value = [] call ga_divoMeter_fnc_checkGear;
 			_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
@@ -107,12 +107,12 @@ _pHeAlv = 0;
 			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			//if (DIVOMETERMETRIC) then {
 			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
-			(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round(_maxDepth *10))/10];
+			(_displayUI displayCtrl 1114) ctrlSetText format["%1m",(round(_maxDepth *10))/10];
 			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
 			/*
 			}else {
 				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",(round((_depth * 3.28) *10))/10];
-				(_displayUI displayCtrl 1114) ctrlSetText format["%1",(round((_maxDepth * 3.28) *10))/10];
+				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT",(round((_maxDepth * 3.28) *10))/10];
 				(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round((_dDepth * 3.28) *10))/10];
 			};
 			*/

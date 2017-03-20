@@ -22,4 +22,5 @@ player addEventHandler ["PUT",
 	}
 ];
 
+waitUntil {!isNil "ga_divoMeter_fnc_divometer"};
 [] call ga_divoMeter_fnc_divometer;
