@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="DAGR">
-        <Key ID="$STR_ga_divoMeter_sacRT">
+        <Key ID="STR_ga_divoMeter_sacRT">
             <English>Surface air consumption rate (psi/min)</English>
             <German>Oberflächenluftverbrauchsrate (psi/min)</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_sacRT_desc">
+		<Key ID="STR_ga_divoMeter_sacRT_desc">
             <English>The rate at which diver breathes air. Increases with pressure.</English>
             <German>Die Rate, mit der der Taucher Luft atmet. Steigert sich unter Druck.</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_maxppO">
+		<Key ID="STR_ga_divoMeter_maxppO">
             <English>Max PPO2</English>
             <German>Max PPO2</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_maxppO_desc">
+		<Key ID="STR_ga_divoMeter_maxppO_desc">
             <English>Maximum safe partial pressure of o2. Safe values range from 1.0 - 1.4</English>
             <German>Maximaler sicherer Partialdruck von o2. Sichere Werte reichen von 1.0 - 1.4</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_tempC">
+		<Key ID="STR_ga_divoMeter_tempC">
             <English>Temperatur</English>
             <German>Temperatur</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_tempC_desc">
+		<Key ID="STR_ga_divoMeter_tempC_desc">
             <English>Temperature at the surface in °Celsius.</English>
             <German>Temperatur an der oberfläche in °Celsius.</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_description">
+		<Key ID="STR_ga_divoMeter_description">
             <English>Paramters for Diving Conditions.</English>
             <German>Paramter für die Tauchumgebung.</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_emergencyAsent">
+		<Key ID="STR_ga_divoMeter_emergencyAsent">
             <English>Emergency Asent</English>
             <German>Notfallauftauchen</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_divoMeter_open">
+		<Key ID="STR_ga_divoMeter_divoMeter_open">
             <English>Open DivoMeter</English>
             <German>DivoMeter öffnen</German>
         </Key>
-		<Key ID="$STR_ga_divoMeter_divoMeter_close">
+		<Key ID="STR_ga_divoMeter_divoMeter_close">
             <English>Close DivoMeter</English>
             <German>DivoMeter schließen</German>
         </Key>
