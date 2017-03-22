@@ -2,7 +2,7 @@ class CfgFunctions {
 	class ga_divoMeter {
 		tag = "ga_divoMeter";
 		class common {
-			file = "ga_divoMeter\functions\common";
+			file = "\ga_divoMeter\functions\common";
 			class addRefillMenu {};
 			class checkAir {};
 			class checkGear {};
@@ -10,7 +10,7 @@ class CfgFunctions {
 			class divoMeter {};
 			class emergencyAscent {};
 			class gasCalc {};
-			class init {postInit = 1;};
+			class init {preInit = 1;};
 			class initTissues {};
 			class openDivoMeter {};
 			class refillTank {};
@@ -18,7 +18,7 @@ class CfgFunctions {
 		};
 		
 		class effects {
-			file = "ga_divoMeter\functions\effects";
+			file = "\ga_divoMeter\functions\effects";
 			class DCSEffects {};
 			class HeToxEffects {};
 			class narcEffects {};
