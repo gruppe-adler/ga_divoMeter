@@ -196,7 +196,7 @@ _pHeAlv = 0;
 			(_displayUI displayCtrl 1125) ctrlSetText "FAST ASCENT!";
 			_fAscCntdn = _fAscCntdn - 1;					
 			if (_fAscCntdn == 0) then {
-				[true, true, (1-(_nTisTot *1.25))]call ga_divoMeter_fnc_DCSEffects.sqf;					
+				[true, true, (1-(_nTisTot *1.25))]call ga_divoMeter_fnc_DCSEffects;					
 				_fAscCntdn = 5;
 			};					
 		}else {
@@ -298,7 +298,7 @@ _pHeAlv = 0;
 		if (_narcFactor > 8) then {
 			_narcCntdn = _narcCntdn - 1;					
 			if (_narcCntdn == 0) then {
-				[true, true, (_narcFactor/50)] call ga_divoMeter_fnc_narcEffects.sqf;					
+				[true, true, (_narcFactor/50)] call ga_divoMeter_fnc_narcEffects;					
 			_narcCntdn = 33;
 			};					
 		}else {
@@ -309,7 +309,7 @@ _pHeAlv = 0;
 		if (_pHeAlv > 8) then {	
 			_HeToxCntdn = _HeToxCntdn - 1;				
 			if (_HeToxCntdn == 0) then {
-				[true, true] call ga_divoMeter_fnc_HeToxEffects.sqf;					
+				[true, true] call ga_divoMeter_fnc_HeToxEffects;					
 				_HeToxCntdn = 33;
 			};				
 		}else {
@@ -329,7 +329,7 @@ _pHeAlv = 0;
 			_O2DamMult = _O2TisTot/6;
 			_O2ToxCntdn = _O2ToxCntdn - 1;
 			if (_O2ToxCntdn == 0) then {
-				[true, true, _O2DamMult] call ga_divoMeter_fnc_O2ToxEffects.sqf;					
+				[true, true, _O2DamMult] call ga_divoMeter_fnc_O2ToxEffects;					
 				_O2ToxCntdn = 33;
 			};
 			if (DIVIOMETERHEAD) then {playSound "dispWarn";};
