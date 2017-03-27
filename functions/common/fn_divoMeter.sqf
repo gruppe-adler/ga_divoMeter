@@ -145,7 +145,7 @@ _pHeAlv = 0;
 				}; 
 				(_displayUI displayCtrl 1124) ctrlSetText (_nTisTot call _getDivoMeterTexture);
 			}else {
-				if (DIVIOMETERHEAD) then {playSound "dispWarn";	
+				if (DIVIOMETERHEAD) then {playSound "dispWarn";};	
 				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";	
 			};
 				
