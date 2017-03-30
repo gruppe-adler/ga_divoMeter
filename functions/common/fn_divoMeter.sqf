@@ -68,9 +68,13 @@ _pHeAlv = 0;
 [{
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
-	if (((eyePos player) select 2  < 0) && DIVOMETERGEARON) then {	
+	diag_log format ["Diving Gar: %1, Underwater: %2", DIVOMETERGEARON, (underwater player)];
+	if ((underwater player) && DIVOMETERGEARON) then {	
 		if (isNil "_size") then {
 			_value = [] call ga_divoMeter_fnc_checkGear;
+			//if (isNil "_value") exitWith {};
+			if (isNil "_value") then {_value = [3000, 3000, 0.21, 0.79, 0];};
+			diag_log format ["DiavoMeter Value: %1", _value];
 			_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
 		};
 		_diveTime = _diveTime + 1;
@@ -99,11 +103,11 @@ _pHeAlv = 0;
 		_narcFactor = _pOAlv +_pNAlv +(0.23 *_pHeAlv);
 		_eNdepth = ((_narcFactor -1) *10);		
 		_narcEffectNeg = 1 -(_narcFactor /10);			
-		
+		diag_log format ["DivoMeterOpen: %1", DIVOMETEROPEN];
 		if (DIVOMETEROPEN) then {
 			//Main display elements				
 			disableSerialization;
-			_displayUI = uiNamespace getVariable 'disp';
+			_displayUI = uiNamespace getVariable 'slb_disp';
 			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			//if (DIVOMETERMETRIC) then {
 			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
@@ -111,9 +115,9 @@ _pHeAlv = 0;
 			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
 			/*
 			}else {
-				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",(round((_depth * 3.28) *10))/10];
-				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT",(round((_maxDepth * 3.28) *10))/10];
-				(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round((_dDepth * 3.28) *10))/10];
+				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",((round((_depth * 3.28) *10))/10)];
+				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT",((round((_maxDepth * 3.28) *10))/10)];
+				(_displayUI displayCtrl 1121) ctrlSetText format["%1m",((round((_dDepth * 3.28) *10))/10)];
 			};
 			*/
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[(_diveTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
@@ -123,7 +127,7 @@ _pHeAlv = 0;
 			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
 			(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
 			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
-			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",(round(_tempC *10))/10, (round((_tempC *1.8) +32; *10))/10];
+			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",((round(_tempC *10))/10), ((round((_tempC *1.8) +32) *10)/10)];
 			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
 			(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
 			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[(_decoTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
@@ -139,8 +143,8 @@ _pHeAlv = 0;
 			if (_nTisTot <= 2.38) then {
 				_getDivoMeterTexture = {
 					_tisIndex = { 
-						if (_this <= _x) { exitWith(_x);}  } 
-					forEach [0.44, 0.66, 0.88, 1.1, 1.32, 1.54, 1.96, 2.15, 2.38];   
+						if (_this <= _x)  exitWith(_x);
+					}forEach [0.44, 0.66, 0.88, 1.1, 1.32, 1.54, 1.96, 2.15, 2.38];   
 					format[ "ga_divoMeter\images\tis_%1.paa", _tisIndex]; 
 				}; 
 				(_displayUI displayCtrl 1124) ctrlSetText (_nTisTot call _getDivoMeterTexture);
@@ -228,8 +232,6 @@ _pHeAlv = 0;
 		//Controls for Ascent Ceiling Calculation.
 		if (_percentHe > 0) then {_HeAmt = 1;}else {_HeAmt = 0;};
 		if (_percentN2 > 0) then {_N2Amt = 1;}else {_N2Amt = 0;};			
-						
-		sleep 1; //DO NOT CHANGE  All time based calculations dependent on value.			
 			
 		_depthB = (abs ((getPosASL player) select 2));
 		_pressureB = ((_depthB / 10) + 1);		

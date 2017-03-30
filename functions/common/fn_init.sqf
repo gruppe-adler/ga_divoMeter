@@ -1,9 +1,10 @@
 DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
-DIVOMETERGEARON = false;
+DIVOMETERGEARON = true;
 
 player addEventHandler ["TAKE", 
 	{
+		diag_log format ["Gear: %1",(_this select 2)];
 		if (_this select 2 in DIVOMETERGEAR) then {
 			[true, (_this select 2)] call ga_divoMeter_fnc_checkAir;
 		}else {
@@ -14,6 +15,7 @@ player addEventHandler ["TAKE",
 
 player addEventHandler ["PUT", 
 	{
+		diag_log format ["Gear: %1",(_this select 2)];
 		if (_this select 2 in DIVOMETERGEAR) then {
 			[false, (_this select 2)] call ga_divoMeter_fnc_checkAir;
 		}else {
@@ -21,6 +23,5 @@ player addEventHandler ["PUT",
 		};
 	}
 ];
-
 
 [] call ga_divoMeter_fnc_divometer;

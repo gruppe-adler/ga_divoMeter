@@ -25,7 +25,7 @@ class slb_disp {
 			y = safeZoneY+(safeZoneH*0.32);
 			w = safeZoneW* 0.32;
 			h = safeZoneH* 0.48;
-			text = "\images\divingWatch.paa";
+			text = "\ga_divoMeter\images\divingWatch.paa";
 		};
 		class slb_ascTime: SLBRscText {
 			idc = 1111;
