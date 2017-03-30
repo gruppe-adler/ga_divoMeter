@@ -1,7 +1,7 @@
 DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
 DIVOMETERGEARON = true;
-
+waitUntil {!isNil "player"};
 player addEventHandler ["TAKE", 
 	{
 		diag_log format ["Gear: %1",(_this select 2)];
