@@ -21,8 +21,7 @@ class CfgVehicles {
         isDisposable = 0;
         is3DEN = 0;
         author = "Salbei";
-        class Arguments : ArgumentsBaseUnits {
-            class Units: Units {};   
+        class Arguments : ArgumentsBaseUnits {   
 			class sacRT {
 				displayName = $STR_ga_divoMeter_sacRT;
 				description = $STR_ga_divoMeter_sacRT_desc;
