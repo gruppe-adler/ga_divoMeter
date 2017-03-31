@@ -14,7 +14,7 @@ class CfgVehicles {
         displayName = "Divo Meter Settings";
         icon ="";
         category = "divoMeter";
-        function = "ga_divoMeter_fnc_setModuleSettings";
+        function = "ga_divoMeter_fnc_setModuleSetting";
         functionPriority = 0;
         isGlobal = 1;
         isTriggerActivated = 0;
