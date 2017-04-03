@@ -10,7 +10,7 @@ class CfgFunctions {
 			class divoMeter {};
 			class emergencyAscent {};
 			class gasCalc {};
-			class init {preInit = 1;};
+			class init {postInit = 1;};
 			class initTissues {};
 			class openDivoMeter {};
 			class refillTank {};
