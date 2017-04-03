@@ -1,3 +1,5 @@
+if (is server || isDedicated) exitWith {};
+
 DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
 DIVOMETERGEARON = true;
