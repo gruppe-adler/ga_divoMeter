@@ -1,4 +1,4 @@
-if (is server || isDedicated) exitWith {};
+if (isServer || isDedicated) exitWith {};
 
 DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
