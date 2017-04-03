@@ -32,9 +32,10 @@ These addons are required to run the scenario:
    - [ACE](https://github.com/acemod/ACE3/releases)
 	
 ## Credits
-**Sound:** 			Sounds obtained from Freesound.org
+This mod is based on the work of Divier Stats from trin scourge.
+
+**Sounds obtained from Freesound.org**
 
 **Sound creators:** 		Eternitys, Empty Bell, qubodup
 
-**Code:** 			McDiod, Fusselwurm, Nomisum, DerZade
-
+**Other help:** 			McDiod, Fusselwurm, Nomisum, DerZade
