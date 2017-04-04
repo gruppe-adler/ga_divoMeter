@@ -6,7 +6,7 @@
 class slb_disp {
 	idd = 1109;
 	name=_slb;
-	onLoad = "uiNamespace setVariable ['disp', _this select 0]";
+	onLoad = "uiNamespace setVariable ['slb_disp', _this select 0]";
 	fadein = 0;
 	fadeout = 0;
 	duration = 10e10;

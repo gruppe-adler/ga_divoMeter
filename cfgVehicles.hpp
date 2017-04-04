@@ -40,9 +40,9 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "20";
 			};
-			class ModuleDescription : ModuleDescription {
-				description = $STR_ga_divoMeter_description;
-			};
+		};
+		class ModuleDescription : ModuleDescription {
+			description = $STR_ga_divoMeter_description;
 		};
 	};
 

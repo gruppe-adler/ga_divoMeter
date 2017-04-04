@@ -1,4 +1,5 @@
-if (!hasInterface) exitWith {};
+//if (!hasInterface) exitWith {};
+diag_log "DivoMeter called!";
 
 //Starting vars
 _airConsumption = 0;
@@ -107,7 +108,8 @@ _pHeAlv = 0;
 		if (DIVOMETEROPEN) then {
 			//Main display elements				
 			disableSerialization;
-			_displayUI = uiNamespace getVariable 'slb_disp';
+			_displayUI = uiNamespace getVariable "slb_disp";
+			diag_log format ["DivoMeter Display: %1", _displayUI];
 			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
 			//if (DIVOMETERMETRIC) then {
 			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
