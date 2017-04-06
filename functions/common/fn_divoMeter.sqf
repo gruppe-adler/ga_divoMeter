@@ -352,6 +352,31 @@ _pHeAlv = 0;
 		}else{
 			PSI = _psi;
 		};		
+	}else{
+		if (DIVOMETEROPEN) then {
+			//Main display elements				
+			disableSerialization;
+			_displayUI = uiNamespace getVariable "slb_disp";
+			diag_log format ["DivoMeter Display: %1", _displayUI];
+			//if (DIVOMETERMETRIC) then {
+			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(((getPosASL player) select 2) *10))/10];
+			(_displayUI displayCtrl 1114) ctrlSetText format["%1m", 0];
+			(_displayUI displayCtrl 1121) ctrlSetText format["%1m", 0];
+			/*
+			}else {
+				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",((round((((getPosASL player) select 2) * 3.28) *10))/10)];
+				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT", 0];
+				(_displayUI displayCtrl 1121) ctrlSetText format["%1FT", 0];
+			};
+			*/
+			(_displayUI displayCtrl 1113) ctrlSetText format["%1",0];
+			(_displayUI displayCtrl 1115) ctrlSetText format["%1",0];
+			(_displayUI displayCtrl 1117) ctrlSetText format["%1",0];
+			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
+			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
+			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",((round(_tempC *10))/10), ((round((_tempC *1.8) +32) *10)/10)];
+			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
+		};
 	};
 	_diveCnt = 0;			
 }, 1, []] call CBA_fnc_addPerFrameHandler;

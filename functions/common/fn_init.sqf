@@ -4,16 +4,8 @@ DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
 DIVOMETERGEARON = true;
 
-waitUntil {!isNil "player"};
+waitUntil {!isNull player};
 diag_log format ["DivoMeter: %1", _player];
-
-if (backpackContainer player in DIVOMETERGEAR) then {};
-
-if (vestContainer player in DIVOMETERGEAR) then {
-	diag_log format ["DivoMeter Vest: %1", vestContainer player];
-	[true, (vestContainer player)] call ga_divoMeter_fnc_checkAir;
-};
-
 
 player addEventHandler ["TAKE", 
 	{
