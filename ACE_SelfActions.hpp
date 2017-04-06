@@ -1,8 +1,8 @@
 class ga_divoMeter_emergencyAsent
 {
      displayName = $STR_ga_divoMeter_emergencyAsent;
-     condition = "(underwater _player)";
-     exceptions[] = {};
+     condition = "";
+     exceptions[] = {"isNotSwimming"};
      statement = "[] call ga_divoMeter_fnc_emergencyAscent";
      showDisabled = 0;
      priority = 2.5;
