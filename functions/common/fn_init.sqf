@@ -5,7 +5,6 @@ DIVIOMETERHEAD = false;
 DIVOMETERGEARON = true;
 
 waitUntil {!isNull player};
-diag_log format ["DivoMeter: %1", _player];
 
 player addEventHandler ["TAKE", 
 	{

@@ -2,12 +2,12 @@
 <Project name="ACE">
     <Package name="DAGR">
         <Key ID="STR_ga_divoMeter_sacRT">
-            <English>Surface air consumption rate (psi/min)</English>
-            <German>Oberflächenluftverbrauchsrate (psi/min)</German>
+            <English>Surface air consumption rate</English>
+            <German>Oberflächenluftverbrauchsrate</German>
         </Key>
 		<Key ID="STR_ga_divoMeter_sacRT_desc">
-            <English>The rate at which diver breathes air. Increases with pressure.</English>
-            <German>Die Rate, mit der der Taucher Luft atmet. Steigert sich unter Druck.</German>
+            <English>The rate at which diver breathes air. Increases with pressure. Messured in PSI per minute</English>
+            <German>Die Rate, mit der der Taucher Luft atmet. Steigert sich unter Druck. Gemessen in PSI pro minute</German>
         </Key>
 		<Key ID="STR_ga_divoMeter_maxppO">
             <English>Max PPO2</English>

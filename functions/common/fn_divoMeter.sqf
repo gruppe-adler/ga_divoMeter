@@ -1,5 +1,4 @@
 //if (!hasInterface) exitWith {};
-diag_log "DivoMeter called!";
 
 //Starting vars
 _airConsumption = 0;
@@ -9,9 +8,22 @@ _timeleft = 0;
 _diveTime = 0;
 _O2toxPercent = 0;
 
-//Animated Bar
-_ObarPercent = 0;
-_HbarPercent = 0;
+//Animated Bar//Animated Bar
+_ObarX = safeZoneX+(safeZoneW*0.845);
+_ObarY = safeZoneY+(safeZoneH*0.645);
+_ObarW = safeZoneW* 0.0001;
+_ObarH = safeZoneH* 0.005;
+_ObarPerc = 0;
+_HbarX = safeZoneX+(safeZoneW*0.9178);
+_HbarY = safeZoneY+(safeZoneH*0.645);
+_HbarW = safeZoneW* 0.0001;
+_HbarH = safeZoneH* 0.005;
+_HbarPerc = 0;
+_NbarX = safeZoneX+(safeZoneW*0.8455);
+_NbarY = safeZoneY+(safeZoneH*0.46);
+_NbarW = safeZoneW* 0.005;
+_NbarH = safeZoneH* 0.0001;
+_NbarPerc = 0;
 
 //Toxicity Variables
 _narcCntdn = 1;
@@ -66,17 +78,17 @@ _HeTot = 0;
 _HeTisTot = 0; 
 _pHeAlv = 0;
 
+
 [{
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	diag_log format ["Diving Gar: %1, Underwater: %2", DIVOMETERGEARON, (underwater player)];
 	if ((underwater player) && DIVOMETERGEARON) then {	
-		if (isNil "_size") then {
+		if (isNil "_bar") then {
 			_value = [] call ga_divoMeter_fnc_checkGear;
-			//if (isNil "_value") exitWith {};
-			if (isNil "_value") then {_value = [3000, 3000, 0.21, 0.79, 0];};
+			if (isNil "_value") exitWith {};
 			diag_log format ["DiavoMeter Value: %1", _value];
-			_value params [ "_tankSize", "_psi", "_percentO2", "_percentN2", "_percentHe"];
+			_value params [ "_tankSize", "_bar", "_percentO2", "_percentN2", "_percentHe"];
 		};
 		_diveTime = _diveTime + 1;
 		_depth = (abs ((getPosASL player) select 2)); //in meter
@@ -109,37 +121,41 @@ _pHeAlv = 0;
 			//Main display elements				
 			disableSerialization;
 			_displayUI = uiNamespace getVariable "slb_disp";
-			diag_log format ["DivoMeter Display: %1", _displayUI];
-			(_displayUI displayCtrl 1111) ctrlSetText format["%1",[(round(_ascTime))+.01,"HH:MM:SS"] call bis_fnc_timetostring];
-			//if (DIVOMETERMETRIC) then {
-			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(_depth *10))/10];
-			(_displayUI displayCtrl 1114) ctrlSetText format["%1m",(round(_maxDepth *10))/10];
-			(_displayUI displayCtrl 1121) ctrlSetText format["%1m",(round(_dDepth *10))/10];
 			/*
-			}else {
-				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",((round((_depth * 3.28) *10))/10)];
-				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT",((round((_maxDepth * 3.28) *10))/10)];
-				(_displayUI displayCtrl 1121) ctrlSetText format["%1m",((round((_dDepth * 3.28) *10))/10)];
-			};
+			(_displayUI displayCtrl 1111) ctrlSetText "1111";
+			(_displayUI displayCtrl 1112) ctrlSetText "1112";
+			(_displayUI displayCtrl 1113) ctrlSetText "1113";
+			(_displayUI displayCtrl 1114) ctrlSetText "1114";
+			(_displayUI displayCtrl 1115) ctrlSetText "1115";
+			(_displayUI displayCtrl 1116) ctrlSetText "1116";
+			(_displayUI displayCtrl 1117) ctrlSetText "1117";
+			(_displayUI displayCtrl 1118) ctrlSetText "1118";
+			(_displayUI displayCtrl 1119) ctrlSetText "1119";
+			(_displayUI displayCtrl 1120) ctrlSetText "1120";
+			(_displayUI displayCtrl 1121) ctrlSetText "1121";
+			(_displayUI displayCtrl 1122) ctrlSetText "1122";
+			(_displayUI displayCtrl 1123) ctrlSetText "1123";
+			(_displayUI displayCtrl 1124) ctrlSetText "1124";
+			(_displayUI displayCtrl 1125) ctrlSetText "1125";
+			(_displayUI displayCtrl 1126) ctrlSetText "1126";
 			*/
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",[(_diveTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1115) ctrlSetText format["%1",[(_timeleft)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1116) ctrlSetText format["%1",(round(_pressure *10))/10];
-			(_displayUI displayCtrl 1117) ctrlSetText format["%1",round(_airConsumption)];
-			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
-			(_displayUI displayCtrl 1122) ctrlSetText format["%1",(round(_nPercent *10))/10];
-			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
-			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",((round(_tempC *10))/10), ((round((_tempC *1.8) +32) *10)/10)];
-			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
-			(_displayUI displayCtrl 1129) ctrlSetText format["%1",_AscCeil];
-			(_displayUI displayCtrl 1130) ctrlSetText format["%1",[(_decoTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1131) ctrlSetText format["%1",(round(_deepStopCeil /5) *5)];
-			(_displayUI displayCtrl 1132) ctrlSetText format["%1",[(_deepStopTime)+.01,"HH:MM:SS"] call bis_fnc_timetostring];
-			(_displayUI displayCtrl 1133) ctrlSetText format["MAX OP %1m",round(((_maxppO/_percentO2) -1) *10)];
-			(_displayUI displayCtrl 1134) ctrlSetPosition [(safeZoneX+(safeZoneW*0.845)), (safeZoneY+(safeZoneH*0.645)), _ObarPercent, (safeZoneH* 0.005)];
-			(_displayUI displayCtrl 1134) ctrlCommit 0.0;
-			(_displayUI displayCtrl 1135) ctrlSetPosition [(safeZoneX+(safeZoneW*0.9178)),(safeZoneY+(safeZoneH*0.645)), _HbarPerc, (safeZoneH* 0.005)];
-			(_displayUI displayCtrl 1135) ctrlCommit 0.0;
+			(_displayUI displayCtrl 1127) ctrlSetText "ga_divoMeter\images\left_06.paa";
+			(_displayUI displayCtrl 1128) ctrlSetText "ga_divoMeter\images\right_09.paa";
+			
+			
+			//if (DIVOMETERMETRIC) then {
+			/*(_displayUI displayCtrl 1111) ctrlSetText "M";
+			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(_depth *10))/10];
+			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
+			(_displayUI displayCtrl 1121) ctrlSetText format["%1", _psi];
+			}else {
+				(_displayUI displayCtrl 1111) ctrlSetText "FT";
+				(_displayUI displayCtrl 1113) ctrlSetText format["%1",((round((_depth * 3.28) *10))/10)];
+				(_displayUI displayCtrl 1120) ctrlSetText "PSI";
+				(_displayUI displayCtrl 1121) ctrlSetText format["%1", _psi];
+			};
+			(_displayUI displayCtrl 1118) ctrlSetText format["%1",((_diveTime)+.01)/60];
+			(_displayUI displayCtrl 1122) ctrlSetText format["%1",((_timeleft)+.01)/60];
 				
 			//Display elements for tissue saturation	
 			if (_nTisTot <= 2.38) then {
@@ -150,8 +166,7 @@ _pHeAlv = 0;
 					format[ "ga_divoMeter\images\tis_%1.paa", _tisIndex]; 
 				}; 
 				(_displayUI displayCtrl 1124) ctrlSetText (_nTisTot call _getDivoMeterTexture);
-			}else {
-				if (DIVIOMETERHEAD) then {playSound "dispWarn";};	
+			}else {	
 				(_displayUI displayCtrl 1124) ctrlSetText "ga_divoMeter\images\tis_9.paa";	
 			};
 				
@@ -161,7 +176,6 @@ _pHeAlv = 0;
 				case ((_ObarPercent > 0.079) && (_ObarPercent < 0.119)): {(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};	
 				case (_ObarPercent > 0.119): {				
 					_ObarPercent = 0.119;
-					if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 					(_displayUI displayCtrl 1134) ctrlSetBackgroundColor [1, 0, 0, 0.5];
 				};
 			};
@@ -172,34 +186,14 @@ _pHeAlv = 0;
 				case ((_HbarPercent > 0.079) && (_HbarPercent < 0.118)): {(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0.4, 0, 0.5];};			
 				case (_HbarPercent > 0.118): {				
 					_HbarPercent = 0.118;
-					if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 					(_displayUI displayCtrl 1135) ctrlSetBackgroundColor [1, 0, 0, 0.5];
 				};
 			};
-				
-			//Display elements for ascent indicators			
-			switch (true) do{
-				case (_dDepth > 0): {
-					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\upArrow.paa";
-					(_displayUI displayCtrl 1120) ctrlSetText "^";
-				};
-				case (_dDepth < 0): {
-					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\downArrow.paa";
-					(_displayUI displayCtrl 1120) ctrlSetText "v";						
-				};
-				case (_dDepth == 0): {
-					(_displayUI displayCtrl 1119) ctrlSetText "ga_divoMeter\images\noArrow.paa";
-					(_displayUI displayCtrl 1120) ctrlSetText "";
-					(_displayUI displayCtrl 1134) ctrlSetText "";
-				};						 					
-			};
+			*/
 		};
 			
 		//Display element for ascent warning and init DCS effects
 		if (_dDepth > 8) then {						
-			if (DIVIOMETERHEAD) then {playSound "dispExit";};
-			(_displayUI displayCtrl 1133) ctrlSetText "";
-			(_displayUI displayCtrl 1125) ctrlSetText "FAST ASCENT!";
 			_fAscCntdn = _fAscCntdn - 1;					
 			if (_fAscCntdn == 0) then {
 				[true, true, (1-(_nTisTot *1.25))]call ga_divoMeter_fnc_DCSEffects;					
@@ -260,20 +254,17 @@ _pHeAlv = 0;
 			_decoTime = _AscCeil *(round(_totalTis *4));				
 			_doDeco = 1;
 			_diveCnt = _diveCnt - 1;
-			if (DIVIOMETERHEAD) then {playSound "dispStart";};
 		};
 			
 		if((_AscCeilB > 10) && (_doDeepStop < 1)) then {				
 			_deepStopCeil = _depth /2;				
 			_deepStopTime = _AscCeil *(round(_totalTis *3.5));				
-			if (DIVIOMETERHEAD) then {playSound "dispStart";};
 			_doDeepStop = 1;
 		};
 			
 		// Start deco countdown once unit is with range
 		if ((_doDeco == 1) && !(_depth2deco > 3) && !(_depth2deco < -3)) then {
 			_decoTime = _decoTime - 1;
-			if (DIVIOMETERHEAD) then {playSound "dispCount";};
 		};			
 			
 		//Stop deco countdown and reset timer
@@ -281,21 +272,18 @@ _pHeAlv = 0;
 			_decoTime = 0;
 			_AscCeil = 0;
 			_doDeco = 0;
-			if (DIVIOMETERHEAD) then {playSound "dispClear";};
 		};
 			
 		// Start deep stop countdown once unit is with range
 		if ((_doDeepStop == 1) && !(_depth2deepStop > 3) && !(_depth2deepStop < -3)) then {
 			_deepStopTime = _deepStopTime - 1;
-			if (DIVIOMETERHEAD) then {playSound "dispCount";};
 		};
 			
 		//Stop deep stop countdown and reset timer
 		if(_deepStopTime < 0) then {
 			_deepStopTime = 0;
 			_deepStopCeil = 0;
-			_doDeepStop = 0;
-			if (DIVIOMETERHEAD) then {playSound "dispClear";};	
+			_doDeepStop = 0;	
 		};
 			
 		//Narcotic Effects kick in if toxicity threshold passed.
@@ -336,7 +324,6 @@ _pHeAlv = 0;
 				[true, true, _O2DamMult] call ga_divoMeter_fnc_O2ToxEffects;					
 				_O2ToxCntdn = 33;
 			};
-			if (DIVIOMETERHEAD) then {playSound "dispWarn";};
 		}else {
 			_O2ToxCntdn = 1;
 		};				
@@ -357,25 +344,6 @@ _pHeAlv = 0;
 			//Main display elements				
 			disableSerialization;
 			_displayUI = uiNamespace getVariable "slb_disp";
-			diag_log format ["DivoMeter Display: %1", _displayUI];
-			//if (DIVOMETERMETRIC) then {
-			(_displayUI displayCtrl 1112) ctrlSetText format["%1m",(round(((getPosASL player) select 2) *10))/10];
-			(_displayUI displayCtrl 1114) ctrlSetText format["%1m", 0];
-			(_displayUI displayCtrl 1121) ctrlSetText format["%1m", 0];
-			/*
-			}else {
-				(_displayUI displayCtrl 1112) ctrlSetText format["%1FT",((round((((getPosASL player) select 2) * 3.28) *10))/10)];
-				(_displayUI displayCtrl 1114) ctrlSetText format["%1FT", 0];
-				(_displayUI displayCtrl 1121) ctrlSetText format["%1FT", 0];
-			};
-			*/
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",0];
-			(_displayUI displayCtrl 1115) ctrlSetText format["%1",0];
-			(_displayUI displayCtrl 1117) ctrlSetText format["%1",0];
-			(_displayUI displayCtrl 1118) ctrlSetText format["%1",round(_psi)];			
-			(_displayUI displayCtrl 1126) ctrlSetText format["%1",round(getdir player)];
-			(_displayUI displayCtrl 1127) ctrlSetText format["%1 °C | %2 °F",((round(_tempC *10))/10), ((round((_tempC *1.8) +32) *10)/10)];
-			(_displayUI displayCtrl 1128) ctrlSetText format["%1", mapGridPosition player];
 		};
 	};
 	_diveCnt = 0;			

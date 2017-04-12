@@ -49,7 +49,13 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class ACE_Equipment {
+            class GA_DivoMeter {
+				displayName = "DivoMeter";
+				condition = "";
+				statement = "";
+				showDisabled = 1;
+				exceptions[] = {"isNotSwimming"};
+				priority = 1;
                 #include "ACE_SelfActions.hpp"
             };
         };
