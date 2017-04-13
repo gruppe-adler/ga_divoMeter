@@ -23,8 +23,4 @@ if (_bool) then {
 	};
 }else{
 	DIVOMETERGEARON = false;
-	_value = _obj getVariable "Air";
-	_value params ["_size", "_psi", "_o2", "_n2", "_he"];
-	_psi = PSI;
-	_obj setVariable ["Air", [_size, _psi, _o2, _n2, _he]];
 };

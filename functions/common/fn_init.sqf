@@ -1,10 +1,10 @@
-//if (!hasInterface) exitWith {diag_log "Exited as Server!";};
-
 DIVOMETEROPEN = false;
 DIVIOMETERHEAD = false;
 DIVOMETERGEARON = true;
 
 waitUntil {!isNull player};
+diag_log format ["DivoMeter: Activ: %1", _diveActiv];
+if (!(_activ) || isNil "_diveActiv") exitWith {};
 
 player addEventHandler ["TAKE", 
 	{

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="DAGR">
+		<Key ID="STR_ga_divoMeter_activ">
+            <English>Activate the Diving Mod</English>
+            <German>Activiere den Tauch Mod</German>
+        </Key>
+		<Key ID="STR_ga_divoMeter_activ_desc">
+            <English>This enables the diving mod.</English>
+            <German>Dies activiert den Tauch Mod.</German>
+		</Key>
         <Key ID="STR_ga_divoMeter_sacRT">
             <English>Surface air consumption rate</English>
             <German>Oberflächenluftverbrauchsrate</German>

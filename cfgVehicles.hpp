@@ -22,6 +22,12 @@ class CfgVehicles {
         is3DEN = 0;
         author = "Salbei";
         class Arguments : ArgumentsBaseUnits {   
+			class activ {
+				displayName = $STR_ga_divoMeter_activ;
+				description = $STR_ga_divoMeter_activ_desc;
+				typeName = "BOOL"; 
+				defaultValue = "0";				
+			}
 			class sacRT {
 				displayName = $STR_ga_divoMeter_sacRT;
 				description = $STR_ga_divoMeter_sacRT_desc;
@@ -58,6 +64,15 @@ class CfgVehicles {
 				priority = 1;
                 #include "ACE_SelfActions.hpp"
             };
+			class ga_divoMeter_emergencyAsent {
+				 displayName = $STR_ga_divoMeter_emergencyAsent;
+				 condition = "true";
+				 statement = "[] call ga_divoMeter_fnc_emergencyAscent";
+				 showDisabled = 1;
+				exceptions[] = {"isNotSwimming"};
+				 priority = 2.5;
+				 icon = "";
+			};
         };
     };
 };

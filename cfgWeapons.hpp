@@ -39,6 +39,16 @@ class CfgWeapons {
 		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa"};
 	};
 /*
+	class ItemDivingWatch: ItemWatch {
+		author = "Salbei";
+		displayName = "Diving Watch";
+		hiddenSelections[] = {};
+		hiddenSelectionsTextures[] = {};
+		hiddenUnderwaterSelections[] = {};
+		shownUnderwaterSelections[] = {};
+		hiddenUnderwaterSelectionsTextures[] = {};
+	};
+
 	class B_GA_DivingTank {
 		author = "Salbei";
 		displayName = "Diving Tank (Black)";
