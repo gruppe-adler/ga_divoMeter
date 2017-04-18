@@ -4,7 +4,6 @@ class CfgFunctions {
 		class common {
 			file = "\ga_divoMeter\functions\common";
 			class addRefillMenu {};
-			class blink {};
 			class checkAir {};
 			class checkGear {};
 			class divingAirSetup {};

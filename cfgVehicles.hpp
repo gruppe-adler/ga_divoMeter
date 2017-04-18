@@ -15,7 +15,7 @@ class CfgVehicles {
         icon ="";
         category = "divoMeter";
         function = "ga_divoMeter_fnc_setModuleSetting";
-        functionPriority = 0;
+        functionPriority = 1;
         isGlobal = 1;
         isTriggerActivated = 0;
         isDisposable = 0;
@@ -28,12 +28,6 @@ class CfgVehicles {
 				typeName = "BOOL"; 
 				defaultValue = "0";				
 			}
-			class sacRT {
-				displayName = $STR_ga_divoMeter_sacRT;
-				description = $STR_ga_divoMeter_sacRT_desc;
-				typeName = "NUMBER"; 
-				defaultValue = "25";
-			};
 			class maxppO {
 				displayName = $STR_ga_divoMeter_maxppO;
 				description = $STR_ga_divoMeter_maxppO_desc;
