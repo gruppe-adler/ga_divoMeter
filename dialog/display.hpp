@@ -193,10 +193,10 @@ class slb_disp {
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
 			sizeEx = 0.053;
-			x = safeZoneX+(safeZoneW*0.43);
-			y = safeZoneY+(safeZoneH*0.07);
-			w = safeZoneW* 1;
-			h = safeZoneH* 1;
+			x = safeZoneX+(safeZoneW*0.81);
+			y = safeZoneY+(safeZoneH*0.53);
+			w = safeZoneW* 0.03;
+			h = safeZoneH* 0.05;
 		};
 		class slb_emergencyTime: SLBRscText {
 			idc = 1127;
@@ -237,10 +237,10 @@ class slb_disp {
 			font = puristaLight;
 			colorText[] = {};
 			sizeEx = 1;
-			x = safezoneX + (0.916 * safezoneW);
-			y = safezoneY + (0.452 * safezoneH);
-			w = safeZoneW* 0.07;
-			h = safeZoneH* 0.13;
+			x = safezoneX + (0.85 * safezoneW);
+			y = safezoneY + (0.5543 * safezoneH);
+			w = safeZoneW* 0.015;
+			h = safeZoneH* 0.025;
 		};
 		class slb_emergencyArrowDOWN: SLBRscPicture {
 			idc = 1131;
@@ -248,10 +248,10 @@ class slb_disp {
 			font = puristaLight;
 			colorText[] = {};
 			sizeEx = 1;
-			x = safezoneX + (0.916 * safezoneW);
-			y = safezoneY + (0.452 * safezoneH);
-			w = safeZoneW* 0.07;
-			h = safeZoneH* 0.13;
+			x = safezoneX + (0.85 * safezoneW);
+			y = safezoneY + (0.54 * safezoneH);
+			w = safeZoneW* 0.015;
+			h = safeZoneH* 0.025;
 		};
 	};
 }; 

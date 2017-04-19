@@ -101,7 +101,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		slb_HbarPercent = (slb_pHeAlv/8) *0.065;
 		slb_NbarPercent = (slb_nTisTot/2.38) * 0.24;			
 		slb_nTot = [slb_pressure, slb_percentN2, 1600, slb_tempC, 28, slb_pNAlv] call ga_divoMeter_fnc_gasCalc;
-		_oTot = [slb_pressure, slb_percentO2, 756.7, slb_tempC, 32, slb_pOAlv] call ga_divoMeter_fnc_gasCalc;
+		slb_oTot = [slb_pressure, slb_percentO2, 756.7, slb_tempC, 32, slb_pOAlv] call ga_divoMeter_fnc_gasCalc;
 		slb_HeTot = [slb_pressure, slb_percentHe, 2865, slb_tempC, 8, slb_pHeAlv] call ga_divoMeter_fnc_gasCalc;
 		slb_totalTis = slb_nTisTot + slb_HeTisTot + slb_O2TisTot;
 		slb_pNAlv = slb_percentN2 *(slb_pressure - 0.0567);
@@ -111,7 +111,13 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		slb_oPercent = ((slb_oTot /1000)/5) *100;
 		slb_HePercent = ((slb_HeTot /1000)/5) *100;			
 		slb_narcFactor = slb_pOAlv +slb_pNAlv +(0.23 *slb_pHeAlv);
-		slb_eNdepth = ((slb_narcFactor -1) *10);					
+		slb_eNdepth = ((slb_narcFactor -1) *10);
+
+		if (slb_depthA < slb_depthB) then {
+			slb_upDepth = slb_depthA - slb_depthB;
+		}else{
+			slb_upDepth = 0;
+		};
 
 		if (DIVOMETEROPEN) then {			
 			disableSerialization;
@@ -131,47 +137,50 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			*/
 			if (slb_doDeco == 1) then {
 				(_displayUI displayCtrl 1112) ctrlSetText "DECO";
+				if ((slb_doDeco == 1) && !(slb_depth2deco > 3) && !(slb_depth2deco < -3)) then {
+					//(_displayUI displayCtrl 1120) ctrlSetText format["%1", slb_decoTime];
+				};
 			}else{
 				(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 			};
 			(_displayUI displayCtrl 1121) ctrlSetText "GTK";
 			(_displayUI displayCtrl 1114) ctrlSetText format["%1",round (((slb_timeleft)+.01)/60)];
-			(_displayUI displayCtrl 1119) ctrlSetText format["%1", slb_percentO2];
+			(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round(slb_percentO2 * 100))/100];
 			
-			/*
 			switch (true) do {
-				case (false): {
+				case (slb_doDeco == 1): {
+				/*
 					(_displayUI displayCtrl 1115) ctrlSetText "";
 					(_displayUI displayCtrl 1116) ctrlSetText "";
 					(_displayUI displayCtrl 1117) ctrlSetText "";
 					(_displayUI displayCtrl 1118) ctrlSetText "";
-					(_displayUI displayCtrl 1124) ctrlSetText "1124";
 					(_displayUI displayCtrl 1125) ctrlSetText "1125";
 					(_displayUI displayCtrl 1126) ctrlSetText "1126";
 					(_displayUI displayCtrl 1127) ctrlSetText "1127";
 					(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
 					(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
+					*/
 				};
 				
-				default: {
-					(_displayUI displayCtrl 1124) ctrlSetText "";
+				case (slb_doDeco == 0): {
+				/*
 					(_displayUI displayCtrl 1125) ctrlSetText "";
 					(_displayUI displayCtrl 1126) ctrlSetText "";
 					(_displayUI displayCtrl 1127) ctrlSetText "";
 					(_displayUI displayCtrl 1130) ctrlSetText "";
 					(_displayUI displayCtrl 1131) ctrlSetText "";
+					*/
 					(_displayUI displayCtrl 1115) ctrlSetText "TTS";
 					(_displayUI displayCtrl 1116) ctrlSetText "DIVE-T";
-					(_displayUI displayCtrl 1117) ctrlSetText format["%1",((slb_depth)/4)+ slb_decoTime];
-					(_displayUI displayCtrl 1118) ctrlSetText format["%1",((slb_diveTime)+.01)/60];
+					(_displayUI displayCtrl 1117) ctrlSetText format["%1", round (slb_ascTime)];
+					(_displayUI displayCtrl 1118) ctrlSetText format["%1", round (((slb_diveTime)+.01)/60)];
 				};
 			};
-			*/
 			
-			if (slb_dDepth <= 0.3) then {
+			if (slb_upDepth <= 0.3) then {
 				(_displayUI displayCtrl 1128) ctrlSetText "";
 			}else {
-				if (slb_dDepth >= 9) then {
+				if (slb_upDepth >= 9) then {
 					if ((ctrlText 1128) == "ga_divoMeter\images\left_06.paa")then {
 						(_displayUI displayCtrl 1128) ctrlSetText "";
 					}else{
@@ -184,7 +193,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 						}forEach [1.5, 3, 4.6, 6.1, 7.6, 9];   
 						format[ "ga_divoMeter\images\left_0%1.paa", _riseIndex]; 
 					}; 
-					(_displayUI displayCtrl 1128) ctrlSetText (slb_dDepth call _getDivoMeterRiseTexture);
+					(_displayUI displayCtrl 1128) ctrlSetText (slb_upDepth call _getDivoMeterRiseTexture);
 				};
 			};
 			
@@ -213,8 +222,10 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
 			*/
 		};
-			
-		//Display element for ascent warning and init DCS effects
+		
+		diag_log format ["DM TisTot: %1, Perc: %2, Tot: %3, narcCnt: %4, narcFac: %5", slb_nTisTot, slb_nPercent, slb_nTot, slb_narcCntdn, slb_narcFactor];
+		
+		//DCS effects
 		if (slb_dDepth > 9.1 && slb_maxDepth >= 20) then {						
 			slb_fAscCntdn = slb_fAscCntdn - 1;					
 			if (slb_fAscCntdn == 0) then {
@@ -304,7 +315,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		};
 			
 		//Narcotic Effects kick in if toxicity threshold passed.
-		if (slb_narcFactor > 10) then {
+		if (slb_narcFactor > 8) then {
 			slb_narcCntdn = slb_narcCntdn - 1;					
 			if (slb_narcCntdn == 0) then {
 				[(slb_narcFactor/50)] call ga_divoMeter_fnc_narcEffects;					
@@ -325,12 +336,19 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			slb_HeToxCntdn = 1;
 		};
 			
-		//Calculate ascending time and temperature change at depth					
+		//Calculate temperature change at depth					
 		if ((slb_depthA > slb_depthB) && (slb_dDepth > 1)) then {
-			slb_ascTime = slb_depth / slb_dDepth;
 			slb_tempC = slb_tempC + (slb_dDepth *0.0004);
-		}else {
-			slb_ascTime = 0;
+		};
+		
+		//Calculate Asending Time
+		if (slb_depth >= 1) then {
+			slb_ascTime = ((slb_depth/4) + slb_decoTime) /60;
+		};
+		
+		//if the asend time is greater than 99, set it to 99
+		if (round (slb_ascTime >= 99)) then {
+			slb_ascTime = 99;
 		};
 		
 		//Check if player surpasses Maximum Operating Depth and init O2 Tox effects			
@@ -344,9 +362,6 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		}else {
 			slb_O2ToxCntdn = 1;
 		};				
-		
-		//Prevent huge numbers from clogging diaplay
-		if(slb_ascTime > 6000) then { slb_ascTime = 0;};
 			
 		//Running out of air results in big Problems
 		if (slb_filling <= 0) then {
@@ -373,14 +388,20 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(((getPosASL player) select 2) *10))/10];
 			(_displayUI displayCtrl 1114) ctrlSetText "--";
+			/*
 			(_displayUI displayCtrl 1115) ctrlSetText "TTS";
 			(_displayUI displayCtrl 1116) ctrlSetText "DIVE-T";
 			(_displayUI displayCtrl 1117) ctrlSetText "--";
 			(_displayUI displayCtrl 1118) ctrlSetText "--";
 			(_displayUI displayCtrl 1119) ctrlSetText "";
+			*/
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
 			(_displayUI displayCtrl 1121) ctrlSetText "GTK";
-			(_displayUI displayCtrl 1122) ctrlSetText "---";
+			if (!isNil "slb_filling" && slb_filling != 0) then {
+				(_displayUI displayCtrl 1122) ctrlSetText format["%1", round (slb_filling)];
+			}else {
+				(_displayUI displayCtrl 1122) ctrlSetText "---";
+			};
 			(_displayUI displayCtrl 1123) ctrlSetText "--";
 		};
 	};			

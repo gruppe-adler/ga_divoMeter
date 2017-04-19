@@ -1,5 +1,7 @@
 params ["_bool", "_obj"];
 
+diag_log format ["CHAIR Objekt: %1, Bool: %2", _obj, _bool];
+
 if (_bool) then {
 	_value = _obj getVariable "Air";
 	if (isNil "_value")then {
