@@ -15,11 +15,11 @@ class CfgVehicles {
         icon ="";
         category = "divoMeter";
         function = "ga_divoMeter_fnc_setModuleSetting";
-        functionPriority = 1;
+        functionPriority = 0;
         isGlobal = 1;
         isTriggerActivated = 0;
-        isDisposable = 0;
-        is3DEN = 0;
+        isDisposable = 1;
+        is3DEN = 1;
         author = "Salbei";
         class Arguments : ArgumentsBaseUnits {   
 			class activ {
@@ -40,6 +40,12 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "20";
 			};
+			 class Units {
+				displayName = $STR_ga_divoMeter_unit;
+				description = $STR_ga_divoMeter_unit_desc;
+				typeName = "STRING";
+				defaultValue = "";
+			 };
 		};
 		class ModuleDescription : ModuleDescription {
 			description = $STR_ga_divoMeter_description;
@@ -49,23 +55,17 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class GA_DivoMeter {
-				displayName = "DivoMeter";
-				condition = "";
-				statement = "";
-				showDisabled = 1;
-				exceptions[] = {"isNotSwimming"};
-				priority = 1;
+            class ACE_Equipment {
                 #include "ACE_SelfActions.hpp"
             };
 			class ga_divoMeter_emergencyAsent {
-				 displayName = $STR_ga_divoMeter_emergencyAsent;
-				 condition = "true";
-				 statement = "[] call ga_divoMeter_fnc_emergencyAscent";
-				 showDisabled = 1;
+				displayName = $STR_ga_divoMeter_emergencyAsent;
+				condition = "true";
+				statement = "[] call ga_divoMeter_fnc_emergencyAscent";
+				showDisabled = 1;
 				exceptions[] = {"isNotSwimming"};
-				 priority = 2.5;
-				 icon = "";
+				priority = 2.5;
+				icon = "";
 			};
         };
     };

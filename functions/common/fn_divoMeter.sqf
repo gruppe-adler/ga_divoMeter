@@ -1,3 +1,5 @@
+params ["slb_maxpp0", "slb_tempC"];
+
 //Starting vars
 slb_airConsumption = 0;
 slb_ascTime = 0;
@@ -58,15 +60,6 @@ slb_HeTisTot = 0;
 slb_pHeAlv = 0;
 
 slb_sacRT = round (25 * (random [0.8,1,1.2]));	
-//if (isNil "MAXPPO") then {
-	slb_maxpp0 = 1.1; 		
-	slb_tempC = 25;
-	/*
-}else{
-	slb_maxpp0 = MAXPPO; 		
-	slb_tempC = TEMPC;
-};
-*/
 
 [{
 	params ["_args","_handle"];
@@ -79,9 +72,9 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			slb_percentO2 = 0.21;
 			slb_percentN2 = 0.79;
 			slb_percentHe = 0;
-			//if (isNil "_value") exitWith {};
+			if (isNil "_value") exitWith {};
 			diag_log format ["DivoMeter Value: %1", _value];
-			_value params [ "tslb_ankSize", "slb_bar", "slb_percentO2", "slb_percentN2", "slb_percentHe"];
+			_value params [ "slb_tankSize", "slb_bar", "slb_percentO2", "slb_percentN2", "slb_percentHe"];
 			slb_filling = slb_tankSize * slb_bar;
 		};
 		slb_diveTime = slb_diveTime + 1;
@@ -122,19 +115,19 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		if (DIVOMETEROPEN) then {			
 			disableSerialization;
 			_displayUI = uiNamespace getVariable "slb_disp";
-			//if (DIVOMETERMETRIC) then {
+			
+			if (DIVOMETERMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(slb_depth *10))/10];
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
 			(_displayUI displayCtrl 1122) ctrlSetText format["%1", round (slb_filling)];
-			/*
 			}else {
 				(_displayUI displayCtrl 1111) ctrlSetText "FT";
 				(_displayUI displayCtrl 1113) ctrlSetText format["%1",((round((slb_depth * 3.28) *10))/10)];
 				(_displayUI displayCtrl 1120) ctrlSetText "PSI";
 				(_displayUI displayCtrl 1122) ctrlSetText format["%1", slb_filling];
 			};
-			*/
+			
 			if (slb_doDeco == 1) then {
 				(_displayUI displayCtrl 1112) ctrlSetText "DECO";
 				if ((slb_doDeco == 1) && !(slb_depth2deco > 3) && !(slb_depth2deco < -3)) then {
@@ -163,7 +156,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 				};
 				
 				case (slb_doDeco == 0): {
-				/*
+					/*
 					(_displayUI displayCtrl 1125) ctrlSetText "";
 					(_displayUI displayCtrl 1126) ctrlSetText "";
 					(_displayUI displayCtrl 1127) ctrlSetText "";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="ACE">
-    <Package name="DAGR">
+<Project name="DOM">
+    <Package name="DIVOMETER">
 		<Key ID="STR_ga_divoMeter_activ">
             <English>Activate the Diving Mod</English>
             <German>Activiere den Tauch Mod</German>
@@ -25,6 +25,14 @@
             <English>Temperature at the surface in °Celsius.</English>
             <German>Temperatur an der oberfläche in °Celsius.</German>
         </Key>
+		<Key ID="STR_ga_divoMeter_unit">
+            <English>Units</English>
+            <German>Einheiten</German>
+        </Key>
+		<Key ID="STR_ga_divoMeter_unit_desc">
+            <English>List of units on wich the calculations shall run.</English>
+            <German>Liste der Einheiten auf dennen die Berechnungen laufen sollen.</German>
+		</Key>
 		<Key ID="STR_ga_divoMeter_description">
             <English>Paramters for Diving Conditions.</English>
             <German>Paramter für die Tauchumgebung.</German>

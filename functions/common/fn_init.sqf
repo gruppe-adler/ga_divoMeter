@@ -1,7 +1,3 @@
-DIVOMETEROPEN = false;
-DIVIOMETERHEAD = false;
-DIVOMETERGEARON = false;
-
 waitUntil {!isNull player};
 
 player addEventHandler ["TAKE", 
@@ -21,5 +17,3 @@ player addEventHandler ["PUT",
 		};
 	}
 ];
-
-[] call ga_divoMeter_fnc_divometer;
