@@ -22,9 +22,9 @@ Trimax 				| 10% 			| 40% 			| 50%
 Trimax 15/55 		| 15% 			| 30% 			| 55%
 	
 ## Usage	
-The mod will be activ when you put on one of these vests: V_GA_DivingTank_Blk, V_GA_DivingTank_Oli, V_GA_DivingTank_Rgr
+The mod will be activ when you put on one of these vests: V_GRAD_DivingTank_Blk, V_GRAD_DivingTank_Oli, V_GRAD_DivingTank_Rgr
 The diving computer can be opend using the Ace Selfinteraction.
-To add the RefillMenu to an Objekt, add this in the init: `[_this] call ga_divoMeter_addRefillMenu;`
+To add the RefillMenu to an Objekt, add this in the init: `[_this] call grad_divoMeter_addRefillMenu;`
 
 ## Dependencies
 These addons are required to run the scenario:

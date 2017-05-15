@@ -96,7 +96,7 @@
 //Base Classes//
 ////////////////
 
-class SLBRscTextBold
+class gradRscTextBold
 {
     access = 0;
     idc = -1;
@@ -117,7 +117,7 @@ class SLBRscTextBold
    
 };
 
-class SLBRscText
+class gradRscText
 {
     access = 0;
     idc = -1;
@@ -138,7 +138,7 @@ class SLBRscText
    
 };
 
-class SLBRscPicture
+class gradRscPicture
 {
     access = 0;
     idc = -1;
@@ -158,7 +158,7 @@ class SLBRscPicture
     h = 0.15;
 };
 
-class SLBRscButton
+class gradRscButton
 {
     
     access = 0;
@@ -192,7 +192,7 @@ class SLBRscButton
     borderSize = 0;
 };
 
-class SLBRscFrame
+class gradRscFrame
 {
     type = CT_STATIC;
     idc = -1;
@@ -205,7 +205,7 @@ class SLBRscFrame
     text = "";
 };
 
-class SLBBOX
+class gradBOX
 { 
     type = CT_STATIC;
     idc = -1;

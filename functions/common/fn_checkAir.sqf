@@ -3,7 +3,7 @@ params ["_bool", "_obj"];
 diag_log format ["CHAIR Objekt: %1, Bool: %2", _obj, _bool];
 
 if (_bool) then {
-	_value = _obj getVariable "SLB_DIVE_Gas1";
+	_value = _obj getVariable "GRAD_DIVE_GAS1";
 	if (isNil "_value")then {
 		_class = 7;
 		_size = 10;
@@ -20,13 +20,13 @@ if (_bool) then {
 			case 7 : { 	_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};		//Trimax
 			case 8 : {	_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};		//Trimax 15/55
 		};
-	  _obj setVariable ["SLB_DIVE_Gas1", [_size, _bar, _o2, _n2, _he]];
+	  _obj setVariable ["GRAD_DIVE_GAS1", [_size, _bar, _o2, _n2, _he]];
 	  DIVOMETERGEARON = true;
 	};
 	
 	/*
 	if (_obj in DIVOMETERDOUBLE) then {
-		_value = _obj getVariable "SLB_DIVE_Gas2";
+		_value = _obj getVariable "GRAD_DIVE_GAS2";
 		if (isNil "_value")then {
 			_class = 6;
 			_size = 10;
@@ -43,7 +43,7 @@ if (_bool) then {
 				case 7 : { 	_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};		//Trimax
 				case 8 : {	_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};		//Trimax 15/55
 			};
-		  _obj setVariable ["SLB_DIVE_Gas2", [_size, _bar, _o2, _n2, _he]];
+		  _obj setVariable ["GRAD_DIVE_GAS2", [_size, _bar, _o2, _n2, _he]];
 		};
 	};
 	*/

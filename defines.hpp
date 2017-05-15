@@ -1,2 +1,2 @@
-#define DIVOMETERGEAR              ["V_GA_DivingTank_Blk","V_GA_DivingTank_Oli","V_GA_DivingTank_Rgr"]
+#define DIVOMETERGEAR              ["V_GRAD_DivingTank_Blk","V_GRAD_DivingTank_Oli","V_GRAD_DivingTank_Rgr"]
 #define DIVOMETERDOUBLE            [""]

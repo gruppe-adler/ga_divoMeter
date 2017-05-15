@@ -1,5 +1,5 @@
-switch (slb_selectedTank) do {
-	case 1 : {slb_selectedTank = 2;};
-	case 2 : {slb_selectedTank = 1;};
+switch (grad_selectedTank) do {
+	case 1 : {grad_selectedTank = 2;};
+	case 2 : {grad_selectedTank = 1;};
 };
-slb_switchTank = true;
+grad_switchTank = true;

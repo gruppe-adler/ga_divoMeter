@@ -1,8 +1,8 @@
 class CfgFunctions {
-	class ga_divoMeter {
-		tag = "ga_divoMeter";
+	class grad_divoMeter {
+		tag = "grad_divoMeter";
 		class common {
-			file = "\ga_divoMeter\functions\common";
+			file = "\grad_divoMeter\functions\common";
 			class addRefillMenu {};
 			class checkAir {};
 			class checkGear {};
@@ -18,7 +18,7 @@ class CfgFunctions {
 		};
 		
 		class effects {
-			file = "\ga_divoMeter\functions\effects";
+			file = "\grad_divoMeter\functions\effects";
 			class DCSEffects {};
 			class HeToxEffects {};
 			class narcEffects {};

@@ -1,27 +1,27 @@
-class ga_divoMeter_open
+class grad_divoMeter_open
 {
-     displayName = $STR_ga_divoMeter_divoMeter_open;
+     displayName = $STR_grad_divoMeter_divoMeter_open;
      condition = "";
-     statement = "[true] call ga_divoMeter_fnc_openDivoMeter";
+     statement = "[true] call grad_divoMeter_fnc_openDivoMeter";
      priority = 2.5;
      icon = "";
 };
 
-class ga_divoMeter_close
+class grad_divoMeter_close
 {
-     displayName = $STR_ga_divoMeter_divoMeter_close;
+     displayName = $STR_grad_divoMeter_divoMeter_close;
      condition = "";
-     statement = "[false] call ga_divoMeter_fnc_openDivoMeter";
+     statement = "[false] call grad_divoMeter_fnc_openDivoMeter";
      priority = 2.5;
      icon = "";
 };
 
 /*
-class ga_divoMeter_switchTank
+class grad_divoMeter_switchTank
 {
-     displayName = $STR_ga_divoMeter_divoMeter_switchTank;
+     displayName = $STR_grad_divoMeter_divoMeter_switchTank;
      condition = "";
-     statement = "[] call ga_divoMeter_fnc_switchTank";
+     statement = "[] call grad_divoMeter_fnc_switchTank";
      priority = 2.5;
      icon = "";
 };

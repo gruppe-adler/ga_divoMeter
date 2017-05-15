@@ -9,12 +9,12 @@ class CfgVehicles {
         };
     };
      
-    class ga_divoMeter_params:Module_F {
+    class grad_divoMeter_params:Module_F {
         scope = 2;
         displayName = "Divo Meter Settings";
         icon ="";
         category = "divoMeter";
-        function = "ga_divoMeter_fnc_setModuleSetting";
+        function = "grad_divoMeter_fnc_setModuleSetting";
         functionPriority = 0;
         isGlobal = 1;
         isTriggerActivated = 0;
@@ -23,32 +23,32 @@ class CfgVehicles {
         author = "Salbei";
         class Arguments : ArgumentsBaseUnits {   
 			class activ {
-				displayName = $STR_ga_divoMeter_activ;
-				description = $STR_ga_divoMeter_activ_desc;
+				displayName = $STR_grad_divoMeter_activ;
+				description = $STR_grad_divoMeter_activ_desc;
 				typeName = "BOOL"; 
 				defaultValue = "0";				
 			}
 			class maxppO {
-				displayName = $STR_ga_divoMeter_maxppO;
-				description = $STR_ga_divoMeter_maxppO_desc;
+				displayName = $STR_grad_divoMeter_maxppO;
+				description = $STR_grad_divoMeter_maxppO_desc;
 				typeName = "NUMBER";
 				defaultValue = "1.1";
 			};
 			class tempC {
-				displayName = $STR_ga_divoMeter_tempC;
-				description = $STR_ga_divoMeter_tempC_desc;
+				displayName = $STR_grad_divoMeter_tempC;
+				description = $STR_grad_divoMeter_tempC_desc;
 				typeName = "NUMBER";
 				defaultValue = "20";
 			};
 			 class Units {
-				displayName = $STR_ga_divoMeter_unit;
-				description = $STR_ga_divoMeter_unit_desc;
+				displayName = $STR_grad_divoMeter_unit;
+				description = $STR_grad_divoMeter_unit_desc;
 				typeName = "STRING";
 				defaultValue = "";
 			 };
 		};
 		class ModuleDescription : ModuleDescription {
-			description = $STR_ga_divoMeter_description;
+			description = $STR_grad_divoMeter_description;
 		};
 	};
 
@@ -58,10 +58,10 @@ class CfgVehicles {
             class ACE_Equipment {
                 #include "ACE_SelfActions.hpp"
             };
-			class ga_divoMeter_emergencyAsent {
-				displayName = $STR_ga_divoMeter_emergencyAsent;
+			class grad_divoMeter_emergencyAsent {
+				displayName = $STR_grad_divoMeter_emergencyAsent;
 				condition = "true";
-				statement = "[] call ga_divoMeter_fnc_emergencyAscent";
+				statement = "[] call grad_divoMeter_fnc_emergencyAscent";
 				showDisabled = 1;
 				exceptions[] = {"isNotSwimming"};
 				priority = 2.5;

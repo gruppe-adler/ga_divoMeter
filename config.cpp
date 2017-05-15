@@ -1,13 +1,13 @@
 class CfgPatches {
-	class ga_rebreatherOnLand {
+	class grad_rebreatherOnLand {
 
-		name = "GA Diving Mod";
+		name = "GRAD Diving Mod";
 		author = "Salbei";
 
 		requiredVersion = 1.0;
 		requiredAddons[] = {"ace_main"};
 
-		units[] = {"ga_divoMeter_params"};
+		units[] = {"grad_divoMeter_params"};
 		weapons[] = {};
 	};
 };

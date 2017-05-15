@@ -1,6 +1,6 @@
 diag_log "Called CheckGear";
 
-_container = (format ["SLB_DIVE_Gas%1", slb_selectedTank]; 
+_container = (format ["GRAD_DIVE_GAS%1", grad_selectedTank]; 
 _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {_value = (vestContainer player) getVariable _container;};
 if (isNil "_value") exitWith {};
