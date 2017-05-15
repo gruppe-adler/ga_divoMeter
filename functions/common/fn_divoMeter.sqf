@@ -1,6 +1,8 @@
 params ["slb_maxpp0", "slb_tempC"];
 
 //Starting vars
+slb_selectedTank = 1;
+slb_switchTank = false; 
 slb_airConsumption = 0;
 slb_ascTime = 0;
 slb_maxDepth = 0;
@@ -23,7 +25,6 @@ slb_depth2deco = 0;
 slb_depth2deepStop = 0;
 slb_deepStopTime = 0;
 slb_doDeco = 0;
-slb_doDeepStop = 0;
 slb_deepStopCeil = 0;
 slb_tisAval = 0;
 slb_tisBval = 0;
@@ -64,19 +65,28 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 [{
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
+	
+	if (slb_switchTank) then {
+		if !(isNil "slb_bar") then {
+			switch (slb_selectedTank) do {
+				case 1 : {};
+				case 2 : {};
+			};
+		};
+		slb_switchTank = false;
+	};
+	
 	if ((underwater player) && DIVOMETERGEARON) then {	
 		if (isNil "slb_bar") then {
 			_value = [] call ga_divoMeter_fnc_checkGear;
-			slb_tankSize = 10;
-			slb_bar = 200;
-			slb_percentO2 = 0.21;
-			slb_percentN2 = 0.79;
-			slb_percentHe = 0;
 			if (isNil "_value") exitWith {};
 			diag_log format ["DivoMeter Value: %1", _value];
 			_value params [ "slb_tankSize", "slb_bar", "slb_percentO2", "slb_percentN2", "slb_percentHe"];
 			slb_filling = slb_tankSize * slb_bar;
 		};
+		
+		if (isNil "slb_bar") exitWith {};
+		
 		slb_diveTime = slb_diveTime + 1;
 		slb_depth = (abs ((getPosASL player) select 2)); //in meter
 		slb_pressure = ((slb_depth / 10) + 1);			
@@ -131,7 +141,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			if (slb_doDeco == 1) then {
 				(_displayUI displayCtrl 1112) ctrlSetText "DECO";
 				if ((slb_doDeco == 1) && !(slb_depth2deco > 3) && !(slb_depth2deco < -3)) then {
-					//(_displayUI displayCtrl 1120) ctrlSetText format["%1", slb_decoTime];
+					(_displayUI displayCtrl 1120) ctrlSetText format["%1", slb_decoTime];
 				};
 			}else{
 				(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
@@ -141,32 +151,57 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round(slb_percentO2 * 100))/100];
 			
 			switch (true) do {
-				case (slb_doDeco == 1): {
-				/*
-					(_displayUI displayCtrl 1115) ctrlSetText "";
-					(_displayUI displayCtrl 1116) ctrlSetText "";
-					(_displayUI displayCtrl 1117) ctrlSetText "";
-					(_displayUI displayCtrl 1118) ctrlSetText "";
-					(_displayUI displayCtrl 1125) ctrlSetText "1125";
-					(_displayUI displayCtrl 1126) ctrlSetText "1126";
-					(_displayUI displayCtrl 1127) ctrlSetText "1127";
-					(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
-					(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
-					*/
-				};
-				
 				case (slb_doDeco == 0): {
-					/*
 					(_displayUI displayCtrl 1125) ctrlSetText "";
 					(_displayUI displayCtrl 1126) ctrlSetText "";
 					(_displayUI displayCtrl 1127) ctrlSetText "";
 					(_displayUI displayCtrl 1130) ctrlSetText "";
 					(_displayUI displayCtrl 1131) ctrlSetText "";
-					*/
 					(_displayUI displayCtrl 1115) ctrlSetText "TTS";
 					(_displayUI displayCtrl 1116) ctrlSetText "DIVE-T";
 					(_displayUI displayCtrl 1117) ctrlSetText format["%1", round (slb_ascTime)];
 					(_displayUI displayCtrl 1118) ctrlSetText format["%1", round (((slb_diveTime)+.01)/60)];
+				};
+				case (slb_doDeco == 1): {
+					(_displayUI displayCtrl 1115) ctrlSetText "";
+					(_displayUI displayCtrl 1116) ctrlSetText "";
+					(_displayUI displayCtrl 1117) ctrlSetText "";
+					(_displayUI displayCtrl 1118) ctrlSetText "";
+					(_displayUI displayCtrl 1125) ctrlSetText "DECO STOP";
+					(_displayUI displayCtrl 1126) ctrlSetText format ["%1M", slb_depth2deepStop];
+					(_displayUI displayCtrl 1127) ctrlSetText format ["%1", slb_deepStopTime];
+					(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
+					(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
+				};
+				case (slb_doDeco == 2 && !(slb_depth2deepStop) && !(slb_depth2deepStop)): {
+					(_displayUI displayCtrl 1124) ctrlSetText "";
+					(_displayUI displayCtrl 1125) ctrlSetText "DEEP STOP";
+					(_displayUI displayCtrl 1126) ctrlSetText format ["%1M", slb_depth2deepStop];
+					(_displayUI displayCtrl 1127) ctrlSetText format ["%1", slb_deepStopTime];
+					switch {slb_depth2deepStop} do {
+						case (> 3) : {
+									if ((_displayUIctrlText 1131) == "ga_divoMeter\images\triangle_down_divider.paa") then {
+										(_displayUI displayCtrl 1130) ctrlSetText "";
+										(_displayUI displayCtrl 1131) ctrlSetText "";
+									}else{
+										(_displayUI displayCtrl 1130) ctrlSetText "";
+										(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
+									};
+								};
+						case (< -3) : {
+									if ((_displayUIctrlText 1131) == "ga_divoMeter\images\triangle_up_divider.paa") then {
+										(_displayUI displayCtrl 1130) ctrlSetText "";
+										(_displayUI displayCtrl 1131) ctrlSetText "";
+									}else{
+										(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
+										(_displayUI displayCtrl 1131) ctrlSetText "";
+									};
+								};
+						default : {
+									(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
+									(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
+								};
+					};
 				};
 			};
 			
@@ -206,14 +241,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 				(_displayUI displayCtrl 1129) ctrlSetText (slb_narcFactor call _getDivoMeterN2Texture);
 			};
 			
-			/*
-			(_displayUI displayCtrl 1124) ctrlSetText "1124";
-			(_displayUI displayCtrl 1125) ctrlSetText "1125";
-			(_displayUI displayCtrl 1126) ctrlSetText "1126";
-			(_displayUI displayCtrl 1127) ctrlSetText "1127";
-			(_displayUI displayCtrl 1130) ctrlSetText "ga_divoMeter\images\triangle_down_divider.paa";
-			(_displayUI displayCtrl 1131) ctrlSetText "ga_divoMeter\images\triangle_up_divider.paa";
-			*/
+			(_displayUI displayCtrl 1132) ctrlSetText format ["%1", slb_selectedTank];
 		};
 		
 		diag_log format ["DM TisTot: %1, Perc: %2, Tot: %3, narcCnt: %4, narcFac: %5", slb_nTisTot, slb_nPercent, slb_nTot, slb_narcCntdn, slb_narcFactor];
@@ -277,10 +305,10 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			slb_doDeco = 1;
 		};
 			
-		if((slb_AscCeilB > 10) && (slb_doDeepStop < 1)) then {				
+		if((slb_AscCeilB > 10) && (slb_doDeco < 1)) then {				
 			slb_deepStopCeil = slb_depth /2;				
 			slb_deepStopTime = slb_AscCeil *(round(slb_totalTis *3.5));				
-			slb_doDeepStop = 1;
+			slb_doDeco = 2;
 		};
 			
 		// Start deco countdown once unit is with range
@@ -289,22 +317,22 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 		};			
 			
 		//Stop deco countdown and reset timer
-		if(slb_decoTime < 0) then {
+		if(slb_decoTime < 0 && !(slb_doDeco == 2)) then {
 			slb_decoTime = 0;
 			slb_AscCeil = 0;
 			slb_doDeco = 0;
 		};
 			
 		// Start deep stop countdown once unit is with range
-		if ((slb_doDeepStop == 1) && !(slb_depth2deepStop > 3) && !(slb_depth2deepStop < -3)) then {
+		if ((slb_doDeco == 2) && !(slb_depth2deepStop > 3) && !(slb_depth2deepStop < -3)) then {
 			slb_deepStopTime = slb_deepStopTime - 1;
 		};
 			
 		//Stop deep stop countdown and reset timer
-		if(slb_deepStopTime < 0) then {
+		if(slb_deepStopTime < 0 && !(slb_doDeco == 1)) then {
 			slb_deepStopTime = 0;
 			slb_deepStopCeil = 0;
-			slb_doDeepStop = 0;	
+			slb_doDeco = 0;			
 		};
 			
 		//Narcotic Effects kick in if toxicity threshold passed.
@@ -372,7 +400,7 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			};
 			slb_bar = slb_filling / slb_tankSize;
 			_obj setVariable ["Air", [slb_tankSize, slb_bar, slb_percentO2, slb_percentN2, slb_percentHe]];
-		};		
+		};			
 	}else{
 		if (DIVOMETEROPEN) then {				
 			disableSerialization;
@@ -381,13 +409,11 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(((getPosASL player) select 2) *10))/10];
 			(_displayUI displayCtrl 1114) ctrlSetText "--";
-			/*
 			(_displayUI displayCtrl 1115) ctrlSetText "TTS";
 			(_displayUI displayCtrl 1116) ctrlSetText "DIVE-T";
 			(_displayUI displayCtrl 1117) ctrlSetText "--";
 			(_displayUI displayCtrl 1118) ctrlSetText "--";
 			(_displayUI displayCtrl 1119) ctrlSetText "";
-			*/
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
 			(_displayUI displayCtrl 1121) ctrlSetText "GTK";
 			if (!isNil "slb_filling" && slb_filling != 0) then {
@@ -397,5 +423,5 @@ slb_sacRT = round (25 * (random [0.8,1,1.2]));
 			};
 			(_displayUI displayCtrl 1123) ctrlSetText "--";
 		};
-	};			
+	};	
 }, 1, []] call CBA_fnc_addPerFrameHandler;

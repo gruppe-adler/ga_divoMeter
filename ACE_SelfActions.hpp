@@ -15,3 +15,14 @@ class ga_divoMeter_close
      priority = 2.5;
      icon = "";
 };
+
+/*
+class ga_divoMeter_switchTank
+{
+     displayName = $STR_ga_divoMeter_divoMeter_switchTank;
+     condition = "";
+     statement = "[] call ga_divoMeter_fnc_switchTank";
+     priority = 2.5;
+     icon = "";
+};
+*/
