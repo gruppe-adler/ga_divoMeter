@@ -40,6 +40,12 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "20";
 			};
+			class rate {
+				displayName = $STR_grad_divoMeter_rate;
+				description = $STR_grad_divoMeter_rate_desc;
+				typeName = "NUMBER";
+				defaultValue = "25";
+			};
 			 class Units {
 				displayName = $STR_grad_divoMeter_unit;
 				description = $STR_grad_divoMeter_unit_desc;

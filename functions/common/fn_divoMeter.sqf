@@ -67,22 +67,34 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	
 	if (grad_switchTank) then {
-		if !(isNil "grad_bar") then {
+		if !(isNil "grad_maxBar") then {
 			_value = [] call grad_divoMeter_fnc_checkGear;
+			_value params ["grad_bar", "grad_percentO2", "grad_percentN2", "grad_percentHe"];
+			_class = format ["grad_divoMeter_gasClass1", grad_selectedTank];
+			_maxBar = format ["grad_divometer_maxBar1", grad_selectedTank];
+			
+			_tankSize = getNumber (configFile >> "CfgVehicles" >> _obj >> _class);
+			grad_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _maxBar);
+			grad_filling = _tankSize * grad_bar;
 		};
 		grad_switchTank = false;
 	};
 	
 	if ((underwater player) && DIVOMETERGEARON) then {	
-		if (isNil "grad_bar") then {
+		if (isNil "grad_maxBar") then {
 			_value = [] call grad_divoMeter_fnc_checkGear;
 			if (isNil "_value") exitWith {};
 			diag_log format ["DivoMeter Value: %1", _value];
-			_value params [ "grad_tankSize", "grad_bar", "grad_percentO2", "grad_percentN2", "grad_percentHe"];
-			grad_filling = grad_tankSize * grad_bar;
+			_value params ["grad_bar", "grad_percentO2", "grad_percentN2", "grad_percentHe"];
+			_class = format ["grad_divoMeter_gasClass1", grad_selectedTank];
+			_maxBar = format ["grad_divometer_maxBar1", grad_selectedTank];
+			
+			_tankSize = getNumber (configFile >> "CfgVehicles" >> _obj >> _class);
+			grad_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _maxBar);
+			grad_filling = _tankSize * grad_bar
 		};
 		
-		if (isNil "grad_bar") exitWith {};
+		if (isNil "grad_maxBar") exitWith {};
 		
 		grad_diveTime = grad_diveTime + 1;
 		grad_depth = (abs ((getPosASL player) select 2)); //in meter
@@ -148,7 +160,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round (grad_percentO2 * 100))/100];
 			
 			switch (true) do {
-				case (grad_doDeco == 0): {
+				case (!grad_doDeco): {
 					(_displayUI displayCtrl 1125) ctrlSetText "";
 					(_displayUI displayCtrl 1126) ctrlSetText "";
 					(_displayUI displayCtrl 1127) ctrlSetText "";
@@ -159,7 +171,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 					(_displayUI displayCtrl 1117) ctrlSetText format["%1", round (grad_ascTime)];
 					(_displayUI displayCtrl 1118) ctrlSetText format["%1", round (((grad_diveTime)+.01)/60)];
 				};
-				case (grad_doDeco == 1 && !(grad_depth2deco < - 6) && !(grad_depth2deco > 6)): {
+				case (grad_doDeco && !(grad_depth2deco < - 6) && !(grad_depth2deco > 6)): {
 					(_displayUI displayCtrl 1115) ctrlSetText "";
 					(_displayUI displayCtrl 1116) ctrlSetText "";
 					(_displayUI displayCtrl 1117) ctrlSetText "";
@@ -170,13 +182,13 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 					(_displayUI displayCtrl 1130) ctrlSetText "grad_divoMeter\images\triangle_down_divider.paa";
 					(_displayUI displayCtrl 1131) ctrlSetText "grad_divoMeter\images\triangle_up_divider.paa";
 				};
-				case (grad_doDeco == 2 && !(grad_depth2deepStop < - 6) && !(grad_depth2deepStop > 6)): {
+				case (grad_doDeepStop && !(grad_depth2deepStop < - 6) && !(grad_depth2deepStop > 6)): {
 					(_displayUI displayCtrl 1124) ctrlSetText "";
 					(_displayUI displayCtrl 1125) ctrlSetText "DEEP STOP";
 					(_displayUI displayCtrl 1126) ctrlSetText format ["%1M", grad_depth2deepStop];
 					(_displayUI displayCtrl 1127) ctrlSetText format ["%1", grad_deepStopTime];
-					switch {grad_depth2deepStop} do {
-						case (> 1.5) : {
+					switch {true} do {
+						case (grad_depth2deepStop > 1.5) : {
 									if ((_displayUIctrlText 1131) == "grad_divoMeter\images\triangle_down_divider.paa") then {
 										(_displayUI displayCtrl 1130) ctrlSetText "";
 										(_displayUI displayCtrl 1131) ctrlSetText "";
@@ -185,7 +197,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 										(_displayUI displayCtrl 1131) ctrlSetText "grad_divoMeter\images\triangle_down_divider.paa";
 									};
 								};
-						case (< -1.5) : {
+						case (grad_depth2deepStop < -1.5) : {
 									if ((_displayUIctrlText 1131) == "grad_divoMeter\images\triangle_up_divider.paa") then {
 										(_displayUI displayCtrl 1130) ctrlSetText "";
 										(_displayUI displayCtrl 1131) ctrlSetText "";
@@ -194,7 +206,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 										(_displayUI displayCtrl 1131) ctrlSetText "";
 									};
 								};
-						default : {
+						case (grad_depth2deepStop < 1.5 && grad_depth2deepStop > -1.5) : {
 									(_displayUI displayCtrl 1130) ctrlSetText "grad_divoMeter\images\triangle_up_divider.paa";
 									(_displayUI displayCtrl 1131) ctrlSetText "grad_divoMeter\images\triangle_down_divider.paa";
 								};
@@ -294,42 +306,42 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		if ((grad_depthB > grad_depthA) && (grad_maxDepth < grad_depthB)) then {grad_maxDepth = grad_depthB;};			
 			
 		//Set Ascent Ceiling			
-		if ((grad_AscCeil < grad_AscCeilB) && (grad_doDeco == 0))then {grad_AscCeil = (round(grad_AscCeilB /10)) *10;};			
+		if ((grad_AscCeil < grad_AscCeilB) && !grad_doDeco)then {grad_AscCeil = (round(grad_AscCeilB /10)) *10;};			
 			
 		//Init Deco Profile
 		if((grad_AscCeil == 10) && (grad_doDeco == 0)) then {				
 			grad_decoTime = grad_AscCeil *(round(grad_totalTis *4));				
-			grad_doDeco = 1;
+			grad_doDeco = true;
 		};
 			
-		if((grad_AscCeilB > 10) && (grad_doDeco < 1)) then {				
+		if((grad_AscCeilB > 10)) then {				
 			grad_deepStopCeil = grad_depth /2;				
 			grad_deepStopTime = grad_AscCeil *(round(grad_totalTis *3.5));				
-			grad_doDeco = 2;
+			grad_doDeepStop = true;
 		};
 			
 		// Start deco countdown once unit is with range
-		if ((grad_doDeco == 1) && !(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
+		if (grad_doDeco && !(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
 			grad_decoTime = grad_decoTime - 1;
 		};			
 			
 		//Stop deco countdown and reset timer
-		if(grad_decoTime < 0 && !(grad_doDeco == 2)) then {
+		if(grad_decoTime < 0) then {
 			grad_decoTime = 0;
 			grad_AscCeil = 0;
-			grad_doDeco = 0;
+			grad_doDeco = false;
 		};
 			
 		// Start deep stop countdown once unit is with range
-		if ((grad_doDeco == 2) && !(grad_depth2deepStop > 3) && !(grad_depth2deepStop < -3)) then {
+		if (grad_doDeepStop && !(grad_depth2deepStop > 3) && !(grad_depth2deepStop < -3)) then {
 			grad_deepStopTime = grad_deepStopTime - 1;
 		};
 			
 		//Stop deep stop countdown and reset timer
-		if(grad_deepStopTime < 0 && !(grad_doDeco == 1)) then {
+		if(grad_deepStopTime < 0) then {
 			grad_deepStopTime = 0;
 			grad_deepStopCeil = 0;
-			grad_doDeco = 0;			
+			grad_doDeepStop = false;			
 		};
 			
 		//Narcotic Effects kick in if toxicity threshold passed.
@@ -386,17 +398,18 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			player setStamina 0; 
 			player setOxygenRemaining 0;
 		}else{
+			_container = format ["GRAD_DIVE_GAS%1", grad_selectedTank];
 			if (isNil "_obj") then {
-				_value = (backpackContainer player) getVariable "Air";
+				_value = (backpackContainer player) getVariable _container;
 				if (isNil "_value") then {
-					_value = (vestContainer player) getVariable "Air";
+					_value = (vestContainer player) getVariable _container;
 				}else{
 					_obj = (backpackContainer player);
 				};
 				if !(isNil "_value") exitWith {_obj = (vestContainer player);};
 			};
 			grad_bar = grad_filling / grad_tankSize;
-			_obj setVariable ["Air", [grad_tankSize, grad_bar, grad_percentO2, grad_percentN2, grad_percentHe]];
+			_obj setVariable [_container, [grad_bar, grad_percentO2, grad_percentN2, grad_percentHe]];
 		};			
 	}else{
 		if (DIVOMETEROPEN) then {				

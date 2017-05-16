@@ -16,13 +16,11 @@ class grad_divoMeter_close
      icon = "";
 };
 
-/*
 class grad_divoMeter_switchTank
 {
      displayName = $STR_grad_divoMeter_divoMeter_switchTank;
-     condition = "";
+     condition = "((backpackContainer player) in DIVOMETERDOUBLE)";
      statement = "[] call grad_divoMeter_fnc_switchTank";
      priority = 2.5;
      icon = "";
 };
-*/

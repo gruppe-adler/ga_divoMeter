@@ -6,15 +6,15 @@ class CfgFunctions {
 			class addRefillMenu {};
 			class checkAir {};
 			class checkGear {};
-			class divingAirSetup {};
 			class divoMeter {};
 			class emergencyAscent {};
 			class gasCalc {};
-			class init {};
+			class init {preInit = 1;};
 			class initTissues {};
 			class openDivoMeter {};
 			class refillTank {};
 			class setModuleSetting {};
+			class switchTank {};
 		};
 		
 		class effects {

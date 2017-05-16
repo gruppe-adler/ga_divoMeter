@@ -1,13 +1,14 @@
 params ["_bool", "_obj"];
 
-diag_log format ["CHAIR Objekt: %1, Bool: %2", _obj, _bool];
+diag_log format ["DM Objekt: %1, Bool: %2", _obj, _bool];
 
 if (_bool) then {
 	_value = _obj getVariable "GRAD_DIVE_GAS1";
 	if (isNil "_value")then {
-		_class = 7;
-		_size = 10;
-		_bar = 200;
+		_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divoMeter_gasClass1");
+		_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divometer_maxBar1");
+		
+		diag_log format
 		
 		switch (_class) do {		
 			case 0 : {	_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};			//Air
@@ -20,17 +21,15 @@ if (_bool) then {
 			case 7 : { 	_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};		//Trimax
 			case 8 : {	_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};		//Trimax 15/55
 		};
-	  _obj setVariable ["GRAD_DIVE_GAS1", [_size, _bar, _o2, _n2, _he]];
+	  _obj setVariable ["GRAD_DIVE_GAS1", [_bar, _o2, _n2, _he]];
 	  DIVOMETERGEARON = true;
 	};
 	
-	/*
 	if (_obj in DIVOMETERDOUBLE) then {
 		_value = _obj getVariable "GRAD_DIVE_GAS2";
 		if (isNil "_value")then {
-			_class = 6;
-			_size = 10;
-			_bar = 200;
+			_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divoMeter_gasClass2");
+			_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divometer_maxBar2");
 			
 			switch (_class) do {		
 				case 0 : {	_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};			//Air
@@ -43,10 +42,9 @@ if (_bool) then {
 				case 7 : { 	_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};		//Trimax
 				case 8 : {	_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};		//Trimax 15/55
 			};
-		  _obj setVariable ["GRAD_DIVE_GAS2", [_size, _bar, _o2, _n2, _he]];
+		  _obj setVariable ["GRAD_DIVE_GAS2", [_bar, _o2, _n2, _he]];
 		};
 	};
-	*/
 }else{
 	DIVOMETERGEARON = false;
 };

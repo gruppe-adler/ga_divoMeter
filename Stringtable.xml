@@ -25,6 +25,14 @@
             <English>Temperature at the surface in °Celsius.</English>
             <German>Temperatur an der oberfläche in °Celsius.</German>
         </Key>
+		<Key ID="STR_grad_divoMeter_rate">
+            <English>Refill rate</English>
+            <German>Nachfuell rate</German>
+        </Key>
+		<Key ID="STR_grad_divoMeter_rate_desc">
+            <English>Defines the rate at wich the tank is refilled.</English>
+            <German>Definiert die Menge an Gas die beim Nachfüllen pro Sekunde in den Tank gepumpt wird.</German>
+        </Key>
 		<Key ID="STR_grad_divoMeter_unit">
             <English>Units</English>
             <German>Einheiten</German>

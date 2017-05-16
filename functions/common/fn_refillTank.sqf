@@ -1,74 +1,78 @@
-//Refill Gas
-private ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc"];
-params ["_bool", "_class"];
+private ["_obj", "_container"];
+params ["_bool", "_class", "_tank"];
 
-_value = (backpackContainer player) getVariable "Air";
+_container = format ["GRAD_DIVE_GAS%1", _tank];
+_barName = format ["grad_divometer_maxBar%1", _tank];
+
+_value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {
-	_value = (vestContainer player) getVariable "Air";
+	_value = (vestContainer player) getVariable _container;
 	if (isNil "_value") then {_obj = (vestContainer player);};
 }else {
 	_obj = (backpackContainer player);
 };
-_value params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc"];
+_value params ["grad_refill_barTank", "grad_refill_o2Perc", "grad_refill_n2Perc", "grad_refill_hePerc"];
 
-if (_bool) then {	
+_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _barName);
+
+if (_bool) then {
 	[{
 		params ["_args","_handle"]; 
-		_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
-		if (_psiTank == _sizeTank) exitWith {
+		_args params ["_obj", "_container", "_maxBar"];
+		if (grad_refill_barTank == _maxBar) exitWith {
 			[_handle] call CBA_fnc_removePerFrameHandler;
-			_obj setVariable ["Air", [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc]];
+			_obj setVariable [_container, [grad_refill_barTank, grad_refill_o2Perc, grad_refill_n2Perc, grad_refill_hePerc]];
 		}else {
-			if(_psiTank > _sizeTank) then {
-				_psiTank = _sizeTank;
+			if(grad_refill_barTank > _maxBar) then {
+				grad_refill_barTank = _maxBar;
 			}else {
-				_psiTank = _psiTank +10;
+				grad_refill_barTank = grad_refill_barTank + grad_refillRate;
 			};
 		};		
-	}, 1, [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc, _obj]] call CBA_fnc_addPerFrameHandler;	
+	}, 1, [_obj, _container, _maxBar]] call CBA_fnc_addPerFrameHandler;	
 	
 }else {	
-	if (_psiTank > 0) then {
+	if (grad_refill_barTank > 0) then {
 		[{
 			params ["_args","_handle"]; 
-			_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
-			if (_psiTank == 0) exitWith {
+			_args params ["_obj", "_container", "_maxBar"];
+			if (grad_refill_barTank == 0) exitWith {
 				[_handle] call CBA_fnc_removePerFrameHandler;
-				_obj setVariable ["Air", [_sizeTank, _psi, _o2Perc, _n2Perc, _hePerc]];
+				_obj setVariable [_container, [grad_refill_barTank, grad_refill_o2Perc, grad_refill_n2Perc, grad_refill_hePerc]];
 			}else {
-				if(_psiTank < 0) then {
-					_psiTank = 0;
+				if(grad_refill_barTank < 0) then {
+					grad_refill_barTank = 0;
 				}else {
-					_psiTank = _psiTank -20;
+					grad_refill_barTank = grad_refill_barTank - grad_refillRate;
 				};
 			};
-		}, 1, [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc, _obj]] call CBA_fnc_addPerFrameHandler;
+		}, 1, [_obj, _container, _maxBar]] call CBA_fnc_addPerFrameHandler;
 	};
 	
 	switch (_class) do {		
-		case 0 : {	_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};			//Air
-		case 1 : { 	_o2 = 0.32;		_n2 = 0.68; 	_he = 0;};			//EAN32
-		case 2 : { 	_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};			//Heliox 21
-		case 3 : { 	_o2 = 0.28; 	_n2 = 0.72; 	_he = 0;};			//Heliox 28
-		case 4 : { 	_o2 = 0.32; 	_n2 = 0.68; 	_he = 0;};			//Nitrox I
-		case 5 : { 	_o2 = 0.36; 	_n2 = 0.64; 	_he = 0;};			//Nitrox II
-		case 6 : { 	_o2 = 1; 		_n2 = 0; 		_he = 0;};			//Oxygen
-		case 7 : { 	_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};		//Trimax
-		case 8 : {	_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};		//Trimax 15/55
+		case 0 : {	grad_refill_o2 = 0.21; 	grad_refill_n2 = 0.79; 	grad_refill_he = 0;};			//Air
+		case 1 : { 	grad_refill_o2 = 0.32;	grad_refill_n2 = 0.68; 	grad_refill_he = 0;};			//EAN32
+		case 2 : { 	grad_refill_o2 = 0.21; 	grad_refill_n2 = 0.79; 	grad_refill_he = 0;};			//Heliox 21
+		case 3 : { 	grad_refill_o2 = 0.28; 	grad_refill_n2 = 0.72; 	grad_refill_he = 0;};			//Heliox 28
+		case 4 : { 	grad_refill_o2 = 0.32; 	grad_refill_n2 = 0.68; 	grad_refill_he = 0;};			//Nitrox I
+		case 5 : { 	grad_refill_o2 = 0.36; 	grad_refill_n2 = 0.64; 	grad_refill_he = 0;};			//Nitrox II
+		case 6 : { 	grad_refill_o2 = 1; 	grad_refill_n2 = 0; 	grad_refill_he = 0;};			//Oxygen
+		case 7 : { 	grad_refill_o2 = 0.10; 	grad_refill_n2 = 0.40; 	grad_refill_he = 0.50;};		//Trimax
+		case 8 : {	grad_refill_o2 = 0.15; 	grad_refill_n2 = 0.30; 	grad_refill_he = 0.55;};		//Trimax 15/55
 	};  
 	  
 	[{
 		params ["_args","_handle"]; 
-		_args params ["_sizeTank", "_psiTank", "_o2Perc", "_n2Perc", "_hePerc", "_obj"];
-		if (_psiTank == _sizeTank) exitWith {
+		_args params ["_obj", "_container", "_maxBar"];
+		if (grad_refill_barTank == _maxBar) exitWith {
 			[_handle] call CBA_fnc_removePerFrameHandler;
-			_obj setVariable ["Air", [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc]];
+			_obj setVariable [_container, [grad_refill_barTank, grad_refill_o2Perc, grad_refill_n2Perc, grad_refill_hePerc]];
 		}else {
-			if(_psiTank > _sizeTank) then {
-				_psiTank = _sizeTank;
+			if(grad_refill_barTank > _maxBar) then {
+				grad_refill_barTank = _maxBar;
 			}else {
-				_psiTank = _psiTank +20;
+				grad_refill_barTank = grad_refill_barTank + grad_refillRate;
 			};
 		};		
-	}, 1, [_sizeTank, _psiTank, _o2Perc, _n2Perc, _hePerc, _obj]] call CBA_fnc_addPerFrameHandler;
+	}, 1, [_obj, _container, _maxBar]] call CBA_fnc_addPerFrameHandler;
 };

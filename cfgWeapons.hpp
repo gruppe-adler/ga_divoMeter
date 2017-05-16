@@ -16,6 +16,9 @@ class CfgWeapons {
 		hiddenUnderwaterSelections[] = {};
 		shownUnderwaterSelections[] = {};
 		hiddenUnderwaterSelectionsTextures[] = {};
+		grad_divoMeter_gasClass1 = 7;
+		grad_divoMeter_tankSize1 = 10;
+		grad_divometer_maxBar1 = 200;
 
 		class ItemInfo: ItemInfo {
 			author = "Salbei";
@@ -31,12 +34,21 @@ class CfgWeapons {
 		displayName = "Diving Tank (Olive)";
 		picture = "\A3\characters_f\Data\UI\icon_V_RebreatherRU_CA.paa";
 		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_rus_co.paa"};
+		grad_divoMeter_gasClass1 = 1;
+		grad_divoMeter_gasClass2 = 2;
+		grad_divoMeter_tankSize1 = 10;
+		grad_divoMeter_tankSize2 = 10;
+		grad_divometer_maxBar1 = 200;
+		grad_divometer_maxBar2 = 200;
 	};
 
 	class V_GRAD_DivingTank_Rgr: V_GRAD_DivingTank_Blk {
 		displayName = "Diving Tank (Green)";
 		picture = "\A3\characters_f\Data\UI\icon_V_RebreatherIR_CA.paa";
 		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa"};
+		grad_divoMeter_gasClass1 = 5;
+		grad_divoMeter_tankSize1 = 10;
+		grad_divometer_maxBar1 = 200;
 	};
 /*
 	class ItemDivingWatch: ItemWatch {
@@ -49,61 +61,7 @@ class CfgWeapons {
 		hiddenUnderwaterSelectionsTextures[] = {};
 	};
 
-	class B_GRAD_DivingTank {
-		author = "Salbei";
-		displayName = "Diving Tank (Black)";
-		hiddenSelections[] = {};
-		hiddenSelectionsTextures[] = {};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
-
-		class ItemInfo: ItemInfo {
-			author = "Salbei";
-			containerClass = "Supply5";
-			hiddenSelections[] = {};
-			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {};
-			hiddenUnderwaterSelectionsTextures[] = {};
-			shownUnderwaterSelections[] = {};
-		};
-	};
 	
-	class B_GRAD_DivingTank_Air: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Air)";
-	};
-	
-	class B_GRAD_DivingTank_Ean32: B_GRAD_DivingTank {
-		displayName = "Diving Tank (EAN32)";
-	};
-	
-	class B_GRAD_DivingTank_Heliox21: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Heliox 21)";
-	};
-	
-	class B_GRAD_DivingTank_Heliox28: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Heliox 28)";
-	};
-	
-	class B_GRAD_DivingTank_NitroxI: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Nitrox I)";
-	};
-	
-	class B_GRAD_DivingTank_NitroxII: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Nitrox II)";
-	};
-	
-	class B_GRAD_DivingTank_Oxygen: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Oxygen)";
-	};
-	
-	class B_GRAD_DivingTank_Trimax: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Trimax)";
-	};
-	
-	class B_GRAD_DivingTank_Trimax15: B_GRAD_DivingTank {
-		displayName = "Diving Tank (Trimax 15/55)";
-	};
 	
 	class H_GRAD_DivingMask {
 	author = "Salbei";

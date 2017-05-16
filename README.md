@@ -36,6 +36,8 @@ These addons are required to run the scenario:
 
 This mod is based on Divier Stats from trin scourge.
 
-Visuals: Nomisum
+- Coding: Salbei
+- 2D: Nomisum
+- 3D: Salbei
 
-Spezial thanks to Gruppe Adler for helping me create this mod.
+Spezial thanks go to Gruppe Adler for helping me create this mod.
