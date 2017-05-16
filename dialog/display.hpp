@@ -8,7 +8,7 @@ class grad_disp {
 	controlsBackground[] = {};
 	objects[] = {};
 	 class controls {
-		class grad_image {
+		class slb_image {
 			idc = 1110;
 			type = CT_STATIC;
 			style = ST_PICTURE;
@@ -20,9 +20,9 @@ class grad_disp {
 			y = safeZoneY+(safeZoneH*0.32);
 			w = safeZoneW* 0.30;
 			h = safeZoneH* 0.48;
-			text = "\grad_divoMeter\images\divingWatch.paa";
+			text = "images\divingWatch.paa";
 		}; 
-		class grad_distanzeUnit: gradRscText {
+		class slb_distanzeUnit: SLBRscText {
 			idc = 1111;
 			text = "";
 			font = puristaBold;
@@ -33,7 +33,7 @@ class grad_disp {
 			w = 0.02 * safezoneW;
 			h = 0.02 * safezoneH;
 		};
-		class grad_decoTag: gradRscText {
+		class slb_decoTag: SLBRscText {
 			idc = 1112;
 			text = "";
 			font = puristaBold;
@@ -44,7 +44,7 @@ class grad_disp {
 			w = 0.05 * safezoneW;
 			h = 0.02 * safezoneH
 		};
-		class grad_height: gradRscText {
+		class slb_height: SLBRscText {
 			idc = 1113;
 			text = "";
 			font = puristaBold;
@@ -55,7 +55,7 @@ class grad_disp {
 			w = 0.05 * safezoneW;
 			h = 0.03 * safezoneH;
 		};
-		class grad_decoFreeTime: gradRscText {
+		class slb_decoFreeTime: SLBRscText {
 			idc = 1114;
 			text = "";
 			font = puristaBold;
@@ -66,7 +66,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_tts: gradRscText {
+		class slb_tts: SLBRscText {
 			idc = 1115;
 			text = "";
 			font = puristaBold;
@@ -77,7 +77,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.02;
 		};
-		class grad_diveT: gradRscText {
+		class slb_diveT: SLBRscText {
 			idc = 1116;
 			text = "";
 			font = puristaBold;
@@ -88,7 +88,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.02;
 		};
-		class grad_timeToSurface: gradRscText {
+		class slb_timeToSurface: SLBRscText {
 			idc = 1117;
 			text = "";
 			font = puristaBold;
@@ -99,7 +99,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_divingTime: gradRscText {
+		class slb_divingTime: SLBRscText {
 			idc = 1118;
 			text = "";
 			font = puristaBold;
@@ -110,18 +110,18 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_o2Percent: gradRscText {
+		class slb_o2Percent: SLBRscText {
 			idc = 1119;
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
 			sizeEx = 0.02;
-			x = safeZoneX+(safeZoneW*0.79);
+			x = safeZoneX+(safeZoneW*0.785);
 			y = safeZoneY+(safeZoneH*0.5);
 			w = safeZoneW* 0.025;
 			h = safeZoneH* 0.2;
 		};
-		class grad_pressureUnit: gradRscText {
+		class slb_pressureUnit: SLBRscText {
 			idc = 1120;
 			text = "";
 			font = puristaBold;
@@ -132,7 +132,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_remaingDiveTimeUnit: gradRscText {
+		class slb_remaingDiveTimeUnit: SLBRscText {
 			idc = 1121;
 			text = "";
 			font = puristaBold;
@@ -143,7 +143,7 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_pressureValue: gradRscText {
+		class slb_pressureValue: SLBRscText {
 			idc = 1122;
 			text = "";
 			font = puristaBold;
@@ -154,7 +154,7 @@ class grad_disp {
 			w = safeZoneW* 0.04;
 			h = safeZoneH* 0.03;
 		};
-		class grad_remaingDiveTime: gradRscText {
+		class slb_remaingDiveTime: SLBRscText {
 			idc = 1123;
 			text = "";
 			font = puristaBold;
@@ -165,18 +165,18 @@ class grad_disp {
 			w = safeZoneW* 0.03;
 			h = safeZoneH* 0.03;
 		};
-		class grad_deepStop: gradRscText {
+		class slb_deepStop: SLBRscText {
 			idc = 1124;
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.025;
-			x = safeZoneX+(safeZoneW*0.905);
+			sizeEx = 0.02;
+			x = safeZoneX+(safeZoneW*0.903);
 			y = safeZoneY+(safeZoneH*0.59);
-			w = safeZoneW* 0.03;
-			h = safeZoneH* 0.03;
+			w = safeZoneW* 0.04;
+			h = safeZoneH* 0.04;
 		};
-		class grad_emergencyText: gradRscText {
+		class slb_emergencyText: SLBRscText {
 			idc = 1125;
 			text = "";
 			font = puristaBold;
@@ -187,40 +187,40 @@ class grad_disp {
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
-		class grad_emergencyDepth: gradRscText {
+		class slb_emergencyDepth: SLBRscText {
 			idc = 1126;
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.053;
-			x = safeZoneX+(safeZoneW*0.81);
-			y = safeZoneY+(safeZoneH*0.53);
+			sizeEx = 0.05;
+			x = safeZoneX+(safeZoneW*0.813);
+			y = safeZoneY+(safeZoneH*0.55);
 			w = safeZoneW* 0.03;
-			h = safeZoneH* 0.05;
+			h = safeZoneH* 0.03;
 		};
-		class grad_emergencyTime: gradRscText {
+		class slb_emergencyTime: SLBRscText {
 			idc = 1127;
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.053;
-			x = safeZoneX+(safeZoneW*0.44);
-			y = safeZoneY+(safeZoneH*0.07);
-			w = safeZoneW* 1;
-			h = safeZoneH* 1;
+			sizeEx = 0.05;
+			x = safeZoneX+(safeZoneW*0.87);
+			y = safeZoneY+(safeZoneH*0.55);
+			w = safeZoneW* 0.03;
+			h = safeZoneH* 0.03;
 		};
-		class grad_asendBar: gradRscPicture {
+		class slb_asendBar: SLBRscPicture {
 			idc = 1128;
 			text = "";
 			font = puristaLight;
 			colorText[] = {};
 			sizeEx = 1;
-			x = safezoneX + (0.79 * safezoneW);
-			y = safezoneY + (0.452 * safezoneH);
-			w = safeZoneW* 0.16;
+			x = safezoneX + (safezoneW*0.79);
+			y = safezoneY + (safezoneH*0.452);
+			w = safeZoneW* 0.15;
 			h = safeZoneH* 0.23;
 		};
-		class grad_n2Bar: gradRscPicture {
+		class slb_n2Bar: SLBRscPicture {
 			idc = 1129;
 			text = "";
 			font = puristaLight;
@@ -231,7 +231,7 @@ class grad_disp {
 			w = safeZoneW* 0.07;
 			h = safeZoneH* 0.13;
 		};
-		class grad_emergencyArrowUP: gradRscPicture {
+		class slb_emergencyArrowUP: SLBRscPicture {
 			idc = 1130;
 			text = "";
 			font = puristaLight;
@@ -242,7 +242,7 @@ class grad_disp {
 			w = safeZoneW* 0.015;
 			h = safeZoneH* 0.025;
 		};
-		class grad_emergencyArrowDOWN: gradRscPicture {
+		class slb_emergencyArrowDOWN: SLBRscPicture {
 			idc = 1131;
 			text = "";
 			font = puristaLight;
@@ -253,7 +253,7 @@ class grad_disp {
 			w = safeZoneW* 0.015;
 			h = safeZoneH* 0.025;
 		};
-		class grad_deepStop: gradRscText {
+		class slb_deepStopText: SLBRscText {
 			idc = 1132;
 			text = "";
 			font = puristaBold;
