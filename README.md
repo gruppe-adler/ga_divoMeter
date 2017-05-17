@@ -7,7 +7,7 @@
 - Rebreather for Diving
 - Effects for Decompression Illness, Nitrogen Narcosis, 02/Helium Toxicity
 - Refill or Replacement of Gas in Tanks
-- Support for 9 Different [Gases](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
+- Support for 12 Different [Gases](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
 
 *Gas*				| *O2*			| *N2*			| *HE*             
 --------------------|---------------|---------------|--------------------------------------------------------------
@@ -15,8 +15,11 @@ Air 				| 21% 			| 79%			| 0%
 EAN32 				| 32% 			| 68% 			| 0%
 Heliox 21 			| 21% 			| 79% 			| 0%
 Heliox 28 			| 28% 			| 72% 			| 0%
+Helitrox			| 26% 			| 57% 			| 17%
+Hypoxic				| 10% 			| 50% 			| 44%
 Nitrox I 			| 32% 			| 68% 			| 0%
 Nitrox II 			| 36% 			| 64% 			| 0% 
+Normoxic			| 19% 			| 30% 			| 51%
 Oxygen 				| 100%			| 0% 			| 0%
 Trimax 				| 10% 			| 40% 			| 50%
 Trimax 15/55 		| 15% 			| 30% 			| 55%

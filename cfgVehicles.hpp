@@ -46,12 +46,14 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "25";
 			};
+			/*
 			 class Units {
 				displayName = $STR_grad_divoMeter_unit;
 				description = $STR_grad_divoMeter_unit_desc;
 				typeName = "STRING";
 				defaultValue = "";
 			 };
+			 */
 		};
 		class ModuleDescription : ModuleDescription {
 			description = $STR_grad_divoMeter_description;
@@ -66,7 +68,7 @@ class CfgVehicles {
             };
 			class grad_divoMeter_emergencyAsent {
 				displayName = $STR_grad_divoMeter_emergencyAsent;
-				condition = "true";
+				condition = "(DIVOMETERGEARON)";
 				statement = "[] call grad_divoMeter_fnc_emergencyAscent";
 				showDisabled = 1;
 				exceptions[] = {"isNotSwimming"};

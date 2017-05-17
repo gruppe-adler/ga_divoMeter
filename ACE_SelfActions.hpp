@@ -1,7 +1,7 @@
 class grad_divoMeter_open
 {
      displayName = $STR_grad_divoMeter_divoMeter_open;
-     condition = "";
+     condition = "(DIVOMETERGEARON)";
      statement = "[true] call grad_divoMeter_fnc_openDivoMeter";
      priority = 2.5;
      icon = "";
@@ -10,12 +10,13 @@ class grad_divoMeter_open
 class grad_divoMeter_close
 {
      displayName = $STR_grad_divoMeter_divoMeter_close;
-     condition = "";
+     condition = "(DIVOMETERGEARON)";
      statement = "[false] call grad_divoMeter_fnc_openDivoMeter";
      priority = 2.5;
      icon = "";
 };
 
+/*
 class grad_divoMeter_switchTank
 {
      displayName = $STR_grad_divoMeter_divoMeter_switchTank;
@@ -24,3 +25,4 @@ class grad_divoMeter_switchTank
      priority = 2.5;
      icon = "";
 };
+*/

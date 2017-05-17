@@ -4,14 +4,13 @@ _activ		 	= 	_logic getVariable ["activ", false];
 _maxppO 		= 	_logic getVariable ["maxppO",1.1];
 _tempC			= 	_logic getVariable ["tempC",20];
 grad_refillRate =	_logic getVariable ["rate", 25];
-_units			= 	_logic getVariable "Units";
+//_units			= 	_logic getVariable "Units";
 
-diag_log format ["DM Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4, Units: %5", _activ, _maxppO, _tempC, grad_refillRate, _units];
+diag_log format ["DM Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, _maxppO, _tempC, grad_refillRate];
 
 if (_activ) then {
 	if !(isNil "_units" ||(typeOf player) in _units) exitWith {diag_log format ["DM: Player %1 is no Diver.", player];};
 	DIVOMETEROPEN = false;
-	DIVIOMETERHEAD = false;
 	DIVOMETERGEARON = false;
 	DIVOMETERMETRIC = true;
 	
