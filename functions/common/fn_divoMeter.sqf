@@ -131,7 +131,8 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			grad_upDepth = 0;
 		};
 
-		if (DIVOMETEROPEN) then {			
+		if (DIVOMETEROPEN) then {
+		// if (visibleWatch && DIVOMETERWATCHON) then {
 			disableSerialization;
 			_displayUI = uiNamespace getVariable "grad_disp";
 			
