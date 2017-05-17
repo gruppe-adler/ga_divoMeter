@@ -6,23 +6,23 @@
 - Fast Asend in case of Emergency
 - Rebreather for Diving
 - Effects for Decompression Illness, Nitrogen Narcosis, 02/Helium Toxicity
-- Refill or Replacement of Gas in Tanks
-- Support for 12 Different [Gases](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
+- Refill or replacement of gases in tanks
+- Support for 12 different [gas mixtures](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
 
-*Gas*				| *O2*			| *N2*			| *HE*             
---------------------|---------------|---------------|--------------------------------------------------------------
-Air 				| 21% 			| 79%			| 0%
-EAN32 				| 32% 			| 68% 			| 0%
-Heliox 21 			| 21% 			| 79% 			| 0%
-Heliox 28 			| 28% 			| 72% 			| 0%
-Helitrox			| 26% 			| 57% 			| 17%
-Hypoxic				| 10% 			| 50% 			| 44%
-Nitrox I 			| 32% 			| 68% 			| 0%
-Nitrox II 			| 36% 			| 64% 			| 0% 
-Normoxic			| 19% 			| 30% 			| 51%
-Oxygen 				| 100%			| 0% 			| 0%
-Trimax 				| 10% 			| 40% 			| 50%
-Trimax 15/55 		| 15% 			| 30% 			| 55%
+*Gas*				| *O2*			| *N2*			| *HE*   	| *Depth (m)*     
+--------------------------------|-----------------------|-----------------------|---------------|--------------------
+Air 				| 21% 			| 79%			| 0%		| 0 - 40		
+EAN32 				| 32% 			| 68% 			| 0%		| 0 - 40		
+Heliox 21 			| 21% 			| 0% 			| 79%		| 100 - 500		
+Heliox 28 			| 28% 			| 0% 			| 72%		| 100 - 500		
+Helitrox			| 26% 			| 57% 			| 17%		| 10 - 100		
+Hypoxic				| 10% 			| 50% 			| 44%		| 10 - 100		
+Nitrox I 			| 32% 			| 68% 			| 0%		| 0 - 40		
+Nitrox II 			| 36% 			| 64% 			| 0% 		| 0 - 40		
+Normoxic			| 19% 			| 30% 			| 51%		| 30 - 60		
+Oxygen 				| 100%			| 0% 			| 0%		| 0 - 4
+Trimax 				| 10% 			| 40% 			| 50%		| 30 - 60		
+Trimax 15/55 			| 15% 			| 30% 			| 55%		| 30 - 60		
 	
 ## Usage	
 The mod will be activ when you put on one of these vests: V_GRAD_DivingTank_Blk, V_GRAD_DivingTank_Oli, V_GRAD_DivingTank_Rgr
