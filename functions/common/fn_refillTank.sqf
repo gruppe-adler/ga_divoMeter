@@ -52,10 +52,10 @@ if (_bool) then {
 	switch (_class) do {		
 		case 0 	: {grad_refill_o2 = 0.21; 	grad_refill_n2 = 0.79; 	grad_refill_he = 0;};		//Air
 		case 1 	: {grad_refill_o2 = 0.32;	grad_refill_n2 = 0.68; 	grad_refill_he = 0;};		//EAN32
-		case 2 	: {grad_refill_o2 = 0.21; 	grad_refill_n2 = 0.79; 	grad_refill_he = 0;};		//Heliox 21
-		case 3 	: {grad_refill_o2 = 0.28; 	grad_refill_n2 = 0.72; 	grad_refill_he = 0;};		//Heliox 28
+		case 2 	: {grad_refill_o2 = 0.21; 	grad_refill_n2 = 0; 	grad_refill_he = 0.79;};	//Heliox 21
+		case 3 	: {grad_refill_o2 = 0.28; 	grad_refill_n2 = 0; 	grad_refill_he = 0.72;};	//Heliox 28
 		case 4 	: {grad_refill_o2 = 0.26; 	grad_refill_n2 = 0.57; 	grad_refill_he = 0.17;};	//Helitrox
-		case 5	:{grad_refill_o2 = 0.10; 	grad_refill_n2 = 0.50; 	grad_refill_he = 0.40;};	//Hypoxic
+		case 5	: {grad_refill_o2 = 0.10; 	grad_refill_n2 = 0.50; 	grad_refill_he = 0.40;};	//Hypoxic
 		case 6 	: {grad_refill_o2 = 0.32; 	grad_refill_n2 = 0.68; 	grad_refill_he = 0;};		//Nitrox I
 		case 7 	: {grad_refill_o2 = 0.36; 	grad_refill_n2 = 0.64; 	grad_refill_he = 0;};		//Nitrox II 
 		case 8	: {grad_refill_o2 = 0.19; 	grad_refill_n2 = 0.30; 	grad_refill_he = 0.51;};	//Normoxic
