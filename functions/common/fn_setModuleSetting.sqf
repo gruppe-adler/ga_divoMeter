@@ -9,18 +9,19 @@ grad_refillRate =	_logic getVariable ["rate", 25];
 diag_log format ["DM Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, _maxppO, _tempC, grad_refillRate];
 
 if (_activ) then {
-	if !(isNil "_units" ||(typeOf player) in _units) exitWith {diag_log format ["DM: Player %1 is no Diver.", player];};
-	DIVOMETEROPEN = false;
+	//if !(isNil "_units" ||(typeOf player) in _units) exitWith {diag_log format ["DM: Player %1 is no Diver.", player];};
 	DIVOMETERGEARON = false;
 	DIVOMETERMETRIC = true;
+	DIVOMETEROPEN = false;
+	DIVOMETERWATCHON = false;
 	
 	waitUntil {!isNull player};
 
 	player addEventHandler ["TAKE", 
 		{
 			diag_log format ["DM Take Gear: %1",(_this select 2)];
-			if (_this select 2 in DIVOMETERGEAR) then {
-				[true, (_this select 2)] call grad_divoMeter_fnc_checkAir;
+			switch (true) do {
+				case (_this select 2 in DIVOMETERGEAR) : {[true, (_this select 2)] call grad_divoMeter_fnc_checkAir;};
 			};
 		}
 	];
@@ -28,8 +29,8 @@ if (_activ) then {
 	player addEventHandler ["PUT", 
 		{
 			diag_log format ["DM Put Gear: %1",(_this select 2)];
-			if (_this select 2 in DIVOMETERGEAR) then {
-				[false, (_this select 2)] call grad_divoMeter_fnc_checkAir;
+			switch (true) do {
+				case (_this select 2 in DIVOMETERGEAR) : {[false, (_this select 2)] call grad_divoMeter_fnc_checkAir;};
 			};
 		}
 	];
