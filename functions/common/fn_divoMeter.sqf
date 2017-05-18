@@ -188,8 +188,8 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 					(_displayUI displayCtrl 1125) ctrlSetText "DEEP STOP";
 					(_displayUI displayCtrl 1126) ctrlSetText format ["%1M", grad_depth2deepStop];
 					(_displayUI displayCtrl 1127) ctrlSetText format ["%1", grad_deepStopTime];
-					/*
-					switch {true} do {
+					
+					switch (true) do {
 						case (grad_depth2deepStop > 1.5) : {
 									if ((_displayUI ctrlText 1131) == "grad_divoMeter\images\triangle_down_divider.paa") then {
 										(_displayUI displayCtrl 1130) ctrlSetText "";
@@ -213,7 +213,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 									(_displayUI displayCtrl 1131) ctrlSetText "grad_divoMeter\images\triangle_down_divider.paa";
 								};
 					};
-					*/
+					
 				};
 			};
 			
