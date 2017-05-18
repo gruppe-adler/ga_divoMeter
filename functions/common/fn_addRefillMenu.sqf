@@ -29,7 +29,7 @@ _changeGasHelitrox_2 = 	["Change_Gas_Helitrox",	"Helitrox",		"",		{[false, 4, 1]
 _changeGasHypoxic_2 = 	["Change_Gas_Hypoxic",	"Hypoxic",		"",		{[false, 5, 1] 	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
 _changeGasNitroxI_2 = 	["Change_Gas_NitroxI",	"Nitrox I",		"",		{[false, 6, 2]	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
 _changeGasNitroxII_2 = 	["Change_Gas_NitroxII",	"Nitrox II",	"",		{[false, 7, 2] 	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
-_changeGasNormoxic_2 = 	["Change_Gas_Normoxic",	"Normoxic",		"",		{[false, 8, 2] 	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction
+_changeGasNormoxic_2 = 	["Change_Gas_Normoxic",	"Normoxic",		"",		{[false, 8, 2] 	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
 _changeGasOxygen_2 = 	["Change_Gas_Oxygen",	"Oxygen",		"",		{[false, 9, 2] 	call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
 _changeGasTrimax_2 = 	["Change_Gas_Trimax",	"Trimax",		"",		{[false, 10, 2] call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
 _changeGasTrimax15_2 = 	["Change_Gas_Trimax15",	"Trimax 15/55",	"",		{[false, 11, 2] call grad_divoMeter_fnc_refillTank},{true},{}] call ace_interact_menu_fnc_createAction;
@@ -59,7 +59,7 @@ _refill_2 = 			["Refill_Tank",			"Refill Tank",	"",		{[true, 2, 2]  	call grad_d
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank2"	], 	_changeGasEAN32_2	] call ace_interact_menu_fnc_addActionToClass;
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank2"	], 	_changeGasHeliox21_2] call ace_interact_menu_fnc_addActionToClass;
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank2"	],	_changeGasHeliox28_2] call ace_interact_menu_fnc_addActionToClass;
-_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank1"	],	_changeGasHelitrox_2] call ace_interact_menu_fnc_addActionToClass;
+[_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank1"	],	_changeGasHelitrox_2] call ace_interact_menu_fnc_addActionToClass;
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank1"	],	_changeGasHypoxic_2 ] call ace_interact_menu_fnc_addActionToClass;
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank2"	], 	_changeGasNitroxI_2	] call ace_interact_menu_fnc_addActionToClass;
 [_obj, 0, ["ACE_MainActions", "Change_Gas", "Tank2"	], 	_changeGasNitroxII_2] call ace_interact_menu_fnc_addActionToClass;

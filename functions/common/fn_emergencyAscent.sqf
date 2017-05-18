@@ -14,7 +14,8 @@ player attachTo [_can, [0,0,0]];
 	
 	if !(underwater player) exitWith {
 		[_handle] call CBA_fnc_removePerFrameHandler; 
-		_can setVelocity [0,0,0] player setVelocity [0,0,0]; 
+		_can setVelocity [0,0,0];
+		player setVelocity [0,0,0]; 
 		sleep .3; 
 		deletevehicle _can;
 	};

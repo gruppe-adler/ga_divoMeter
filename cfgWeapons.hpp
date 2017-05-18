@@ -51,6 +51,7 @@ class CfgWeapons {
 		grad_divometer_maxBar1 = 200;
 	};
 
+	/*	
 	class ItemDivingWatch: ItemWatch {
 		author = "Salbei";
 		displayName = "Diving Watch";
@@ -62,7 +63,7 @@ class CfgWeapons {
 	};
 
 	
-/*	
+
 	class H_GRAD_DivingMask {
 	author = "Salbei";
 		displayName = "Diving Mask";
