@@ -1,3 +1,4 @@
+_logic = param [0,objNull,[objNull]];
 
 _activ		 	= 	_logic getVariable ["activ", true];
 _maxppO 		= 	_logic getVariable ["maxppO",1.1];
