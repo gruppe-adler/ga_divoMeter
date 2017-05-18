@@ -1,24 +1,17 @@
-/*_logic = param [0,objNull,[objNull]];
 
 _activ		 	= 	_logic getVariable ["activ", true];
 _maxppO 		= 	_logic getVariable ["maxppO",1.1];
 _tempC			= 	_logic getVariable ["tempC",20];
-grad_refillRate =	_logic getVariable ["rate", 25];
-//_units			= 	_logic getVariable ["Units", "NONE"];
+grad_refillRate 	=	_logic getVariable ["rate", 25];
+_units			= 	_logic getVariable ["Units", "NONE"];
 
-*/
-
-_activ = true;
-_maxppO = 1.1;
-_tempC = 20; 
-grad_refillRate = 25;
 
 diag_log format ["DM Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, _maxppO, _tempC, grad_refillRate];
 
 if (_activ) then {
 	waitUntil {!isNull player};
 	
-	//if (_units == "NONE" ||!((typeOf player) in _units)) exitWith {diag_log format ["DM: Player %1 is no Diver.", player];};
+	if (_units == "NONE" ||!((typeOf player) in _units)) exitWith {diag_log format ["DM: Player %1 is no Diver.", player];};
 	DIVOMETERGEARON = false;
 	DIVOMETERMETRIC = true;
 	DIVOMETEROPEN = false;
