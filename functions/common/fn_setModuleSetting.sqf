@@ -36,5 +36,5 @@ if (_activ) then {
 		}
 	];
 	
-	[_maxppO, _tempC] call ga_divoMeter_fnc_divometer;
+	[_maxppO, _tempC] call grad_divoMeter_fnc_divometer;
 };
