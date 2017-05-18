@@ -55,53 +55,6 @@ class CfgWeapons {
 	class ItemDivingWatch: ItemWatch {
 		author = "Salbei";
 		displayName = "Diving Watch";
-		hiddenSelections[] = {};
-		hiddenSelectionsTextures[] = {};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
-	};
-
-	
-
-	class H_GRAD_DivingMask {
-	author = "Salbei";
-		displayName = "Diving Mask";
-		hiddenSelections[] = {};
-		hiddenSelectionsTextures[] = {};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
-
-		class ItemInfo: ItemInfo {
-			author = "Salbei";
-			containerClass = "Supply5";
-			hiddenSelections[] = {};
-			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {};
-			hiddenUnderwaterSelectionsTextures[] = {};
-			shownUnderwaterSelections[] = {};
-		};
-	};
-	
-	class V_GRAD_BuoyancyCompensator {
-	author = "Salbei";
-		displayName = "Diving Buoyancy Compensator";
-		hiddenSelections[] = {};
-		hiddenSelectionsTextures[] = {};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
-
-		class ItemInfo: ItemInfo {
-			author = "Salbei";
-			containerClass = "Supply5";
-			hiddenSelections[] = {};
-			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {};
-			hiddenUnderwaterSelectionsTextures[] = {};
-			shownUnderwaterSelections[] = {};
-		};
 	};
 */
 };
