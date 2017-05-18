@@ -46,14 +46,12 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "25";
 			};
-			/*
 			 class Units {
 				displayName = $STR_grad_divoMeter_unit;
 				description = $STR_grad_divoMeter_unit_desc;
 				typeName = "STRING";
-				defaultValue = "";
+				defaultValue = "B_diver_F, B_diver_TL_F, B_diver_exp_F";
 			 };
-			 */
 		};
 		class ModuleDescription : ModuleDescription {
 			description = $STR_grad_divoMeter_description;
