@@ -1,4 +1,4 @@
- # Divo Meter
+ # Enhanced Diving
  ## Work In Progress!
  
  ## Features
@@ -6,8 +6,8 @@
  - Fast Asend in case of Emergency
  - Rebreather for Diving
  - Effects for Decompression Illness, Nitrogen Narcosis, 02/Helium Toxicity
-- Refill or replacement of gases in tanks
-- Support for 12 different [gas mixtures](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
+ - Refill or replacement of gases in tanks
+ - Support for 12 different [gas mixtures](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
  
 *Gas*				| *O2*			| *N2*			| *HE*   	| *Depth (m)*     
 --------------------------------|-----------------------|-----------------------|---------------|--------------------
@@ -27,7 +27,7 @@ Trimax 15/55 			| 15% 			| 30% 			| 55%		| 30 - 60
  ## Usage	
  The mod will be activ when you put on one of these vests: V_GRAD_DivingTank_Blk, V_GRAD_DivingTank_Oli, V_GRAD_DivingTank_Rgr
  The diving computer can be opend using the Ace Selfinteraction.
- To add the RefillMenu to an Objekt, add this in the init: `[_this] call grad_divoMeter_addRefillMenu;`
+ To add the RefillMenu to an Objekt, add this in the init: `[_this] call grad_enhancedDiving_addRefillMenu;`
  
  ## Dependencies
  These addons are required to run this mod:

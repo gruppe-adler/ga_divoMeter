@@ -20,7 +20,7 @@ class grad_disp {
 			y = safeZoneY+(safeZoneH*0.32);
 			w = safeZoneW* 0.30;
 			h = safeZoneH* 0.48;
-			text = "images\divingWatch.paa";
+			text = "\enhancedDiving\images\divingWatch.paa";
 		}; 
 		class slb_distanzeUnit: SLBRscText {
 			idc = 1111;

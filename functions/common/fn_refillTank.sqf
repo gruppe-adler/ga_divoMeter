@@ -2,7 +2,7 @@ private ["_obj", "_container"];
 params ["_bool", "_class", "_tank"];
 
 _container = format ["GRAD_DIVE_GAS%1", _tank];
-_barName = format ["grad_divometer_maxBar%1", _tank];
+_barName = format ["grad_enhancedDiving_maxBar%1", _tank];
 
 _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {

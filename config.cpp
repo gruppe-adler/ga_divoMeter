@@ -1,13 +1,13 @@
 class CfgPatches {
 	class grad_rebreatherOnLand {
 
-		name = "GRAD Diving Mod";
-		author = "Salbei";
+		name = "GRAD Enhanced Diving";
+		author = "Gruppe Adler";
 
 		requiredVersion = 1.0;
 		requiredAddons[] = {"ace_main"};
 
-		units[] = {"grad_divoMeter_params"};
+		units[] = {"grad_enhancedDiving_params"};
 		weapons[] = {};
 	};
 };

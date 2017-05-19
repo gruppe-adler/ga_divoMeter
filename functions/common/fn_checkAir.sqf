@@ -5,8 +5,8 @@ diag_log format ["DM Objekt: %1, Bool: %2", _obj, _bool];
 if (_bool) then {
 	_value = _obj getVariable "GRAD_DIVE_GAS1";
 	if (isNil "_value")then {
-		_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divoMeter_gasClass1");
-		_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divometer_maxBar1");
+		_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_enhancedDiving_gasClass1");
+		_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_enhancedDiving_maxBar1");
 		
 		diag_log format
 		
@@ -26,14 +26,14 @@ if (_bool) then {
 		}; 
 		
 	  _obj setVariable ["GRAD_DIVE_GAS1", [_bar, _o2, _n2, _he]];
-	  DIVOMETERGEARON = true;
+	  EDGEARON = true;
 	};
 	
-	if (_obj in DIVOMETERDOUBLE) then {
+	if (_obj in EDDOUBLE) then {
 		_value = _obj getVariable "GRAD_DIVE_GAS2";
 		if (isNil "_value")then {
-			_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divoMeter_gasClass2");
-			_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_divometer_maxBar2");
+			_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_enhancedDiving_gasClass2");
+			_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "grad_enhancedDiving_maxBar2");
 			
 			switch (_class) do {		
 				case 0 	: {grad_refill_o2 = 0.21; 	grad_refill_n2 = 0.79; 	grad_refill_he = 0;};		//Air
@@ -53,5 +53,5 @@ if (_bool) then {
 		};
 	};
 }else{
-	DIVOMETERGEARON = false;
+	EDGEARON = false;
 };

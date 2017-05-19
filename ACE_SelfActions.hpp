@@ -1,27 +1,27 @@
-class grad_divoMeter_open
+class grad_enhancedDiving_open
 {
-     displayName = $STR_grad_divoMeter_divoMeter_open;
-     condition = "(DIVOMETERGEARON)";
-     statement = "[true] call grad_divoMeter_fnc_openDivoMeter";
+     displayName = $STR_grad_enhancedDiving_watch_open;
+     condition = "(EDGEARON)";
+     statement = "[true] call grad_enhancedDiving_fnc_openWatch";
      priority = 2.5;
      icon = "";
 };
 
-class grad_divoMeter_close
+class grad_enhancedDiving_close
 {
-     displayName = $STR_grad_divoMeter_divoMeter_close;
-     condition = "(DIVOMETERGEARON)";
-     statement = "[false] call grad_divoMeter_fnc_openDivoMeter";
+     displayName = $STR_grad_enhancedDiving_watch_close;
+     condition = "(EDGEARON)";
+     statement = "[false] call grad_enhancedDiving_fnc_openWatch";
      priority = 2.5;
      icon = "";
 };
 
 /*
-class grad_divoMeter_switchTank
+class grad_enhancedDiving_switchTank
 {
-     displayName = $STR_grad_divoMeter_divoMeter_switchTank;
-     condition = "((backpackContainer player) in DIVOMETERDOUBLE)";
-     statement = "[] call grad_divoMeter_fnc_switchTank";
+     displayName = $STR_grad_enhancedDiving_switchTank;
+     condition = "((backpackContainer player) in EDDOUBLE)";
+     statement = "[] call grad_enhancedDiving_fnc_switchTank";
      priority = 2.5;
      icon = "";
 };

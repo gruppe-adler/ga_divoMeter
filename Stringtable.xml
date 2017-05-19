@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="DOM">
-    <Package name="DIVOMETER">
-		<Key ID="STR_grad_divoMeter_activ">
+    <Package name="EnhancedDiving">
+		<Key ID="STR_grad_enhancedDiving_activ">
             <English>Activate the Diving Mod</English>
             <German>Activiere den Tauch Mod</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_activ_desc">
+		<Key ID="STR_grad_enhancedDiving_activ_desc">
             <English>This enables the diving mod.</English>
             <German>Dies activiert den Tauch Mod.</German>
 		</Key>
-		<Key ID="STR_grad_divoMeter_maxppO">
+		<Key ID="STR_grad_enhancedDiving_maxppO">
             <English>Max PPO2</English>
             <German>Max PPO2</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_maxppO_desc">
+		<Key ID="STR_grad_enhancedDiving_maxppO_desc">
             <English>Maximum safe partial pressure of o2. Safe values range from 1.0 - 1.4</English>
             <German>Maximaler sicherer Partialdruck von o2. Sichere Werte reichen von 1.0 - 1.4</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_tempC">
+		<Key ID="STR_grad_enhancedDiving_tempC">
             <English>Temperatur</English>
             <German>Temperatur</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_tempC_desc">
+		<Key ID="STR_grad_enhancedDiving_tempC_desc">
             <English>Temperature at the surface in °Celsius.</English>
             <German>Temperatur an der oberfläche in °Celsius.</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_rate">
+		<Key ID="STR_grad_enhancedDiving_rate">
             <English>Refill rate</English>
             <German>Nachfuell rate</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_rate_desc">
+		<Key ID="STR_grad_enhancedDiving_rate_desc">
             <English>Defines the rate at wich the tank is refilled.</English>
             <German>Definiert die Menge an Gas die beim Nachfüllen pro Sekunde in den Tank gepumpt wird.</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_unit">
+		<Key ID="STR_grad_enhancedDiving_unit">
             <English>Units</English>
             <German>Einheiten</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_unit_desc">
+		<Key ID="STR_grad_enhancedDiving_unit_desc">
             <English>List of units on wich the calculations shall run.</English>
             <German>Liste der Einheiten auf dennen die Berechnungen laufen sollen.</German>
 		</Key>
-		<Key ID="STR_grad_divoMeter_description">
+		<Key ID="STR_grad_enhancedDiving_description">
             <English>Paramters for Diving Conditions.</English>
             <German>Paramter für die Tauchumgebung.</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_emergencyAsent">
+		<Key ID="STR_grad_enhancedDiving_emergencyAsent">
             <English>Emergency Asent</English>
             <German>Notfallauftauchen</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_divoMeter_open">
-            <English>Open DivoMeter</English>
-            <German>DivoMeter öffnen</German>
+		<Key ID="STR_grad_enhancedDiving_watch_open">
+            <English>Open enhancedDiving</English>
+            <German>enhancedDiving öffnen</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_divoMeter_close">
-            <English>Close DivoMeter</English>
-            <German>DivoMeter schließen</German>
+		<Key ID="STR_grad_enhancedDiving_watch_close">
+            <English>Close enhancedDiving</English>
+            <German>enhancedDiving schließen</German>
         </Key>
-		<Key ID="STR_grad_divoMeter_divoMeter_switchTank">
+		<Key ID="STR_grad_enhancedDiving_switchTank">
             <English>Switch Tank</English>
             <German>Flasche Wechseln</German>
         </Key>
