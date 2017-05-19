@@ -191,7 +191,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 					
 					switch (true) do {
 						case (grad_depth2deepStop > 1.5) : {
-									if ((_displayUI ctrlText 1131) == "grad_divoMeter\images\triangle_down_divider.paa") then {
+									if ((ctrlText 1131) == "grad_divoMeter\images\triangle_down_divider.paa") then {
 										(_displayUI displayCtrl 1130) ctrlSetText "";
 										(_displayUI displayCtrl 1131) ctrlSetText "";
 									}else{
@@ -200,7 +200,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 									};
 								};
 						case (grad_depth2deepStop < -1.5) : {
-									if ((_displayUI ctrlText 1131) == "grad_divoMeter\images\triangle_up_divider.paa") then {
+									if ((ctrlText 1131) == "grad_divoMeter\images\triangle_up_divider.paa") then {
 										(_displayUI displayCtrl 1130) ctrlSetText "";
 										(_displayUI displayCtrl 1131) ctrlSetText "";
 									}else{
