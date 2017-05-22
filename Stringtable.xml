@@ -50,12 +50,12 @@
             <German>Notfallauftauchen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_watch_open">
-            <English>Open enhancedDiving</English>
-            <German>enhancedDiving öffnen</German>
+            <English>Open Diving Computer</English>
+            <German>Tauchcomputer öffnen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_watch_close">
-            <English>Close enhancedDiving</English>
-            <German>enhancedDiving schließen</German>
+            <English>Close Diving Computer</English>
+            <German>Tauchcomputer schließen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_switchTank">
             <English>Switch Tank</English>

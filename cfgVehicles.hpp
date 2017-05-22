@@ -13,7 +13,7 @@ class CfgVehicles {
         scope = 2;
         displayName = "Enhanced Diving Settings";
         icon ="";
-        category = "Enhanced Diving";
+        category = "enhancedDiving";
         function = "grad_enhancedDiving_fnc_setModuleSetting";
         functionPriority = 0;
         isGlobal = 1;
@@ -82,7 +82,7 @@ class CfgVehicles {
 class CfgFactionClasses {
 	class NO_CATEGORY;
 	class enhancedDiving: NO_CATEGORY {
-	displayName = "Divo Meter";
+	displayName = "Enhanced Diving";
         priority = 2;
         side = 7;
 	};

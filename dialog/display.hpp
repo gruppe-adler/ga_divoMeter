@@ -170,7 +170,7 @@ class grad_disp {
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.02;
+			sizeEx = 0.025;
 			x = safeZoneX+(safeZoneW*0.903);
 			y = safeZoneY+(safeZoneH*0.59);
 			w = safeZoneW* 0.04;
@@ -181,9 +181,9 @@ class grad_disp {
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.053;
-			x = safeZoneX+(safeZoneW*0.42);
-			y = safeZoneY+(safeZoneH*0.07);
+			sizeEx = 0.035;
+			x = safeZoneX+(safeZoneW*0.355);
+			y = safeZoneY+(safeZoneH*0.029);
 			w = safeZoneW* 1;
 			h = safeZoneH* 1;
 		};
@@ -258,11 +258,11 @@ class grad_disp {
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.025;
-			x = safeZoneX+(safeZoneW*0.79);
-			y = safeZoneY+(safeZoneH*0.55);
+			sizeEx = 0.05;
+			x = safeZoneX+(safeZoneW*0.783);
+			y = safeZoneY+(safeZoneH*0.485);
 			w = safeZoneW* 0.025;
-			h = safeZoneH* 0.2;
+			h = safeZoneH* 0.3;
 		};
 	};
 }; 
