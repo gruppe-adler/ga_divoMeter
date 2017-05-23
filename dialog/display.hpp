@@ -1,7 +1,7 @@
-class grad_disp {
+class slb_disp {
 	idd = 1109;
-	name=_grad;
-	onLoad = "uiNamespace setVariable ['grad_disp', _this select 0]";
+	name=_slb;
+	onLoad = "uiNamespace setVariable ['slb_disp', _this select 0]";
 	fadein = 0;
 	fadeout = 0;
 	duration = 10e10;
@@ -20,7 +20,7 @@ class grad_disp {
 			y = safeZoneY+(safeZoneH*0.32);
 			w = safeZoneW* 0.30;
 			h = safeZoneH* 0.48;
-			text = "\enhancedDiving\images\divingWatch.paa";
+			text = "\grad_enhancedDiving\images\divingWatch.paa";
 		}; 
 		class slb_distanzeUnit: SLBRscText {
 			idc = 1111;

@@ -68,6 +68,8 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	
+	diag_log format ["ED: Gear: %1, Metric: %2", EDGEARON, EDMETRIC];
+	
 	if (grad_switchTank) then {
 		if !(isNil "grad_maxBar") then {
 			_value = [] call grad_enhancedDiving_fnc_checkGear;

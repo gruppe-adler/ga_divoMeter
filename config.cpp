@@ -12,11 +12,11 @@ class CfgPatches {
 	};
 };
 
+#include "defines.hpp"
 #include "functions\cfgFunctions.hpp"
 #include "dialog\define.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
-#include "defines.hpp"
 
 class RscTitles {
 	#include "dialog\display.hpp"

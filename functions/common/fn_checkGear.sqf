@@ -3,10 +3,10 @@ diag_log "Called CheckGear";
 _container = format ["GRAD_DIVE_GAS%1", grad_selectedTank]; 
 _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {
-	diag_log "DM: No diving backpack found, falling back to vest.";
+	diag_log "ED: No diving backpack found, falling back to vest.";
 	_value = (vestContainer player) getVariable _container;
 };
-if (isNil "_value") exitWith {};
+if (isNil "_value") exitWith {diag_log "ED: No values found";};
 
 _value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
 
