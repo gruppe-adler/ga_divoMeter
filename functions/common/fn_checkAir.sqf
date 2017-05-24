@@ -20,10 +20,10 @@ if (_bool) then {
 	if (isNil "_value")then {
 		_bar = 0;
 		
-		_class = getNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_gasClass1");
-		_bar = getNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_maxBar1");
-		
-		diag_log format ["ED: Type: %1, %2, %3, %4", (typeName _class), (typeName _bar), (isNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_gasClass1")), (isNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_maxBar1"))];		
+		_class = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_gasClass1");
+		_bar = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_maxBar1");
+		diag_log format ["printf : %1, %2 %3", _upperClass, _obj, isClass (configFile >> _upperClass >> _obj)];
+		diag_log format ["ED: Type: %1, %2, %3, %4", (typeName _class), (typeName _bar), (isNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_gasClass1")), (isNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_maxBar1"))];		
 		
 		switch (_class) do {		
 			case 0 	: {_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};		//Air
@@ -52,8 +52,8 @@ if (_bool) then {
 	if (_obj in EDDIVINGDOUBLE) then {
 		_value = _obj getVariable "GRAD_DIVE_GAS2";
 		if (isNil "_value")then {
-			_class = getNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_gasClass2");
-			_bar = getNumber (configFile >> _upperClass >> (typeOf _obj) >> "grad_enhancedDiving_maxBar2");
+			_class = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_gasClass2");
+			_bar = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_maxBar2");
 			
 			switch (_class) do {		
 				case 0 	: {_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};		//Air
