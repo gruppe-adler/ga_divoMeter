@@ -1,3 +1,5 @@
+#include "defines.hpp"
+
 _logic = param [0,objNull,[objNull]];
 
 _activ		 	= 	_logic getVariable ["activ", false];
@@ -6,7 +8,7 @@ _tempC			= 	_logic getVariable ["tempC",29];
 grad_refillRate 	=	_logic getVariable ["rate", 24];
 //_units			= 	_logic getVariable ["Units", "NONE"];
 
-
+waitUntil {!isnil "bis_fnc_init"};
 diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, _maxppO, _tempC, grad_refillRate];
 
 if (_activ) then {
@@ -36,9 +38,13 @@ if (_activ) then {
 		}
 	];
 	
-	if ((vest player) in EDDIVINGGEAR || (backpack player) in EDDIVINGGEAR) then {
+	if ((vest player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
-		[true, (_this select 2)] call grad_enhancedDiving_fnc_checkAir;
+		[true, (vestContainer player)] call grad_enhancedDiving_fnc_checkAir;
+	};
+	if ((backpack player) in EDDIVINGGEAR) then {
+		EDGEARON = true;
+		[true, (backpackContainer player)] call grad_enhancedDiving_fnc_checkAir;
 	};
 		
 	[_maxppO, _tempC] call grad_enhancedDiving_fnc_calcWatch;

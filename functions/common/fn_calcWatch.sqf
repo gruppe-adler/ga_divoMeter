@@ -68,12 +68,17 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	
-	diag_log format ["ED: Gear: %1, Metric: %2", EDGEARON, EDMETRIC];
+	diag_log format ["ED: Gear: %1, Metric: %2 Open: %3", EDGEARON, EDMETRIC, EDOPEN];
 	
 	if (grad_switchTank) then {
 		if !(isNil "grad_maxBar") then {
 			_value = [] call grad_enhancedDiving_fnc_checkGear;
-			_value params ["grad_bar", "grad_percentO2", "grad_percentN2", "grad_percentHe"];
+			_value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
+			grad_bar = _bar;
+			grad_percentO2 = _percentO2;
+			grad_percentN2 = _percentN2;
+			grad_percentHe = _percentHe;
+			
 			_class = format ["grad_enhancedDiving_gasClass1", grad_selectedTank];
 			_maxBar = format ["grad_enhancedDiving_maxBar1", grad_selectedTank];
 			
@@ -89,7 +94,12 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			_value = [] call grad_enhancedDiving_fnc_checkGear;
 			if (isNil "_value") exitWith {};
 			diag_log format ["enhancedDiving Value: %1", _value];
-			_value params ["grad_bar", "grad_percentO2", "grad_percentN2", "grad_percentHe"];
+			_value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
+			grad_bar = _bar;
+			grad_percentO2 = _percentO2;
+			grad_percentN2 = _percentN2;
+			grad_percentHe = _percentHe;
+			
 			_class = format ["grad_enhancedDiving_gasClass1", grad_selectedTank];
 			_maxBar = format ["grad_enhancedDiving_maxBar1", grad_selectedTank];
 			

@@ -12,7 +12,7 @@ class CfgPatches {
 	};
 };
 
-#include "defines.hpp"
+#include "functions\common\defines.hpp"
 #include "functions\cfgFunctions.hpp"
 #include "dialog\define.hpp"
 #include "cfgWeapons.hpp"
