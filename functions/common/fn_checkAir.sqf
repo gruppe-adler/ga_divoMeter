@@ -1,9 +1,9 @@
-params ["_bool", "_obj"];
+params ["_bool", "_obj", "_container"];
 
 //diag_log format ["ED Objekt: %1, Bool: %2", (typeOf _obj), _bool];
 
 if (_bool) then {
-	//_value = _obj getVariable "GRAD_DIVE_GAS1";
+	_value = _container getVariable "GRAD_DIVE_GAS1";
 	
 	diag_log format ["ED: Is kind of: %1", (_obj isKindOf "Vest")];
 	_upperClass = "CfgWeapons";
@@ -39,12 +39,10 @@ if (_bool) then {
 			case 10	: {_o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};	//Trimax
 			case 11	: {_o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};	//Trimax 15/55
 		}; 
-		_o2 = 0.21;
-		_n2 = 0.79;
-		_he = 0;
+
 		diag_log format ["ED: Class: %1, Bar: %2, O2: %3, N2: %4, HE:%5", _class, _bar, _o2, _n2, _he];
 		
-	  //_obj setVariable ["GRAD_DIVE_GAS1", [_bar, _o2, _n2, _he]];
+	  _container setVariable ["GRAD_DIVE_GAS1", [_bar, _o2, _n2, _he]];
 	  EDGEARON = true;
 	};
 	

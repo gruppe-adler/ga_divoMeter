@@ -40,7 +40,7 @@ if (_activ) then {
 	
 	if ((vest player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
-		[true, (vest player)] call grad_enhancedDiving_fnc_checkAir;
+		[true, (vest player), (vestcontainer player)] call grad_enhancedDiving_fnc_checkAir;
 	};
 	if ((backpack player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
