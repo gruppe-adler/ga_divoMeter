@@ -24,7 +24,16 @@ if (_activ) then {
 		{
 			diag_log format ["ED Take Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in EDDIVINGGEAR) : {[true, (_this select 2)] call grad_enhancedDiving_fnc_checkAir;};
+				case ((_this select 2) in EDDIVINGGEAR) : {
+					_value = (backpackContainer player) getVariable _container;
+					if (isNil "_value") then {
+						_value = (vestContainer player) getVariable _container;
+						if (isNil "_value") then {_obj = (vestContainer player);};
+					}else {
+						_obj = (backpackContainer player);
+					};
+					[true, (_this select 2), _obj] call grad_enhancedDiving_fnc_checkAir;
+				};
 			};
 		}
 	];
@@ -33,7 +42,16 @@ if (_activ) then {
 		{
 			diag_log format ["ED Put Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in EDDIVINGGEAR) : {[false, (_this select 2)] call grad_enhancedDiving_fnc_checkAir;};
+				case ((_this select 2) in EDDIVINGGEAR) : {
+					_value = (backpackContainer player) getVariable _container;
+					if (isNil "_value") then {
+						_value = (vestContainer player) getVariable _container;
+						if (isNil "_value") then {_obj = (vestContainer player);};
+					}else {
+						_obj = (backpackContainer player);
+					};
+					[false, (_this select 2), _obj] call grad_enhancedDiving_fnc_checkAir;
+				};
 			};
 		}
 	];
@@ -44,7 +62,7 @@ if (_activ) then {
 	};
 	if ((backpack player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
-		[true, (backpackContainer player)] call grad_enhancedDiving_fnc_checkAir;
+		[true, (backpack player), (backpackContainer player)] call grad_enhancedDiving_fnc_checkAir;
 	};
 		
 	[_maxppO, _tempC] call grad_enhancedDiving_fnc_calcWatch;

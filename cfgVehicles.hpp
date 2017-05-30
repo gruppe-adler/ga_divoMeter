@@ -63,18 +63,15 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
-            class ACE_Equipment {
-                #include "ACE_SelfActions.hpp"
-            };
-			class grad_enhancedDiving_emergencyAsent {
-				displayName = $STR_grad_enhancedDiving_emergencyAsent;
-				condition = "(EDGEARON)";
-				statement = "[] call grad_enhancedDiving_fnc_emergencyAscent";
+            class GRAD_EnhancedDving {
 				showDisabled = 1;
+				displayName = "Enhanced Diving";
+				condition = "(EDGEARON)";
 				exceptions[] = {"isNotSwimming"};
 				priority = 2.5;
 				icon = "";
-			};
+                #include "ACE_SelfActions.hpp"
+            };	
         };
     };
 };

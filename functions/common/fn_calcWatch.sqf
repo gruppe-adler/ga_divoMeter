@@ -2,7 +2,7 @@ params ["_maxpp0", "_tempC"];
 
 //Starting vars
 grad_selectedTank = 1;
-grad_switchTank = false; 
+grad_switchTank = true; 
 grad_airConsumption = 0;
 grad_ascTime = 0;
 grad_maxDepth = 0;
@@ -26,7 +26,9 @@ grad_decoTime = 0;
 grad_depth2deco = 0;
 grad_depth2deepStop = 0;
 grad_deepStopTime = 0;
-grad_doDeco = 0;
+grad_doDeco = false;
+grad_doDeepStop = false;
+
 grad_deepStopCeil = 0;
 grad_tisAval = 0;
 grad_tisBval = 0;
@@ -68,7 +70,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	
-	diag_log format ["ED: Gear: %1, Metric: %2 Open: %3", EDGEARON, EDMETRIC, EDOPEN];
+	diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4", EDGEARON, EDMETRIC, EDOPEN, ((eyePos player select 2) < 0)];
 	
 	if (grad_switchTank) then {
 		if !(isNil "grad_maxBar") then {
@@ -79,35 +81,40 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			grad_percentN2 = _percentN2;
 			grad_percentHe = _percentHe;
 			
-			_class = format ["grad_enhancedDiving_gasClass1", grad_selectedTank];
-			_maxBar = format ["grad_enhancedDiving_maxBar1", grad_selectedTank];
+			_class = format ["grad_enhancedDiving_tankSize%1", grad_selectedTank];
+			_maxBar = format ["grad_enhancedDiving_maxBar%1", grad_selectedTank];
 			
-			_tankSize = getNumber (configFile >> "CfgVehicles" >> _obj >> _class);
-			grad_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _maxBar);
+			_upperClass = "CfgWeapons";
+			_obj = vest player;
+			
+			_tankSize = getNumber (configFile >> _upperClass >> _obj >> _class);
+			grad_maxBar = getNumber (configFile >> _upperClass >> _obj >> _maxBar);
 			grad_filling = _tankSize * grad_bar;
 		};
 		grad_switchTank = false;
 	};
 	
-	if ((underwater player) && EDGEARON) then {	
+	if (((eyePos player select 2) < 0) && EDGEARON) then {	
 		if (isNil "grad_maxBar") then {
 			_value = [] call grad_enhancedDiving_fnc_checkGear;
 			if (isNil "_value") exitWith {};
-			diag_log format ["enhancedDiving Value: %1", _value];
 			_value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
 			grad_bar = _bar;
 			grad_percentO2 = _percentO2;
 			grad_percentN2 = _percentN2;
 			grad_percentHe = _percentHe;
 			
-			_class = format ["grad_enhancedDiving_gasClass1", grad_selectedTank];
-			_maxBar = format ["grad_enhancedDiving_maxBar1", grad_selectedTank];
+			_class = format ["grad_enhancedDiving_tankSize%1", grad_selectedTank];
+			_maxBar = format ["grad_enhancedDiving_maxBar%1", grad_selectedTank];
 			
-			_tankSize = getNumber (configFile >> "CfgVehicles" >> _obj >> _class);
-			grad_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _maxBar);
-			grad_filling = _tankSize * grad_bar
+			_upperClass = "CfgWeapons";
+			_obj = vest player;
+			
+			_tankSize = getNumber (configFile >> _upperClass >> _obj >> _class);
+			grad_maxBar = getNumber (configFile >> _upperClass >> _obj >> _maxBar);
+			grad_filling = _tankSize * grad_bar;
 		};
-		
+
 		if (isNil "grad_maxBar") exitWith {};
 		
 		grad_diveTime = grad_diveTime + 1;
@@ -116,7 +123,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		grad_depth2deco = grad_depth - grad_AscCeil;
 		grad_airConsumption = (grad_pressure * grad_sacRT);
 		grad_filling = (grad_filling - (grad_airConsumption /60));
-		grad_timeleft = ((grad_filling / grad_airConsumption) *60);
+		grad_timeleft = (grad_filling / (grad_airConsumption /60));
 		grad_depthB = grad_depthA;
 		grad_depthA = (abs ((getPosASL player) select 2));
 		grad_pressureA = ((grad_depthA / 10) + 1);
@@ -136,19 +143,17 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		grad_nPercent = ((grad_nTot /1000)/5) *100;
 		grad_oPercent = ((grad_oTot /1000)/5) *100;
 		grad_HePercent = ((grad_HeTot /1000)/5) *100;			
-		grad_narcFactor = grad_pOAlv +grad_pNAlv +(0.23 *grad_pHeAlv);
+		grad_narcFactor = grad_pOAlv + grad_pNAlv +(0.23 *grad_pHeAlv);
 		grad_eNdepth = ((grad_narcFactor -1) *10);
-
+		
 		if (grad_depthA < grad_depthB) then {
 			grad_upDepth = grad_depthA - grad_depthB;
-		}else{
-			grad_upDepth = 0;
-		};
-
+		}else{grad_upDepth = 0;};
+		
 		if (EDOPEN) then {
 		// if (visibleWatch && EDWATCHON) then {
 			disableSerialization;
-			_displayUI = uiNamespace getVariable "grad_disp";
+			_displayUI = uiNamespace getVariable "slb_display";
 			
 			if (EDMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
@@ -162,14 +167,15 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 				(_displayUI displayCtrl 1122) ctrlSetText format["%1", grad_filling];
 			};
 			
-			if (grad_doDeco == 1) then {
+			if (grad_doDeco) then {
 				(_displayUI displayCtrl 1112) ctrlSetText "DECO";
-				if ((grad_doDeco == 1) && !(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
+				if (!(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
 					(_displayUI displayCtrl 1120) ctrlSetText format["%1", grad_decoTime];
 				};
 			}else{
 				(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 			};
+			
 			(_displayUI displayCtrl 1121) ctrlSetText "GTK";
 			(_displayUI displayCtrl 1114) ctrlSetText format["%1", round (((grad_timeleft) + .01)/60)];
 			(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round (grad_percentO2 * 100))/100];
@@ -205,29 +211,28 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 					
 					switch (true) do {
 						case (grad_depth2deepStop > 1.5) : {
-									if ((ctrlText 1131) == "grad_enhancedDiving\images\triangle_down_divider.paa") then {
-										(_displayUI displayCtrl 1130) ctrlSetText "";
-										(_displayUI displayCtrl 1131) ctrlSetText "";
-									}else{
-										(_displayUI displayCtrl 1130) ctrlSetText "";
-										(_displayUI displayCtrl 1131) ctrlSetText "grad_enhancedDiving\images\triangle_down_divider.paa";
-									};
-								};
+							if ((ctrlText 1131) == "grad_enhancedDiving\images\triangle_down_divider.paa") then {
+								(_displayUI displayCtrl 1130) ctrlSetText "";
+								(_displayUI displayCtrl 1131) ctrlSetText "";
+							}else{
+								(_displayUI displayCtrl 1130) ctrlSetText "";
+								(_displayUI displayCtrl 1131) ctrlSetText "grad_enhancedDiving\images\triangle_down_divider.paa";
+							};
+						};
 						case (grad_depth2deepStop < -1.5) : {
-									if ((ctrlText 1131) == "grad_enhancedDiving\images\triangle_up_divider.paa") then {
-										(_displayUI displayCtrl 1130) ctrlSetText "";
-										(_displayUI displayCtrl 1131) ctrlSetText "";
-									}else{
-										(_displayUI displayCtrl 1130) ctrlSetText "grad_enhancedDiving\images\triangle_up_divider.paa";
-										(_displayUI displayCtrl 1131) ctrlSetText "";
-									};
-								};
+							if ((ctrlText 1131) == "grad_enhancedDiving\images\triangle_up_divider.paa") then {
+								(_displayUI displayCtrl 1130) ctrlSetText "";
+								(_displayUI displayCtrl 1131) ctrlSetText "";
+							}else{
+								(_displayUI displayCtrl 1130) ctrlSetText "grad_enhancedDiving\images\triangle_up_divider.paa";
+								(_displayUI displayCtrl 1131) ctrlSetText "";
+							};
+						};
 						case (grad_depth2deepStop < 1.5 && grad_depth2deepStop > -1.5) : {
-									(_displayUI displayCtrl 1130) ctrlSetText "grad_enhancedDiving\images\triangle_up_divider.paa";
-									(_displayUI displayCtrl 1131) ctrlSetText "grad_enhancedDiving\images\triangle_down_divider.paa";
-								};
+							(_displayUI displayCtrl 1130) ctrlSetText "grad_enhancedDiving\images\triangle_up_divider.paa";
+							(_displayUI displayCtrl 1131) ctrlSetText "grad_enhancedDiving\images\triangle_down_divider.paa";
+						};
 					};
-					
 				};
 			};
 			
@@ -251,7 +256,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 				};
 			};
 			
-			if (grad_narcFactor >= 0.91) then {
+			if (grad_narcFactor >= 9.1) then {
 				if ((ctrlText 1129) == "grad_enhancedDiving\images\right_09.paa")then {
 					(_displayUI displayCtrl 1129) ctrlSetText "";
 				}else{
@@ -261,7 +266,8 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 				_getenhancedDivingN2Texture = {
 					_n2Index = { 
 						if (_this < _x)  exitWith{_forEachIndex};
-					}forEach [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];   
+					}forEach [1, 2, 3, 4, 5, 6, 7, 8, 9]; 
+					diag_log format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index]; 
 					format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index]; 
 				}; 
 				(_displayUI displayCtrl 1129) ctrlSetText (grad_narcFactor call _getenhancedDivingN2Texture);
@@ -269,8 +275,6 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 			
 			(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 		};
-		
-		diag_log format ["DM TisTot: %1, Perc: %2, Tot: %3, narcCnt: %4, narcFac: %5", grad_nTisTot, grad_nPercent, grad_nTot, grad_narcCntdn, grad_narcFactor];
 		
 		//DCS effects
 		if (grad_dDepth > 9.1 && grad_maxDepth >= 20) then {						
@@ -326,7 +330,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		if ((grad_AscCeil < grad_AscCeilB) && !grad_doDeco)then {grad_AscCeil = (round(grad_AscCeilB /10)) *10;};			
 			
 		//Init Deco Profile
-		if((grad_AscCeil == 10) && (grad_doDeco == 0)) then {				
+		if((grad_AscCeil == 10) && !grad_doDeco) then {				
 			grad_decoTime = grad_AscCeil *(round(grad_totalTis *4));				
 			grad_doDeco = true;
 		};
@@ -392,12 +396,12 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		if (grad_depth >= 1) then {
 			grad_ascTime = ((grad_depth/4) + grad_decoTime) /60;
 		};
-		
+
 		//if the asend time is greater than 99, set it to 99
-		if (round (grad_ascTime >= 99)) then {
+		if ((round grad_ascTime) >= 99) then {
 			grad_ascTime = 99;
 		};
-		
+
 		//Check if player surpasses Maximum Operating Depth and init O2 Tox effects			
 		if (grad_depth > ((grad_maxppO/grad_percentO2) -1) *10) then {	
 			grad_O2DamMult = grad_O2TisTot/6;
@@ -431,7 +435,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	}else{
 		if (EDOPEN) then {				
 			disableSerialization;
-			_displayUI = uiNamespace getVariable "grad_disp";
+			_displayUI = uiNamespace getVariable "slb_display";
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(((getPosASL player) select 2) *10))/10];
@@ -449,6 +453,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 				(_displayUI displayCtrl 1122) ctrlSetText "---";
 			};
 			(_displayUI displayCtrl 1123) ctrlSetText "--";
+			(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 		};
 	};	
 }, 1, []] call CBA_fnc_addPerFrameHandler;

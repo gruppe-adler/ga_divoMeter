@@ -1,7 +1,7 @@
 class slb_disp {
 	idd = 1109;
 	name=_slb;
-	onLoad = "uiNamespace setVariable ['slb_disp', _this select 0]";
+	onLoad = "uiNamespace setVariable ['slb_display', _this select 0]";
 	fadein = 0;
 	fadeout = 0;
 	duration = 10e10;
@@ -70,7 +70,7 @@ class slb_disp {
 			idc = 1115;
 			text = "";
 			font = puristaBold;
-			colorText[] = {0,0,1,1};
+			colorText[] = {0.29,0.835,0.89,1};
 			sizeEx = 0.03;
 			x = safeZoneX+(safeZoneW*0.813);
 			y = safeZoneY+(safeZoneH*0.525);
@@ -81,7 +81,7 @@ class slb_disp {
 			idc = 1116;
 			text = "";
 			font = puristaBold;
-			colorText[] = {0,0,1,1};
+			colorText[] = {0.29,0.835,0.89,1};
 			sizeEx = 0.03;
 			x = safeZoneX+(safeZoneW*0.87);
 			y = safeZoneY+(safeZoneH*0.525);
@@ -92,7 +92,7 @@ class slb_disp {
 			idc = 1117;
 			text = "";
 			font = puristaBold;
-			colorText[] = {0,0,1,1};
+			colorText[] = {0.29,0.835,0.89,1};
 			sizeEx = 0.05;
 			x = safeZoneX+(safeZoneW*0.813);
 			y = safeZoneY+(safeZoneH*0.55);
@@ -103,7 +103,7 @@ class slb_disp {
 			idc = 1118;
 			text = "";
 			font = puristaBold;
-			colorText[] = {0,0,1,1};
+			colorText[] = {0.29,0.835,0.89,1};
 			sizeEx = 0.05;
 			x = safeZoneX+(safeZoneW*0.87);
 			y = safeZoneY+(safeZoneH*0.55);
@@ -115,7 +115,7 @@ class slb_disp {
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.02;
+			sizeEx = 0.025;
 			x = safeZoneX+(safeZoneW*0.785);
 			y = safeZoneY+(safeZoneH*0.5);
 			w = safeZoneW* 0.025;
@@ -180,7 +180,7 @@ class slb_disp {
 			idc = 1125;
 			text = "";
 			font = puristaBold;
-			colorText[] = {1,1,1,1};
+			colorText[] = {1,0,0,1};
 			sizeEx = 0.035;
 			x = safeZoneX+(safeZoneW*0.355);
 			y = safeZoneY+(safeZoneH*0.029);
@@ -191,7 +191,7 @@ class slb_disp {
 			idc = 1126;
 			text = "";
 			font = puristaBold;
-			colorText[] = {1,1,1,1};
+			colorText[] = {1,0,0,1};
 			sizeEx = 0.05;
 			x = safeZoneX+(safeZoneW*0.813);
 			y = safeZoneY+(safeZoneH*0.55);
@@ -202,7 +202,7 @@ class slb_disp {
 			idc = 1127;
 			text = "";
 			font = puristaBold;
-			colorText[] = {1,1,1,1};
+			colorText[] = {1,0,0,1};
 			sizeEx = 0.05;
 			x = safeZoneX+(safeZoneW*0.87);
 			y = safeZoneY+(safeZoneH*0.55);
@@ -253,7 +253,7 @@ class slb_disp {
 			w = safeZoneW* 0.015;
 			h = safeZoneH* 0.025;
 		};
-		class slb_deepStopText: SLBRscText {
+		class slb_schowChoosenTank: SLBRscText {
 			idc = 1132;
 			text = "";
 			font = puristaBold;
