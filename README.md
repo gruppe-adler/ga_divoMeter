@@ -32,8 +32,8 @@ Trimax 15/55 			| 15% 			| 30% 			| 55%		| 30 - 60
  ## Dependencies
  These addons are required to run this mod:
  
-    - [CBA](https://github.com/CBATeam/CBA_A3/releases)
-    - [ACE](https://github.com/acemod/ACE3/releases)
+ - [CBA](https://github.com/CBATeam/CBA_A3/releases)
+ - [ACE](https://github.com/acemod/ACE3/releases)
  	
  ## Credits
  
