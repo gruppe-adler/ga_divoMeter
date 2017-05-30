@@ -4,9 +4,9 @@ class CfgFunctions {
 		class common {
 			file = "\grad_enhancedDiving\functions\common";
 			class addRefillMenu {};
-			class checkAir {};
+			class addGasVariables {};
 			class checkGear {};
-			class calcWatch {};
+			class divingCalc {};
 			class emergencyAscent {};
 			class gasCalc {};
 			class init {preInit = 1;};
@@ -15,6 +15,7 @@ class CfgFunctions {
 			class refillTank {};
 			class setModuleSetting {};
 			class switchTank {};
+			class watchDisplay {};
 		};
 		
 		class effects {

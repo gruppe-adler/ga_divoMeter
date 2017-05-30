@@ -32,7 +32,7 @@ if (_activ) then {
 					}else {
 						_obj = (backpackContainer player);
 					};
-					[true, (_this select 2), _obj] call grad_enhancedDiving_fnc_checkAir;
+					[true, (_this select 2), _obj] call grad_enhancedDiving_fnc_addGasVariables;
 				};
 			};
 		}
@@ -50,7 +50,7 @@ if (_activ) then {
 					}else {
 						_obj = (backpackContainer player);
 					};
-					[false, (_this select 2), _obj] call grad_enhancedDiving_fnc_checkAir;
+					[false, (_this select 2), _obj] call grad_enhancedDiving_fnc_addGasVariables;
 				};
 			};
 		}
@@ -58,12 +58,12 @@ if (_activ) then {
 	
 	if ((vest player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
-		[true, (vest player), (vestcontainer player)] call grad_enhancedDiving_fnc_checkAir;
+		[true, (vest player), (vestcontainer player)] call grad_enhancedDiving_fnc_addGasVariables;
 	};
 	if ((backpack player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
-		[true, (backpack player), (backpackContainer player)] call grad_enhancedDiving_fnc_checkAir;
+		[true, (backpack player), (backpackContainer player)] call grad_enhancedDiving_fnc_addGasVariables;
 	};
 		
-	[_maxppO, _tempC] call grad_enhancedDiving_fnc_calcWatch;
+	[_maxppO, _tempC] call grad_enhancedDiving_fnc_divingCalc;
 };
