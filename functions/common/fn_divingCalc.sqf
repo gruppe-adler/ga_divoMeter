@@ -64,7 +64,7 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 	
-	diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4", EDGEARON, EDMETRIC, EDOPEN, ((eyePos player select 2) < 0)];
+	diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4, Breath: %5", EDGEARON, EDMETRIC, EDOPEN, ((eyePos player select 2) < 0), isAbleToBreathe player];
 	
 	if (grad_switchTank) then {
 		if !(isNil "grad_maxBar") then {

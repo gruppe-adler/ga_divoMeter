@@ -5,19 +5,31 @@
 	if (((eyePos player select 2) < 0) && EDGEARON) then {
 		disableSerialization;
 		_displayUI = uiNamespace getVariable "slb_display";
+		_bar = 0;
 			
 		if (EDMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(grad_depth *10))/10];
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
-			(_displayUI displayCtrl 1122) ctrlSetText format["%1", round (grad_filling)];
+			_bar = round (grad_filling);
 		}else {
 			(_displayUI displayCtrl 1111) ctrlSetText "FT";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",((round((grad_depth * 3.28) *10))/10)];
 			(_displayUI displayCtrl 1120) ctrlSetText "PSI";
-			(_displayUI displayCtrl 1122) ctrlSetText format["%1", grad_filling];
+			_bar = round (grad_filling * 14,5038);
 		};
-			
+		if (grad_filling > 50) then {
+			if ((ctrlText 1122) == "") then {
+				(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 0, 1, 1];
+				(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
+			}else{}
+				(_displayUI displayCtrl 1122) ctrlSetText "";			
+			};
+		}else{
+			(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 1, 0, 1];
+			(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
+		};
+					
 		if (grad_doDeco) then {
 			(_displayUI displayCtrl 1112) ctrlSetText "DECO";
 			if (!(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
