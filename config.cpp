@@ -1,5 +1,5 @@
 class CfgPatches {
-	class grad_rebreatherOnLand {
+	class grad_enhancedDiving {
 
 		name = "GRAD Enhanced Diving";
 		author = "Gruppe Adler";
