@@ -11,18 +11,18 @@
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(grad_depth *10))/10];
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
-			_bar = round (grad_filling);
+			_bar = round(grad_filling);
 		}else {
 			(_displayUI displayCtrl 1111) ctrlSetText "FT";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",((round((grad_depth * 3.28) *10))/10)];
 			(_displayUI displayCtrl 1120) ctrlSetText "PSI";
-			_bar = round (grad_filling * 14,5038);
+			_bar = round(grad_filling * 14.5038);
 		};
 		if (grad_filling > 50) then {
 			if ((ctrlText 1122) == "") then {
 				(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 0, 1, 1];
 				(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
-			}else{}
+			}else{
 				(_displayUI displayCtrl 1122) ctrlSetText "";			
 			};
 		}else{
@@ -57,7 +57,7 @@
 			};
 			case (grad_doDeco && !(grad_depth2deco < - 6) && !(grad_depth2deco > 6)): {
 				(_displayUI displayCtrl 1115) ctrlSetText "";
-					(_displayUI displayCtrl 1116) ctrlSetText "";
+				(_displayUI displayCtrl 1116) ctrlSetText "";
 				(_displayUI displayCtrl 1117) ctrlSetText "";
 				(_displayUI displayCtrl 1118) ctrlSetText "";
 				(_displayUI displayCtrl 1125) ctrlSetText "DECO STOP";
