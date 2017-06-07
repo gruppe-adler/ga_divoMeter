@@ -1,19 +1,31 @@
 private ["_obj", "_container"];
 params ["_bool", "_class", "_tank"];
 
+_obj = Nil;
+_objTank = "";
+
 _container = format ["GRAD_DIVE_GAS%1", _tank];
 _barName = format ["grad_enhancedDiving_maxBar%1", _tank];
 
 _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {
 	_value = (vestContainer player) getVariable _container;
-	if (isNil "_value") then {_obj = (vestContainer player);};
+	if (isNil "_value") then {
+		_obj = (vestContainer player);
+		_objTank = (vest player);
+	};
 }else {
 	_obj = (backpackContainer player);
+	_objTank = (backpack player);
 };
-_value params ["grad_refill_barTank", "grad_refill_o2Perc", "grad_refill_n2Perc", "grad_refill_hePerc"];
 
-_maxBar = getNumber (configFile >> "CfgVehicles" >> _obj >> _barName);
+_value params ["_barTank", "_o2Perc", "_n2Perc", "_hePerc"];
+grad_refill_barTank = _barTank;
+grad_refill_o2Perc = _o2Perc;
+grad_refill_n2Perc = _n2Perc;
+grad_refill_hePerc = _hePerc;
+
+_maxBar = getNumber (configFile >> "CfgVehicles" >> _objTank >> _barName);
 
 if (_bool) then {
 	[{

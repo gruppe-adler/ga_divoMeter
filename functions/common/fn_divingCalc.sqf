@@ -111,6 +111,8 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 
 		if (isNil "grad_maxBar") exitWith {};
 		
+		
+		
 		grad_diveTime = grad_diveTime + 1;
 		grad_depth = (abs ((getPosASL player) select 2)); //in meter
 		grad_pressure = ((grad_depth / 10) + 1);			

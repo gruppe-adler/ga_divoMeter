@@ -66,4 +66,5 @@ if (_activ) then {
 	};
 		
 	[_maxppO, _tempC] call grad_enhancedDiving_fnc_divingCalc;
+	[] call grad_enhancedDiving_fnc_playSound;
 };

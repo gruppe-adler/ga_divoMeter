@@ -12,6 +12,7 @@ class CfgFunctions {
 			class init {preInit = 1;};
 			class initTissues {};
 			class openWatch {};
+			class playSound {};
 			class refillTank {};
 			class setModuleSetting {};
 			class switchTank {};

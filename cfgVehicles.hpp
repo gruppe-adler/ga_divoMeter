@@ -74,6 +74,11 @@ class CfgVehicles {
             };	
         };
     };
+	
+	class grad_diverBreathing 
+	{
+		sound = "grad_diverBreathingSource"; 
+	};
 };
 
 class CfgFactionClasses {

@@ -10,7 +10,7 @@
  - Support for 12 different [gas mixtures](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
  
 *Gas*				| *O2*			| *N2*			| *HE*   	| *Depth (m)*     
---------------------------------|-----------------------|-----------------------|---------------|--------------------
+--------------------|---------------|---------------|-----------|--------------------
 Air 				| 21% 			| 79%			| 0%		| 0 - 40		
 EAN32 				| 32% 			| 68% 			| 0%		| 0 - 40		
 Heliox 21 			| 21% 			| 0% 			| 79%		| 100 - 500		
@@ -22,7 +22,7 @@ Nitrox II 			| 36% 			| 64% 			| 0% 		| 0 - 40
 Normoxic			| 19% 			| 30% 			| 51%		| 30 - 60		
 Oxygen 				| 100%			| 0% 			| 0%		| 0 - 4
 Trimax 				| 10% 			| 40% 			| 50%		| 30 - 60		
-Trimax 15/55 			| 15% 			| 30% 			| 55%		| 30 - 60		
+Trimax 15/55 		| 15% 			| 30% 			| 55%		| 30 - 60		
  	
  ## Usage	
  The mod will be activ when you put on one of these vests: V_GRAD_DivingTank_Blk, V_GRAD_DivingTank_Oli, V_GRAD_DivingTank_Rgr
@@ -40,6 +40,7 @@ Trimax 15/55 			| 15% 			| 30% 			| 55%		| 30 - 60
  This mod is based on Divier Stats from trin scourge.
  
  - Coding: Salbei
+ - Sound: timsc
  - 2D: Nomisum
  - 3D: Salbei
  
