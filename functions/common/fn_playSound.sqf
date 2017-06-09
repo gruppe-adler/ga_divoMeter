@@ -3,7 +3,7 @@ if (((eyePos player select 2) < 0) then {
 
 	[{
 		params ["_args","_handle"];
-		if (((eyePos player select 2) >= 0) then {[_handle] call CBA_fnc_removePerFrameHandler;};
+		if ((eyePos player select 2) >= 0) then {[_handle] call CBA_fnc_removePerFrameHandler;};
 		grad_breathingSound setPosATL (getPosATL player);
 	}, 0, []] call CBA_fnc_addPerFrameHandler;
 }else{
