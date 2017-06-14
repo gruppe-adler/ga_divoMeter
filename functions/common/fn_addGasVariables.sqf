@@ -1,24 +1,12 @@
 params ["_bool", "_obj", "_container"];
 
-//diag_log format ["ED Objekt: %1, Bool: %2", (typeOf _obj), _bool];
-
 if (_bool) then {
+	if ((vest player) in EDDIVINGVEST) exitWith {EDGEARON = false; systemChat "Please put on a Diving Vest!"; removeBackpack player};
 	_value = _container getVariable "GRAD_DIVE_GAS1";
-	
-	diag_log format ["ED: Is kind of: %1", (_container isKindOf "Vest")];
 	_upperClass = "CfgWeapons";
-	/*
-	if (_obj isKindOf "Vest") then {
-		_upperClass = "CfgWeapons";
-	}else{
-		_upperClass = "CfgVehicles";
-	};
-	*/
-	
 	
 	if (isNil "_value")then {
 		_bar = 0;
-		
 		_class = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_gasClass1");
 		_bar = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_maxBar1");	
 		_o2 = -1;
@@ -43,15 +31,19 @@ if (_bool) then {
 		diag_log format ["ED: Class: %1, Bar: %2, O2: %3, N2: %4, HE:%5", _class, _bar, _o2, _n2, _he];
 		
 	  _container setVariable ["GRAD_DIVE_GAS1", [_bar, _o2, _n2, _he]];
-	  EDGEARON = true;
 	};
 	
-	/*
-	if (_obj in EDDIVINGDOUBLE) then {
+	EDGEARON = true;
+	
+	if ((_obj in EDDIVINGDOUBLE) && EDGEARON) then {
 		_value = _obj getVariable "GRAD_DIVE_GAS2";
 		if (isNil "_value")then {
+			_bar = 0;
 			_class = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_gasClass2");
 			_bar = getNumber (configFile >> _upperClass >> _obj >> "grad_enhancedDiving_maxBar2");
+			_o2 = -1;
+			_n2 = -1; 
+			_he = -1;
 			
 			switch (_class) do {		
 				case 0 	: {_o2 = 0.21; 	_n2 = 0.79; 	_he = 0;};		//Air
@@ -71,7 +63,7 @@ if (_bool) then {
 		  _obj setVariable ["GRAD_DIVE_GAS2", [_bar, _o2, _n2, _he]];
 		};
 	};
-	*/
+	
 }else{
 	EDGEARON = false;
 };
