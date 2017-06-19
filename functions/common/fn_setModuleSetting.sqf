@@ -3,13 +3,13 @@
 _logic = param [0,objNull,[objNull]];
 
 _activ		 	= 	_logic getVariable ["activ", false];
-_maxppO 		= 	_logic getVariable ["maxppO",1.11];
-_tempC			= 	_logic getVariable ["tempC",29];
+grad_maxppO 		= 	_logic getVariable ["maxppO",1.11];
+grad_tempC			= 	_logic getVariable ["tempC",29];
 grad_refillRate 	=	_logic getVariable ["rate", 24];
 //_units			= 	_logic getVariable ["Units", "NONE"];
 
 waitUntil {!isnil "bis_fnc_init"};
-diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, _maxppO, _tempC, grad_refillRate];
+diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, grad_maxppO, grad_tempC, grad_refillRate];
 
 if (_activ) then {
 	waitUntil {!isNull player};
@@ -65,6 +65,6 @@ if (_activ) then {
 		[true, (backpack player), (backpackContainer player)] call grad_enhancedDiving_fnc_addGasVariables;
 	};
 		
-	[_maxppO, _tempC] call grad_enhancedDiving_fnc_divingCalc;
+	[] call grad_enhancedDiving_fnc_divingCalc;
 	[] call grad_enhancedDiving_fnc_playSound;
 };

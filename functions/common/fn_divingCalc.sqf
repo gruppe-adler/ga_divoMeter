@@ -1,5 +1,3 @@
-params ["_maxpp0", "_tempC"];
-
 //Starting vars
 grad_selectedTank = 1;
 grad_switchTank = true; 
@@ -9,8 +7,6 @@ grad_maxDepth = 0;
 grad_timeleft = 0;
 grad_diveTime = 0;
 grad_O2toxPercent = 0;
-grad_maxpp0 = _maxpp0;
-grad_tempC = _tempC;
 
 //Narcosis Variables
 grad_narcFactor = 0;
@@ -113,22 +109,22 @@ grad_sacRT = round (25 * (random [0.8,1,1.2]));
 		
 		
 		
-		grad_diveTime = grad_diveTime + 1;
+		grad_diveTime = grad_diveTime +1;
 		grad_depth = (abs ((getPosASL player) select 2)); //in meter
-		grad_pressure = ((grad_depth / 10) + 1);			
+		grad_pressure = ((grad_depth /10) +1);			
 		grad_depth2deco = grad_depth - grad_AscCeil;
 		grad_airConsumption = (grad_pressure * grad_sacRT);
 		grad_filling = (grad_filling - (grad_airConsumption /60));
-		grad_timeleft = (grad_filling / (grad_airConsumption /60));
+		grad_timeleft = (grad_filling /(grad_airConsumption /60));
 		grad_depthB = grad_depthA;
 		grad_depthA = (abs ((getPosASL player) select 2));
-		grad_pressureA = ((grad_depthA / 10) + 1);
-		grad_pressureB = ((grad_depthB / 10) + 1);
+		grad_pressureA = ((grad_depthA /10) +1);
+		grad_pressureB = ((grad_depthB /10) +1);
 		grad_dDepth = grad_depthA - grad_depthB;
 		grad_depth2deepStop = grad_depth - grad_deepStopCeil;
 		grad_ObarPercent = (grad_pOAlv/grad_maxppO) *0.065;
-		grad_HbarPercent = (grad_pHeAlv/8) *0.065;
-		grad_NbarPercent = (grad_nTisTot/2.38) * 0.24;			
+		grad_HbarPercent = (grad_pHeAlv /8) *0.065;
+		grad_NbarPercent = (grad_nTisTot/2.38) *0.24;			
 		grad_nTot = [grad_pressure, grad_percentN2, 1600, grad_tempC, 28, grad_pNAlv] call grad_enhancedDiving_fnc_gasCalc;
 		grad_oTot = [grad_pressure, grad_percentO2, 756.7, grad_tempC, 32, grad_pOAlv] call grad_enhancedDiving_fnc_gasCalc;
 		grad_HeTot = [grad_pressure, grad_percentHe, 2865, grad_tempC, 8, grad_pHeAlv] call grad_enhancedDiving_fnc_gasCalc;

@@ -22,13 +22,5 @@ class RscTitles {
 	#include "dialog\display.hpp"
 };
 
-class CfgSFX
-{
-	class grad_diverBreathingSource
-	{
-		sound0[] = {"sound\grad_diverBreathing.ogg", db+0, 1.0, 10, 1, 1.5, 1.5, 1.5};  // path to addon sound
-		sounds[] = {sound0};
-		empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
-	};
-};
+
  
