@@ -258,7 +258,7 @@ class slb_disp {
 			text = "";
 			font = puristaBold;
 			colorText[] = {1,1,1,1};
-			sizeEx = 0.05;
+			sizeEx = 0.025;
 			x = safeZoneX+(safeZoneW*0.783);
 			y = safeZoneY+(safeZoneH*0.485);
 			w = safeZoneW* 0.025;

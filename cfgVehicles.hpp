@@ -26,7 +26,7 @@ class CfgVehicles {
 				displayName = $STR_grad_enhancedDiving_activ;
 				description = $STR_grad_enhancedDiving_activ_desc;
 				typeName = "BOOL"; 
-				defaultValue = "0";				
+				defaultValue = "1";				
 			}
 			class maxppO {
 				displayName = $STR_grad_enhancedDiving_maxppO;

@@ -1,3 +1,4 @@
+#include "defines.hpp"
 params ["_bool", "_obj", "_container"];
 
 if (_bool) then {
