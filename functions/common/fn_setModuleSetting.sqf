@@ -68,5 +68,4 @@ if (_activ) then {
 	diag_log format ["ED Gear: %1, Vest: %2, Backpack: %3", EDGEARON, (vest player), (backpack player)];
 	
 	[] call grad_enhancedDiving_fnc_divingCalc;
-	[] call grad_enhancedDiving_fnc_playSound;
 };
