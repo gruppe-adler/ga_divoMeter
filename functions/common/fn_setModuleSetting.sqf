@@ -1,5 +1,5 @@
 #include "defines.hpp"
-
+if (isServer) exitWith {};
 _logic = param [0,objNull,[objNull]];
 
 _activ		 	= 	_logic getVariable ["activ", false];
@@ -19,6 +19,15 @@ if (_activ) then {
 	EDMETRIC = true;
 	EDOPEN = false;
 	EDWATCHON = false;
+	
+	player addEventHandler ["HITPART", 
+		{
+			diag_log format ["EDHIT: %1", _this];
+			if (((eyePos player) < 0) && (_this select 10)) then {
+				//[_this select 3, _this select 4, _this select 6, _this select 7] call grad_enhancedDiving_fnc_bloodEffects;
+			};
+		}
+	];
 
 	player addEventHandler ["TAKE", 
 		{
