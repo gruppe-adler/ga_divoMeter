@@ -21,6 +21,7 @@ class CfgFunctions {
 		
 		class effects {
 			file = "\grad_enhancedDiving\functions\effects";
+			class bloodEffects {};
 			class DCSEffects {};
 			class HeToxEffects {};
 			class narcEffects {};
