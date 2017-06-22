@@ -22,9 +22,13 @@ if (_activ) then {
 	
 	player addEventHandler ["HITPART", 
 		{
-			diag_log format ["EDHIT: %1", _this];
-			if (((eyePos player) < 0) && (_this select 10)) then {
-				//[_this select 3, _this select 4, _this select 6, _this select 7] call grad_enhancedDiving_fnc_bloodEffects;
+			if ((eyePos player) < 0)then {
+				{
+					diag_log format ["EDHIT: %1", _x];
+					if (_x select 10) then {
+						//[_x select 3, _x select 4, _x select 6, _x select 7] call grad_enhancedDiving_fnc_bloodEffects;
+					};
+				}forEach _this;
 			};
 		}
 	];
