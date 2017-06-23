@@ -1,27 +1,4 @@
-
-/*
-	Function: TAG_fnc_BLOOD
-	Author: BIS, HallyG
-	SPAWNS BLOODY BLOOD
-	
-	Arguments(s):
-	0: Emitter Position <OBJECT, POSITION>
-	1: Damage, 0 -1. Large numbers produce lots of particles   (default: 0.2) <NUMBER>
-	2: Bullet speed (default: 10) <NUMBER>
-	2: Surface Normal (default: [0,0,0]) <ARRAY>
-	3: Bullet Direction (default: [0,0,5]) <ARRAY>
-	
-	Return Value:
-	Emitter <OBJECT>
-		
-	Example:
-	[
-		player,
-		0.1, 10,
-		[0,0,0],
-		[0,0,10]
-	] call TAG_fnc_BLOOD
-__________________________________________________________________*/
+//Author: BIS, HallyG
 params [ 
 	["_position", [0,0,0], [[], objNull]],
 	["_damage", 0.2, [0]],
@@ -38,19 +15,12 @@ _position = _position call {
 };
 
 _damage = (_damage min 1) max 0;
-_source = "#particlesource" createVehicleLocal _position;
+_source = "#particlesource" createVehicle _position;
 _source setPosATL _position;
 
 _source setParticleParams [
-	[
-		"\A3\data_f\ParticleEffects\Universal\Universal",
-		16,
-		13,
-		1,
-		0
-	],
-	"",
-	"Billboard",
+	["\A3\data_f\ParticleEffects\Universal\Universal", 16, 13, 1, 0],
+	"",	"Billboard",
 	1,
 	3,
 	[0,0,0],
@@ -73,7 +43,6 @@ _source setParticleParams [
 	"",
 	0
 ];
-
 
 _source setParticleRandom [ 
 	4,

@@ -26,7 +26,8 @@ if (_activ) then {
 				{
 					diag_log format ["EDHIT: %1", _x];
 					if (_x select 10) then {
-						//[_x select 3, _x select 4, _x select 6, _x select 7] call grad_enhancedDiving_fnc_bloodEffects;
+						//_handle = [_x select 3, _x select 4, _x select 6, _x select 7] call grad_enhancedDiving_fnc_bloodEffects;
+						//[{deleteVehicle _this;}, _handle, 10] call 
 					};
 				}forEach _this;
 			};

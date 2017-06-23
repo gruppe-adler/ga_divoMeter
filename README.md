@@ -5,7 +5,7 @@
  - Diving Computer
  - Fast Asend in case of Emergency
  - Rebreather for Diving
- - Effects for Decompression Illness, Nitrogen Narcosis, 02/Helium Toxicity
+ - Effects for Decompression Illness, Nitrogen Narcosis, 02/Helium Toxicity, Blood
  - Refill or replacement of gases in tanks
  - Support for 12 different [gas mixtures](https://en.wikipedia.org/wiki/Breathing_gas#Common_diving_breathing_gases) :
  
@@ -40,8 +40,8 @@ Trimax 15/55 		| 15% 			| 30% 			| 55%		| 30 - 60
  This mod is based on Divier Stats from trin scourge.
  
  - Coding: Salbei
- - Sound: timsc
  - 2D: Nomisum
  - 3D: Salbei
+ - Blood Effect: HallyG
  
 Spezial thanks go to Gruppe Adler for helping me create this mod
