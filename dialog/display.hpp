@@ -42,7 +42,7 @@ class slb_disp {
 			x = (0.86 * safezoneW) + safezoneX;
 			y = (0.450518 * safezoneH) + safezoneY;
 			w = 0.05 * safezoneW;
-			h = 0.02 * safezoneH
+			h = 0.02 * safezoneH;
 		};
 		class slb_height: SLBRscText {
 			idc = 1113;
