@@ -74,6 +74,15 @@ class CfgVehicles {
             };	
         };
     };
+	
+	class Land_Camping_Light_F;
+	class slb_divingtank : Land_Camping_Light_F {
+		_generalMacro = "slb_divingtank";
+		access = 2;
+		author = "Salbei [A]";
+		displayName = "Diving Tank";
+		model = "slb_divingtank\models\taucherflashe.p3d";
+	};
 };
 
 class CfgFactionClasses {

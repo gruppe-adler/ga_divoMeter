@@ -2,7 +2,7 @@ class CfgPatches {
 	class grad_enhancedDiving {
 
 		name = "GRAD Enhanced Diving";
-		author = "Gruppe Adler";
+		author = "Salbei [A]";
 
 		requiredVersion = 1.0;
 		requiredAddons[] = {"ace_main"};
