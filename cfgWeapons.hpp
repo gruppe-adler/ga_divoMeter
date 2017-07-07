@@ -42,6 +42,7 @@ class CfgWeapons {
 		grad_enhancedDiving_maxBar2 = 200;
 	};
 
+	/*
 	class V_GRAD_DivingTank_Rgr: V_GRAD_DivingTank_Blk {
 		displayName = "Diving Tank (Green)";
 		picture = "\A3\characters_f\Data\UI\icon_V_RebreatherIR_CA.paa";
@@ -50,11 +51,15 @@ class CfgWeapons {
 		grad_enhancedDiving_tankSize1 = 10;
 		grad_enhancedDiving_maxBar1 = 200;
 	};
-
-	/*	
-	class ItemDivingWatch: ItemWatch {
-		author = "Salbei";
-		displayName = "Diving Watch";
+	*/
+	
+	class V_GRAD_DivingTank_Rgr: V_GRAD_DivingTank_Blk {
+		displayName = "Diving Tank (Green)";
+		picture = "\A3\characters_f\Data\UI\icon_V_RebreatherIR_CA.paa";
+		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa"};
+		model = "slb_divingtank\models\taucherflashe.p3d";
+		grad_enhancedDiving_gasClass1 = 5;
+		grad_enhancedDiving_tankSize1 = 10;
+		grad_enhancedDiving_maxBar1 = 200;
 	};
-*/
 };
