@@ -46,14 +46,6 @@ class CfgVehicles {
 				typeName = "NUMBER";
 				defaultValue = "25";
 			};
-			/*
-			 class Units {
-				displayName = $STR_grad_enhancedDiving_unit;
-				description = $STR_grad_enhancedDiving_unit_desc;
-				typeName = "STRING";
-				defaultValue = "B_diver_F, B_diver_TL_F, B_diver_exp_F";
-			 };
-			 */
 		};
 		class ModuleDescription : ModuleDescription {
 			description = $STR_grad_enhancedDiving_description;
