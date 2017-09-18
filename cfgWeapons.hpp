@@ -47,6 +47,6 @@ class CfgWeapons {
 		displayName = "Diving Tank (Green)";
 		picture = "\A3\characters_f\Data\UI\icon_V_RebreatherIR_CA.paa";
 		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_iran_co.paa"};
-		model = "grad_enhancedDiving\models\taucherflasche.p3d";
+		model = "\A3\characters_f_epc\civil\equip_press_vest_01.p3d";
 	};
 };
