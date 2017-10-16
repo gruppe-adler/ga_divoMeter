@@ -51,10 +51,9 @@ class CfgWeapons {
 	};
 	*/
 
-	class V_GRAD_DivingVest_Rgr: Vest_Camo_Base
-	{
+	class V_GRAD_DivingVest_Rgr: V_RebreatherB {
 		scope=2;
-		displayName="VIKINGS Plate Carrier Multi-Camo";
+		displayName="Diving Vest";
 		picture="\A3\characters_f\Data\UI\icon_v_tacvest_blk_ca.paa";
 		model="A3\Characters_F\BLUFOR\equip_b_vest02.p3d";
 		descriptionShort="$STR_A3_SP_AL_IV";
