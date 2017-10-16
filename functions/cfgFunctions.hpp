@@ -5,6 +5,7 @@ class CfgFunctions {
 			file = "\grad_enhancedDiving\functions\common";
 			class addRefillMenu {};
 			class addGasVariables {};
+			class buoyancy {};
 			class checkGear {};
 			class divingCalc {};
 			class emergencyAscent {};
