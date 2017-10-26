@@ -8,25 +8,25 @@ class CfgVehicles {
             class AnyBrain;
         };
     };
-     
+
     class grad_enhancedDiving_params:Module_F {
         scope = 2;
         displayName = "Enhanced Diving Settings";
         icon ="";
         category = "enhancedDiving";
         function = "grad_enhancedDiving_fnc_setModuleSetting";
-        functionPriority = 0;
+        functionPriority = 2.5;
         isGlobal = 1;
         isTriggerActivated = 0;
-        isDisposable = 1;
+        isDisposable = 0;
         is3DEN = 0;
         author = "Salbei";
-        class Arguments : ArgumentsBaseUnits {   
+        class Arguments : ArgumentsBaseUnits {
 			class activ {
 				displayName = $STR_grad_enhancedDiving_activ;
 				description = $STR_grad_enhancedDiving_activ_desc;
-				typeName = "BOOL"; 
-				defaultValue = "1";				
+				typeName = "BOOL";
+				defaultValue = "1";
 			};
 			class maxppO {
 				displayName = $STR_grad_enhancedDiving_maxppO;
@@ -63,7 +63,7 @@ class CfgVehicles {
 				priority = 2.5;
 				icon = "";
                 #include "ACE_SelfActions.hpp"
-            };	
+            };
         };
     };
 };

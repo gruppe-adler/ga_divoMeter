@@ -1,12 +1,13 @@
+diag_log "Opening Diving Computer";
 [{
 	params ["_args","_handle"];
 	if !(EDOPEN) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
-	
+
 	if (((eyePos player select 2) < 0) && EDGEARON) then {
 		disableSerialization;
 		_displayUI = uiNamespace getVariable "slb_display";
 		_bar = 0;
-			
+
 		if (EDMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(grad_depth *10))/10];
@@ -23,13 +24,13 @@
 				(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 0, 1, 1];
 				(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
 			}else{
-				(_displayUI displayCtrl 1122) ctrlSetText "";			
+				(_displayUI displayCtrl 1122) ctrlSetText "";
 			};
 		}else{
 			(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 1, 0, 1];
 			(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
 		};
-					
+
 		if (grad_doDeco) then {
 			(_displayUI displayCtrl 1112) ctrlSetText "DECO";
 			if (!(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
@@ -38,11 +39,11 @@
 		}else{
 			(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 		};
-			
+
 		(_displayUI displayCtrl 1121) ctrlSetText "GTK";
 		(_displayUI displayCtrl 1114) ctrlSetText format["%1", round (((grad_timeleft) + .01)/60)];
 		(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round (grad_percentO2 * 100))/100];
-		
+
 		switch (true) do {
 			case (!grad_doDeco): {
 				(_displayUI displayCtrl 1125) ctrlSetText "";
@@ -71,7 +72,7 @@
 				(_displayUI displayCtrl 1125) ctrlSetText "DEEP STOP";
 				(_displayUI displayCtrl 1126) ctrlSetText format ["%1M", grad_depth2deepStop];
 				(_displayUI displayCtrl 1127) ctrlSetText format ["%1", grad_deepStopTime];
-				
+
 				switch (true) do {
 					case (grad_depth2deepStop > 1.5) : {
 						if ((ctrlText 1131) == "grad_enhancedDiving\images\triangle_down_divider.paa") then {
@@ -98,7 +99,7 @@
 				};
 			};
 		};
-			
+
 		if (grad_upDepth <= 0.3) then {
 				(_displayUI displayCtrl 1128) ctrlSetText "";
 		}else{
@@ -110,15 +111,15 @@
 				};
 			}else{
 				_getenhancedDivingRiseTexture = {
-					_riseIndex = { 
+					_riseIndex = {
 						if (_this < _x)  exitWith{_forEachIndex};
-					}forEach [1.5, 3, 4.6, 6.1, 7.6, 9];   
-					format[ "grad_enhancedDiving\images\left_0%1.paa", _riseIndex]; 
-				}; 
+					}forEach [1.5, 3, 4.6, 6.1, 7.6, 9];
+					format[ "grad_enhancedDiving\images\left_0%1.paa", _riseIndex];
+				};
 				(_displayUI displayCtrl 1128) ctrlSetText (grad_upDepth call _getenhancedDivingRiseTexture);
 			};
 		};
-			
+
 		if (grad_narcFactor >= 9.1) then {
 				if ((ctrlText 1129) == "grad_enhancedDiving\images\right_09.paa")then {
 					(_displayUI displayCtrl 1129) ctrlSetText "";
@@ -127,17 +128,17 @@
 				};
 			}else {
 				_getenhancedDivingN2Texture = {
-					_n2Index = { 
+					_n2Index = {
 						if (_this < _x)  exitWith{_forEachIndex};
-					}forEach [1, 2, 3, 4, 5, 6, 7, 8, 9]; 
-					diag_log format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index]; 
-					format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index]; 
-				}; 
+					}forEach [1, 2, 3, 4, 5, 6, 7, 8, 9];
+					diag_log format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index];
+					format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index];
+				};
 			(_displayUI displayCtrl 1129) ctrlSetText (grad_narcFactor call _getenhancedDivingN2Texture);
 		};
 		(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 	}else{
-			
+
 		disableSerialization;
 		_displayUI = uiNamespace getVariable "slb_display";
 		if (EDMETRIC) then {
@@ -149,7 +150,7 @@
 			(_displayUI displayCtrl 1120) ctrlSetText "PSI";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round((((getPosASL player) select 2)*3.28) *10))/10];
 		};
-		
+
 		(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 		(_displayUI displayCtrl 1114) ctrlSetText "--";
 		(_displayUI displayCtrl 1115) ctrlSetText "TTS";

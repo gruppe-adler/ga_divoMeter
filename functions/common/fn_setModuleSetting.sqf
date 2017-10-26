@@ -1,4 +1,7 @@
 #include "defines.hpp"
+
+diag_log "Diving Module loaded!";
+
 if (isServer) exitWith {};
 _logic = param [0,objNull,[objNull]];
 
@@ -13,28 +16,30 @@ diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, grad_ma
 
 if (_activ) then {
 	waitUntil {!isNull player};
-	
+
 	//if (_units == "NONE" ||!((typeOf player) in _units)) exitWith {diag_log format ["ED: Player %1 is no Diver.", player];};
 	EDGEARON = false;
 	EDMETRIC = true;
 	EDOPEN = false;
 	EDWATCHON = false;
-	
-	player addEventHandler ["HITPART", 
+
+/*
+	player addEventHandler ["HITPART",
 		{
 			if ((eyePos player) < 0)then {
 				{
 					diag_log format ["EDHIT: %1", _x];
 					if (_x select 10) then {
 						//_handle = [_x select 3, _x select 4, _x select 6, _x select 7] call grad_enhancedDiving_fnc_bloodEffects;
-						//[{deleteVehicle _this;}, _handle, 10]  call CBA_fnc_waitAndExecute; 
+						//[{deleteVehicle _this;}, _handle, 10]  call CBA_fnc_waitAndExecute;
 					};
 				}forEach _this;
 			};
 		}
 	];
+*/
 
-	player addEventHandler ["TAKE", 
+	player addEventHandler ["TAKE",
 		{
 			diag_log format ["ED Take Gear: %1",(_this select 2)];
 			switch (true) do {
@@ -52,7 +57,7 @@ if (_activ) then {
 		}
 	];
 
-	player addEventHandler ["PUT", 
+	player addEventHandler ["PUT",
 		{
 			diag_log format ["ED Put Gear: %1",(_this select 2)];
 			switch (true) do {
@@ -69,7 +74,7 @@ if (_activ) then {
 			};
 		}
 	];
-	
+
 	if ((vest player) in EDDIVINGGEAR) then {
 		EDGEARON = true;
 		[true, (vest player), (vestcontainer player)] call grad_enhancedDiving_fnc_addGasVariables;
@@ -78,8 +83,8 @@ if (_activ) then {
 		EDGEARON = true;
 		[true, (backpack player), (backpackContainer player)] call grad_enhancedDiving_fnc_addGasVariables;
 	};
-	
+
 	diag_log format ["ED Gear: %1, Vest: %2, Backpack: %3", EDGEARON, (vest player), (backpack player)];
-	
+
 	[] call grad_enhancedDiving_fnc_divingCalc;
 };

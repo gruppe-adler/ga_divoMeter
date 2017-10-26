@@ -1,19 +1,17 @@
-class grad_enhancedDiving_open
-{
+class grad_enhancedDiving_open {
      displayName = $STR_grad_enhancedDiving_watch_open;
      condition = "(EDGEARON && !(EDOPEN))";
-     statement = "[true] call grad_enhancedDiving_fnc_openWatch";
-	 exceptions[] = {"isNotSwimming"};
+     statement = "[true] call grad_enhancedDiving_fnc_openWatch; hint 'Open Diving';";
+	   exceptions[] = {"isNotSwimming"};
      priority = 2.5;
      icon = "";
 };
 
-class grad_enhancedDiving_close
-{
+class grad_enhancedDiving_close {
      displayName = $STR_grad_enhancedDiving_watch_close;
      condition = "(EDGEARON && EDOPEN)";
      statement = "[false] call grad_enhancedDiving_fnc_openWatch";
-	 exceptions[] = {"isNotSwimming"};
+	   exceptions[] = {"isNotSwimming"};
      priority = 2.5;
      icon = "";
 };

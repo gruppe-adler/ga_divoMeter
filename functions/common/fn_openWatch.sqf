@@ -1,9 +1,10 @@
 params ["_bool"];
 
 if (_bool) then {
+	hint "Opening";
 	EDOPEN = true;
 	disableSerialization;
-	2 cutRsc ["slb_disp","PLAIN"];	
+	2 cutRsc ["slb_disp","PLAIN"];
 	[] call grad_enhancedDiving_fnc_watchDisplay;
 }else {
 	EDOPEN = false;
