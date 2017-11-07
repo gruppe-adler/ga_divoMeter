@@ -22,7 +22,7 @@ class CfgWeapons {
 		hiddenUnderwaterSelectionsTextures[] = {};
 
 		class ItemInfo: ItemInfo {
-			author = "McDiod";
+			author = "Salbei";
 			containerClass = "Supply5";
 			hiddenSelections[] = {"camo","hide","unhide","unhide2"};
 			hiddenUnderwaterSelections[] = {};

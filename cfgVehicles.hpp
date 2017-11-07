@@ -70,7 +70,20 @@ class CfgVehicles
             #include "ACE_SelfActions.hpp"
         };
     };
-};
+  };
+
+  class Bag_Base;
+  class grad_diving_tank: Bag_Base
+  {
+      author = "Salbei";
+      scope = 2;
+      model = "\grad_enhancedDiving\models\taucherflasche.p3d";
+      displayName = "Diving Tank";
+      picture = "\A3\weapons_f\ammoboxes\bags\data\ui\icon_B_C_Compact_dgtl_ca.paa";
+      hiddenSelectionsTextures[]={};
+      maximumLoad = 0;
+      mass = 20;
+  };
 };
 
 class CfgFactionClasses
