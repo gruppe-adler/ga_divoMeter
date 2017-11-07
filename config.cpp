@@ -2,7 +2,7 @@ class CfgPatches {
 	class grad_enhancedDiving {
 
 		name = "GRAD Enhanced Diving";
-		author = "[A] Salbei";
+		author = "Salbei";
 
 		requiredVersion = 1.0;
 		requiredAddons[] = {"ace_main"};
@@ -21,6 +21,3 @@ class CfgPatches {
 class RscTitles {
 	#include "dialog\display.hpp"
 };
-
-
- 

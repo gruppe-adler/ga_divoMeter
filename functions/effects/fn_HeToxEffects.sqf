@@ -1,3 +1,5 @@
+diag_log "HE Tox Effect fired";
+
 grad_heActiv = true;
 _HeToxColor = ppEffectCreate ["colorCorrections", 1001];
 _HeToxBlur = ppEffectCreate ["radialBlur", 1002];
@@ -22,7 +24,7 @@ titleText ["","BLACK OUT",2];
 		params ["_HeToxColor", "_HeToxBlur", "_HeToxDynBlur", "_HeToxChroma"];
 		titleText ["","BLACK IN",4];
 		_HeToxColor ppEffectEnable true;
-		_HeToxColor ppEffectAdjust [1, 1, 0, [0.6,0.4,1.0,0.2], [0,1,0,0.5], [0,0,0,0]]; 
+		_HeToxColor ppEffectAdjust [1, 1, 0, [0.6,0.4,1.0,0.2], [0,1,0,0.5], [0,0,0,0]];
 		_HeToxColor ppEffectCommit 4;
 		_HeToxBlur ppEffectEnable true;
 		_HeToxBlur ppEffectAdjust [0.1,0.001,0.15,0.15];
@@ -33,8 +35,8 @@ titleText ["","BLACK OUT",2];
 		_HeToxChroma ppEffectCommit 4;
 		_HeToxBlur ppEffectCommit 4;
 		_HeToxDynBlur ppEffectCommit 4;
-		
-		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute; 
-		
+
+		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;
+
 	}, [_HeToxColor, _HeToxBlur, _HeToxDynBlur, _HeToxChroma], 4] call CBA_fnc_waitAndExecute;
 }, 8, [_HeToxColor, _HeToxBlur, _HeToxDynBlur, _HeToxChroma]] call CBA_fnc_addPerFrameHandler;

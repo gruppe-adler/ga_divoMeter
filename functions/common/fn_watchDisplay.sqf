@@ -1,6 +1,7 @@
-diag_log "Opening Diving Computer";
+
 [{
 	params ["_args","_handle"];
+	diag_log ["Diving Computer Open: %1", EDOPEN];
 	if !(EDOPEN) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
 	if (((eyePos player select 2) < 0) && EDGEARON) then {
@@ -131,7 +132,6 @@ diag_log "Opening Diving Computer";
 					_n2Index = {
 						if (_this < _x)  exitWith{_forEachIndex};
 					}forEach [1, 2, 3, 4, 5, 6, 7, 8, 9];
-					diag_log format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index];
 					format[ "grad_enhancedDiving\images\right_0%1.paa", _n2Index];
 				};
 			(_displayUI displayCtrl 1129) ctrlSetText (grad_narcFactor call _getenhancedDivingN2Texture);

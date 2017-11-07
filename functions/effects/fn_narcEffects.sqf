@@ -1,3 +1,5 @@
+diag_log "Narc Effect fired";
+
 grad_narcActiv = true;
 _narcColor = ppEffectCreate ["colorCorrections", 1001];
 _narcBlur = ppEffectCreate ["radialBlur", 1002];
@@ -22,7 +24,7 @@ titleText ["","BLACK OUT",2];
 		params ["_narcColor", "_narcBlur", "_narcDynBlur", "_narcChroma"];
 		titleText ["","BLACK IN",4];
 		_narcColor ppEffectEnable true;
-		_narcColor ppEffectAdjust [1, 1, 0, [0.6,0.3,0.3,0.2], [0,1,0,0.5], [0,0,0,0]]; 
+		_narcColor ppEffectAdjust [1, 1, 0, [0.6,0.3,0.3,0.2], [0,1,0,0.5], [0,0,0,0]];
 		_narcColor ppEffectCommit 4;
 		_narcBlur ppEffectEnable true;
 		_narcBlur ppEffectAdjust [0.01,0.01,0.03,0.03];
@@ -33,14 +35,11 @@ titleText ["","BLACK OUT",2];
 		_narcChroma ppEffectCommit 4;
 		_narcBlur ppEffectCommit 4;
 		_narcDynBlur ppEffectCommit 4;
-		_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]]; 
+		_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
 		_bodyPart = selectRandom ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
 		[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (grad_narcFactor/50), player, "explosive", -1] call ace_medical_fnc_handleDamage;
-		
-		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;    
-		
+
+		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;
+
 	}, [_narcColor, _narcBlur, _narcDynBlur, _narcChroma], 4] call CBA_fnc_waitAndExecute;
 }, 8, [_narcColor, _narcBlur, _narcDynBlur, _narcChroma]] call CBA_fnc_addPerFrameHandler;
-
-	
-

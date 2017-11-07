@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="DOM">
     <Package name="EnhancedDiving">
-		<Key ID="STR_grad_enhancedDiving_activ">
-            <English>Activate the Diving Mod</English>
-            <German>Activiere den Tauch Mod</German>
+		<Key ID="$STR_Enhanced_Diving_Settings">
+            <English>Enhanced Diving Settings</English>
+            <German>Enhanced Diving Settings</German>
         </Key>
-		<Key ID="STR_grad_enhancedDiving_activ_desc">
+		<Key ID="STR_grad_enhancedDiving_enabled">
+            <English>Activate the Diving Mod</English>
+            <German>Aktiviere den Tauch Mod</German>
+        </Key>
+		<Key ID="STR_grad_enhancedDiving_enabled_desc">
             <English>This enables the diving mod.</English>
-            <German>Dies activiert den Tauch Mod.</German>
+            <German>Dies aktiviert den Tauch Mod.</German>
 		</Key>
 		<Key ID="STR_grad_enhancedDiving_maxppO">
             <English>Max PPO2</English>
@@ -63,10 +67,3 @@
         </Key>
     </Package>
 </Project>
-
-
-
-
-
-
-

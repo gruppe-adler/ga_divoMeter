@@ -1,23 +1,17 @@
 #include "defines.hpp"
 
-diag_log "Diving Module loaded!";
-
-if (isServer) exitWith {};
+if (isDedicated) exitWith {diag_log "ED: Exiting Module, it is Clientside"};
 _logic = param [0,objNull,[objNull]];
 
-_activ		 	= 	_logic getVariable ["activ", false];
+_enabled		 	= 	_logic getVariable ["enabled", false];
 grad_maxppO 		= 	_logic getVariable ["maxppO",1.11];
 grad_tempC			= 	_logic getVariable ["tempC",29];
 grad_refillRate 	=	_logic getVariable ["rate", 24];
-//_units			= 	_logic getVariable ["Units", "NONE"];
 
-waitUntil {!isnil "bis_fnc_init"};
-diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _activ, grad_maxppO, grad_tempC, grad_refillRate];
+diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _enabled, grad_maxppO, grad_tempC, grad_refillRate];
 
-if (_activ) then {
-	waitUntil {!isNull player};
+if (_enabled) then {
 
-	//if (_units == "NONE" ||!((typeOf player) in _units)) exitWith {diag_log format ["ED: Player %1 is no Diver.", player];};
 	EDGEARON = false;
 	EDMETRIC = true;
 	EDOPEN = false;
