@@ -2,66 +2,82 @@
 <Project name="DOM">
     <Package name="EnhancedDiving">
 		<Key ID="$STR_Enhanced_Diving_Settings">
+            <Original>Enhanced Diving Settings</Original>
             <English>Enhanced Diving Settings</English>
             <German>Enhanced Diving Settings</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_enabled">
+            <Original>Activate the Diving Mod</Original>
             <English>Activate the Diving Mod</English>
             <German>Aktiviere den Tauch Mod</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_enabled_desc">
+            <Original>This enables the diving mod.</Original>
             <English>This enables the diving mod.</English>
             <German>Dies aktiviert den Tauch Mod.</German>
 		</Key>
 		<Key ID="STR_grad_enhancedDiving_maxppO">
+            <Original>Max PPO2</Original>
             <English>Max PPO2</English>
             <German>Max PPO2</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_maxppO_desc">
+            <Original>Maximum safe partial pressure of o2. Safe values range from 1.0 - 1.4</Original>
             <English>Maximum safe partial pressure of o2. Safe values range from 1.0 - 1.4</English>
             <German>Maximaler sicherer Partialdruck von o2. Sichere Werte reichen von 1.0 - 1.4</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_tempC">
+            <Original>Temperatur</Original>
             <English>Temperatur</English>
             <German>Temperatur</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_tempC_desc">
+            <Original>Temperature at the surface in °Celsius.</Original>
             <English>Temperature at the surface in °Celsius.</English>
             <German>Temperatur an der oberfläche in °Celsius.</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_rate">
+            <Original>Refill rate</Original>
             <English>Refill rate</English>
             <German>Nachfuell rate</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_rate_desc">
+            <Original>Defines the rate at wich the tank is refilled.</Original>
             <English>Defines the rate at wich the tank is refilled.</English>
             <German>Definiert die Menge an Gas die beim Nachfüllen pro Sekunde in den Tank gepumpt wird.</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_unit">
+            <Original>Units</Original>
             <English>Units</English>
             <German>Einheiten</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_unit_desc">
+            <Original>List of units on wich the calculations shall run.</Original>
             <English>List of units on wich the calculations shall run.</English>
             <German>Liste der Einheiten auf dennen die Berechnungen laufen sollen.</German>
 		</Key>
 		<Key ID="STR_grad_enhancedDiving_description">
+            <Original>Paramters for Diving Conditions.</Original>
             <English>Paramters for Diving Conditions.</English>
             <German>Paramter für die Tauchumgebung.</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_emergencyAsent">
+            <Original>Emergency Asent</Original>
             <English>Emergency Asent</English>
             <German>Notfallauftauchen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_watch_open">
+            <Original>Open Diving Computer</Original>
             <English>Open Diving Computer</English>
             <German>Tauchcomputer öffnen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_watch_close">
+            <Original>Close Diving Computer</Original>
             <English>Close Diving Computer</English>
             <German>Tauchcomputer schließen</German>
         </Key>
 		<Key ID="STR_grad_enhancedDiving_switchTank">
+            <Original>Switch Tank</Original>
             <English>Switch Tank</English>
             <German>Flasche Wechseln</German>
         </Key>
