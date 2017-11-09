@@ -14,7 +14,6 @@ class CfgPatches {
 
 #include "functions\common\defines.hpp"
 #include "functions\cfgFunctions.hpp"
-#include "dialog\define.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
 

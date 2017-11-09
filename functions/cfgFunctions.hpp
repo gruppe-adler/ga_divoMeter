@@ -2,7 +2,7 @@ class CfgFunctions {
 	class grad_enhancedDiving {
 		tag = "grad_enhancedDiving";
 		class common {
-			file = "\grad_enhancedDiving\functions\common";
+			file = "\z\grad_enhancedDiving\functions\common";
 			class addRefillMenu {};
 			class addGasVariables {};
 			class checkGear {};
@@ -17,14 +17,14 @@ class CfgFunctions {
 			class switchTank {};
 			class watchDisplay {};
 		};
-		
+
 		class effects {
-			file = "\grad_enhancedDiving\functions\effects";
+			file = "\z\grad_enhancedDiving\functions\effects";
 			class bloodEffects {};
 			class DCSEffects {};
 			class HeToxEffects {};
 			class narcEffects {};
-			class O2ToxEffects {};			
+			class O2ToxEffects {};
 		};
 	};
 };

@@ -16,7 +16,7 @@ class CfgVehicles
      {
           scope = 2;
           displayName = "Enhanced Diving Settings";
-          icon ="\grad_enhancedDiving\images\modul_logo.paa";
+          icon ="\z\grad_enhancedDiving\images\modul_logo.paa";
           category = "enhancedDiving";
           function = "grad_enhancedDiving_fnc_setModuleSetting";
           functionPriority = 0;
@@ -77,7 +77,7 @@ class CfgVehicles
   {
       author = "Salbei";
       scope = 2;
-      model = "\grad_enhancedDiving\models\taucherflasche.p3d";
+      model = "\z\grad_enhancedDiving\models\taucherflasche.p3d";
       displayName = "Diving Tank";
       picture = "\A3\weapons_f\ammoboxes\bags\data\ui\icon_B_C_Compact_dgtl_ca.paa";
       hiddenSelectionsTextures[]={};
