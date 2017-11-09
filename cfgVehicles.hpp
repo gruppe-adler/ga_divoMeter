@@ -15,7 +15,7 @@ class CfgVehicles
      class grad_enhancedDiving_params: Module_F
      {
           scope = 2;
-          displayName = $STR_Enhanced_Diving_Settings;
+          displayName = "Enhanced Diving Settings";
           icon ="\grad_enhancedDiving\images\modul_logo.paa";
           category = "enhancedDiving";
           function = "grad_enhancedDiving_fnc_setModuleSetting";
