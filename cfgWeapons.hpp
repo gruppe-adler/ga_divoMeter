@@ -31,4 +31,14 @@ class CfgWeapons {
 			shownUnderwaterSelections[] = {};
 		};
 	};
+
+	class ItemWatch;
+	 class GRAD_DivingComputer: ItemWatch {
+			 ACE_hideItemType = "Watch";
+
+			 author = "Salbei";
+			 descriptionShort = $STR_grad_enhancedDiving_computer_desc;
+			 displayName = $STR_grad_enhancedDiving_computer;
+			 //picture = "";
+	 };
 };

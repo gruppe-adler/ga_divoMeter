@@ -15,7 +15,7 @@ class CfgVehicles
      class grad_enhancedDiving_params: Module_F
      {
           scope = 2;
-          displayName = "Enhanced Diving Settings";
+          displayName = $STR_Enhanced_Diving_Settings;
           icon ="\z\grad_enhancedDiving\images\modul_logo.paa";
           category = "enhancedDiving";
           function = "grad_enhancedDiving_fnc_setModuleSetting";
@@ -57,21 +57,6 @@ class CfgVehicles
           };
     };
 
-    class Man;
-      class CAManBase: Man {
-    class ACE_SelfActions {
-        class GRAD_EnhancedDving {
-    showDisabled = 1;
-    displayName = "Enhanced Diving";
-    condition = "(EDGEARON)";
-    exceptions[] = {"isNotSwimming"};
-    priority = 2.5;
-    icon = "";
-            #include "ACE_SelfActions.hpp"
-        };
-    };
-  };
-
   class Bag_Base;
   class grad_diving_tank: Bag_Base
   {
@@ -89,10 +74,9 @@ class CfgVehicles
 class CfgFactionClasses
 {
 	class NO_CATEGORY;
-	class enhancedDiving: NO_CATEGORY
-	{
+	class enhancedDiving: NO_CATEGORY	{
 		displayName = "Enhanced Diving";
-          priority = 2;
-          side = 7;
+    priority = 2;
+    side = 7;
 	};
 };

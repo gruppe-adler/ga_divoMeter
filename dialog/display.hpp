@@ -1,25 +1,22 @@
 class RscPicture;
 class RscText;
 
-class slb_disp {
+class slb_divingComputer {
     idd = 1109;
-    name=_slb;
-    onLoad = "uiNamespace setVariable ['slb_display', _this select 0]";
-    fadein = 0;
-    fadeout = 0;
+    onLoad = "uiNamespace setVariable ['slb_divingComputerUI', _this select 0]";
+    fadeIn=0;
+    fadeOut=1;
     duration = 10e10;
     controlsBackground[] = {};
     objects[] = {};
      class controls {
         class slb_image: RscPicture {
             idc = 1110;
-            colorBackground[] = { };
-            colorText[] = { };
+            text = "\z\grad_enhancedDiving\images\divingWatch.paa";
             x = safeZoneX+(safeZoneW*0.71);
             y = safeZoneY+(safeZoneH*0.32);
             w = safeZoneW* 0.30;
             h = safeZoneH* 0.48;
-            text = "\grad_enhancedDiving\images\divingWatch.paa";
         };
         class slb_distanzeUnit: RscText {
             idc = 1111;
@@ -34,7 +31,7 @@ class slb_disp {
         };
         class slb_decoTag: slb_distanzeUnit {
             idc = 1112;
-            text = "";
+            text = "NO DECO";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
             x = (0.86 * safezoneW) + safezoneX;
@@ -53,7 +50,7 @@ class slb_disp {
         };
         class slb_decoFreeTime: slb_distanzeUnit {
             idc = 1114;
-            text = "";
+            text = "--";
             colorText[] = {0,1,0,1};
             sizeEx = 0.05;
             x = safeZoneX+(safeZoneW*0.87);
@@ -63,7 +60,7 @@ class slb_disp {
         };
         class slb_tts: slb_distanzeUnit {
             idc = 1115;
-            text = "";
+            text = "TTS";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.03;
             x = safeZoneX+(safeZoneW*0.813);
@@ -73,7 +70,7 @@ class slb_disp {
         };
         class slb_diveT: slb_distanzeUnit {
             idc = 1116;
-            text = "";
+            text = "DIVE-T";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.03;
             x = safeZoneX+(safeZoneW*0.87);
@@ -83,7 +80,7 @@ class slb_disp {
         };
         class slb_timeToSurface: slb_distanzeUnit {
             idc = 1117;
-            text = "";
+            text = "--";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.05;
             x = safeZoneX+(safeZoneW*0.813);
@@ -93,7 +90,7 @@ class slb_disp {
         };
         class slb_divingTime: slb_distanzeUnit {
             idc = 1118;
-            text = "";
+            text = "--";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.05;
             x = safeZoneX+(safeZoneW*0.87);
@@ -120,9 +117,9 @@ class slb_disp {
             w = safeZoneW* 0.03;
             h = safeZoneH* 0.03;
         };
-        class slb_remaingDiveTimeUnit: slb_distanzeUnit {
+        class slb_time: slb_distanzeUnit {
             idc = 1121;
-            text = "";
+            text = "TIME";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
             x = safeZoneX+(safeZoneW*0.87);
@@ -132,7 +129,7 @@ class slb_disp {
         };
         class slb_pressureValue: slb_distanzeUnit {
             idc = 1122;
-            text = "";
+            text = "---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.05;
             x = safeZoneX+(safeZoneW*0.805);
@@ -140,9 +137,9 @@ class slb_disp {
             w = safeZoneW* 0.04;
             h = safeZoneH* 0.03;
         };
-        class slb_remaingDiveTime: slb_distanzeUnit {
+        class slb_timeNumber: slb_distanzeUnit {
             idc = 1123;
-            text = "";
+            text = "00:00";
             colorText[] = {0,1,0,1};
             sizeEx = 0.05;
             x = safeZoneX+(safeZoneW*0.87);

@@ -6,12 +6,13 @@ class CfgFunctions {
 			class addRefillMenu {};
 			class addGasVariables {};
 			class checkGear {};
+			class closeWatch {};
 			class divingCalc {};
 			class emergencyAscent {};
 			class gasCalc {};
 			class init {preInit = 1;};
 			class initTissues {};
-			class openWatch {};
+			class postInit {postInit = 1;};
 			class refillTank {};
 			class setModuleSetting {};
 			class switchTank {};
