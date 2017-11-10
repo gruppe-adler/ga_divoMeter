@@ -21,7 +21,7 @@ class RscTitles {
         class slb_distanzeUnit: RscText {
             idc = 1111;
             text = "";
-            font = "PuristaBold";
+            font = "TahomaB";
             colorText[] = {1,1,1,1};
             sizeEx = 0.03;
             x = (0.816931 * safezoneW) + safezoneX;
@@ -34,7 +34,7 @@ class RscTitles {
             text = "NO DECO";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
-            x = (0.86 * safezoneW) + safezoneX;
+            x = (0.875 * safezoneW) + safezoneX;
             y = (0.450518 * safezoneH) + safezoneY;
             w = 0.05 * safezoneW;
             h = 0.02 * safezoneH;
@@ -122,7 +122,7 @@ class RscTitles {
             text = "TIME";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
-            x = safeZoneX+(safeZoneW*0.87);
+            x = safeZoneX+(safeZoneW*0.88);
             y = safeZoneY+(safeZoneH*0.59);
             w = safeZoneW* 0.03;
             h = safeZoneH* 0.03;

@@ -7,11 +7,11 @@ EDOPEN = true;
 	params ["_args","_handle"];
 	if !(EDOPEN) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
-	(_displayUI displayCtrl 1123) ctrlSetText format ["%1:%2", ([(date select 3), 2] call CBA_fnc_formatNumber), ([(date select 4), 2] call CBA_fnc_formatNumber)];
-	(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
-
 	disableSerialization;
 	_displayUI = uiNamespace getVariable "slb_divingComputerUI";
+
+	(_displayUI displayCtrl 1123) ctrlSetText format ["%1:%2", ([(date select 3), 2] call CBA_fnc_formatNumber), ([(date select 4), 2] call CBA_fnc_formatNumber)];
+	(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 
 	if (((eyePos player select 2) < 0) && EDGEARON) then {
 		_bar = 0;
