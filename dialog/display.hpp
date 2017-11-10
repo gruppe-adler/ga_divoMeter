@@ -1,14 +1,14 @@
 class RscPicture;
 class RscText;
-
-class slb_divingComputer {
+class RscTitles {
+  class slb_divingComputer {
     idd = 1109;
-    onLoad = "uiNamespace setVariable ['slb_divingComputerUI', _this select 0]";
+    enableSimulation = 1;
+    movingEnable = 0;
     fadeIn=0;
     fadeOut=1;
     duration = 10e10;
-    controlsBackground[] = {};
-    objects[] = {};
+    onLoad = "uiNamespace setVariable ['slb_divingComputerUI', _this select 0]";
      class controls {
         class slb_image: RscPicture {
             idc = 1110;
@@ -42,7 +42,7 @@ class slb_divingComputer {
         class slb_height: slb_distanzeUnit {
             idc = 1113;
             text = "";
-            sizeEx = 0.05;
+            sizeEx = 0.07;
             x = (0.805 * safezoneW) + safezoneX;
             y = (0.48 * safezoneH) + safezoneY;
             w = 0.05 * safezoneW;
@@ -52,7 +52,7 @@ class slb_divingComputer {
             idc = 1114;
             text = "--";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.05;
+            sizeEx = 0.07;
             x = safeZoneX+(safeZoneW*0.87);
             y = safeZoneY+(safeZoneH*0.48);
             w = safeZoneW* 0.03;
@@ -131,7 +131,7 @@ class slb_divingComputer {
             idc = 1122;
             text = "---";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.05;
+            sizeEx = 0.07;
             x = safeZoneX+(safeZoneW*0.805);
             y = safeZoneY+(safeZoneH*0.62);
             w = safeZoneW* 0.04;
@@ -141,10 +141,10 @@ class slb_divingComputer {
             idc = 1123;
             text = "00:00";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.05;
+            sizeEx = 0.07;
             x = safeZoneX+(safeZoneW*0.87);
             y = safeZoneY+(safeZoneH*0.62);
-            w = safeZoneW* 0.03;
+            w = safeZoneW* 0.05;
             h = safeZoneH* 0.03;
         };
         class slb_deepStop: slb_distanzeUnit {
@@ -230,10 +230,11 @@ class slb_divingComputer {
             idc = 1132;
             text = "";
             sizeEx = 0.025;
-            x = safeZoneX+(safeZoneW*0.783);
+            x = safeZoneX+(safeZoneW*0.791);
             y = safeZoneY+(safeZoneH*0.485);
             w = safeZoneW* 0.025;
             h = safeZoneH* 0.3;
         };
     };
+  };
 };

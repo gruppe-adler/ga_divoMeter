@@ -1,5 +1,5 @@
 (["GRAD_DivingComputer"] call BIS_fnc_rscLayer) cutRsc ["slb_divingComputer", "PLAIN", 0, true];
-if (isNull (uiNamespace getVariable ["slb_divingComputer", displayNull])) exitWith {};
+if (isNull (uiNamespace getVariable ["slb_divingComputerUI", displayNull])) exitWith {};
 
 EDOPEN = true;
 
@@ -7,47 +7,50 @@ EDOPEN = true;
 	params ["_args","_handle"];
 	if !(EDOPEN) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
+	(_displayUI displayCtrl 1123) ctrlSetText format ["%1:%2", ([(date select 3), 2] call CBA_fnc_formatNumber), ([(date select 4), 2] call CBA_fnc_formatNumber)];
+	(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
+
+	disableSerialization;
+	_displayUI = uiNamespace getVariable "slb_divingComputerUI";
+
 	if (((eyePos player select 2) < 0) && EDGEARON) then {
-		disableSerialization;
-		_displayUI = uiNamespace getVariable "slb_divingComputerUI";
 		_bar = 0;
 
 		if (EDMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round(grad_depth *10))/10];
+			(_displayUI displayCtrl 1113) ctrlSetText format ["%1",(round(grad_depth *10))/10];
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
-			_bar = round(grad_filling);
+			_bar = round(grad_filling/100);
 		}else {
 			(_displayUI displayCtrl 1111) ctrlSetText "FT";
-			(_displayUI displayCtrl 1113) ctrlSetText format["%1",((round((grad_depth * 3.28) *10))/10)];
+			(_displayUI displayCtrl 1113) ctrlSetText format ["%1",((round((grad_depth * 3.28) *10))/10)];
 			(_displayUI displayCtrl 1120) ctrlSetText "PSI";
-			_bar = round(grad_filling * 14.5038);
+			_bar = round((grad_filling/100) * 14.5038);
 		};
 		if (grad_filling > 50) then {
 			if ((ctrlText 1122) == "") then {
 				(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 0, 1, 1];
-				(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
+				(_displayUI displayCtrl 1122) ctrlSetText format ["%1", _bar];
 			}else{
 				(_displayUI displayCtrl 1122) ctrlSetText "";
 			};
 		}else{
 			(_displayUI displayCtrl 1122) ctrlSetTextColor [0, 1, 0, 1];
-			(_displayUI displayCtrl 1122) ctrlSetText format["%1", _bar];
+			(_displayUI displayCtrl 1122) ctrlSetText format ["%1", _bar];
 		};
 
 		if (grad_doDeco) then {
 			(_displayUI displayCtrl 1112) ctrlSetText "DECO";
 			if (!(grad_depth2deco > 3) && !(grad_depth2deco < -3)) then {
-				(_displayUI displayCtrl 1120) ctrlSetText format["%1", grad_decoTime];
+				(_displayUI displayCtrl 1120) ctrlSetText format ["%1", grad_decoTime];
 			};
 		}else{
 			(_displayUI displayCtrl 1112) ctrlSetText "NO DECO";
 		};
 
 		(_displayUI displayCtrl 1121) ctrlSetText "TIME";
-		(_displayUI displayCtrl 1123) ctrlSetText format["%1", daytime];
-		(_displayUI displayCtrl 1114) ctrlSetText format["%1", round (((grad_timeleft) + .01)/60)];
-		(_displayUI displayCtrl 1119) ctrlSetText format["%1", (round (grad_percentO2 * 100))/100];
+		(_displayUI displayCtrl 1114) ctrlSetText format ["%1", round (((grad_timeleft) + .01)/60)];
+		(_displayUI displayCtrl 1119) ctrlSetText format ["%1", (round (grad_percentO2 * 100))/100];
 
 		switch (true) do {
 			case (!grad_doDeco): {
@@ -58,8 +61,8 @@ EDOPEN = true;
 				(_displayUI displayCtrl 1131) ctrlSetText "";
 				(_displayUI displayCtrl 1115) ctrlSetText "TTS";
 				(_displayUI displayCtrl 1116) ctrlSetText "DIVE-T";
-				(_displayUI displayCtrl 1117) ctrlSetText format["%1", round (grad_ascTime)];
-				(_displayUI displayCtrl 1118) ctrlSetText format["%1", round (((grad_diveTime)+.01)/60)];
+				(_displayUI displayCtrl 1117) ctrlSetText format ["%1", round (grad_ascTime)];
+				(_displayUI displayCtrl 1118) ctrlSetText format ["%1", round (((grad_diveTime)+.01)/60)];
 			};
 			case (grad_doDeco && !(grad_depth2deco < - 6) && !(grad_depth2deco > 6)): {
 				(_displayUI displayCtrl 1115) ctrlSetText "";
@@ -142,9 +145,6 @@ EDOPEN = true;
 		};
 		(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 	}else{
-
-		disableSerialization;
-		_displayUI = uiNamespace getVariable "slb_divingComputerUI";
 		if (EDMETRIC) then {
 			(_displayUI displayCtrl 1111) ctrlSetText "M";
 			(_displayUI displayCtrl 1120) ctrlSetText "BAR";
@@ -154,7 +154,5 @@ EDOPEN = true;
 			(_displayUI displayCtrl 1120) ctrlSetText "PSI";
 			(_displayUI displayCtrl 1113) ctrlSetText format["%1",(round((((getPosASL player) select 2)*3.28) *10))/10];
 		};
-
-		(_displayUI displayCtrl 1132) ctrlSetText format ["%1", grad_selectedTank];
 	};
 }, 1, []] call CBA_fnc_addPerFrameHandler;

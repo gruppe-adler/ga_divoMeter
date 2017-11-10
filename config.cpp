@@ -16,7 +16,4 @@ class CfgPatches {
 #include "functions\cfgFunctions.hpp"
 #include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"
-
-class RscTitles {
-	#include "dialog\display.hpp"
-};
+#include "dialog\display.hpp"

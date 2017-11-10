@@ -3,9 +3,8 @@ if (!hasInterface) exitWith {};
 ["GRAD Enhanced Diving", "ed_diveComputer_key", "Diving Computer Toggle", {
     // Conditions: canInteract
     //if !([ACE_player, objNull, ["isNotEscorting", "isNotInside"]] call EFUNC(common,canInteractWith)) exitWith {false};
-    if (!('GRAD_DivingComputer' in assignedItems player)) exitWith {hint "No watch";false};
-    hint format ["%1", EDOPEN];
-    if (!EDOPEN) then {
+    if (!('GRAD_DivingComputer' in assignedItems player)) exitWith {false};
+    if !(EDOPEN) then {
         [] call grad_enhancedDiving_fnc_watchDisplay;
     } else {
       [] call grad_enhancedDiving_fnc_closeWatch;
