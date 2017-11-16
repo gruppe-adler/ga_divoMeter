@@ -1,0 +1,5 @@
+#define EDDIVINGGEAR            ["V_GRAD_DivingVest_Rgr"]
+#define EDDIVINGDOUBLE          [""]
+#define EDDIVINGVEST			      [""]
+#define EDDIVINGVESTAIR			    [""]
+#define EDDIVINGREBREATHER		  [""]
