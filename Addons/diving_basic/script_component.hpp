@@ -1,13 +1,7 @@
-#define COMPONENT enhanced_diving
+#define COMPONENT diving_basic
 
 #include "\x\enhanced_diving\Addons\main\script_mod.hpp"
 #include "\x\enhanced_diving\Addons\main\script_macros.hpp"
-
-#define EDDIVINGGEAR            ["V_GRAD_DivingVest_Rgr"]
-#define EDDIVINGDOUBLE          [""]
-#define EDDIVINGVEST			      [""]
-#define EDDIVINGVESTAIR			    [""]
-#define EDDIVINGREBREATHER		  [""]
 
 #define DISPLAY_DIVING_COMPUTER_IMAGE_IDC         1110
 #define DISPLAY_DIVING_DISTANCE_UNIT_IDC          1111

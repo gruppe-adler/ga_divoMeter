@@ -3,12 +3,12 @@
 (["GVAR(DivingComputer"] call BIS_fnc_rscLayer) cutRsc ["slb_divingComputer", "PLAIN", 0, true];
 if (isNull (uiNamespace getVariable ["slb_divingComputerUI", displayNull])) exitWith {};
 
-GVAR(OPEN) = true;
+GVAR(open) = true;
 
 [{
 	params ["_args","_handle"];
 
-	if !(GVAR(OPEN)) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
+	if !(GVAR(open)) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
 	disableSerialization;
 	private _displayUI = uiNamespace getVariable "slb_divingComputerUI";
@@ -16,10 +16,10 @@ GVAR(OPEN) = true;
 	(_displayUI displayCtrl DISPLAY_DIVING_TIME_NUMBER_IDC) ctrlSetText format ["%1:%2", ([(date select 3), 2] call CBA_fnc_formatNumber), ([(date select 4), 2] call CBA_fnc_formatNumber)];
 	(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank)];
 
-	if (((eyePos player select 2) < 0) && GVAR(ON)) then {
+	if (((eyePos player select 2) < 0) && GVAR(on)) then {
 		_bar = 0;
 
-		if (GVAR(METRIC)) then {
+		if (GVAR(metric)) then {
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";
 			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round(GVAR(depth) *10))/10];
 			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "BAR";
@@ -67,7 +67,7 @@ GVAR(OPEN) = true;
 				(_displayUI displayCtrl DISPLAY_DIVING_TIME_TO_SURFACE_IDC) ctrlSetText format ["%1", round (GVAR(ascTime))];
 				(_displayUI displayCtrl DISPLAY_DIVING_DIVING_TIME_IDC ) ctrlSetText format ["%1", round (((GVAR(diveTime))+.01)/60)];
 			};
-			case (GVAR(doDeco)) && !(GVAR(depth2deco)) < - 6) && !(GVAR(depth2deco)) > 6)): {
+			case (GVAR(doDeco) && !(GVAR(depth2deco) < -6) && !(GVAR(depth2deco) > 6)): {
 				(_displayUI displayCtrl DISPLAY_DIVING_TIME_TO_SURFACE_TEXT_IDC) ctrlSetText "";
 				(_displayUI displayCtrl DISPLAY_DIVING_DIVE_TIME_IDC) ctrlSetText "";
 				(_displayUI displayCtrl DISPLAY_DIVING_TIME_TO_SURFACE_IDC) ctrlSetText "";
@@ -78,10 +78,10 @@ GVAR(OPEN) = true;
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOF(data\images\triangle_down_divider.paa);
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOF(data\images\triangle_up_divider.paa);
 			};
-			case (GVAR(doDeepStop) && !(GVAR(depth2deepStop) < - 6) && !(GVAR(depth2deepStop) > 6)): {
+			case (GVAR(doDeepStop) && !(GVAR(depth2deepStop) < -6) && !(GVAR(depth2deepStop) > 6)): {
 				(_displayUI displayCtrl DISPLAY_DIVING_DEEP_STOP_IDC) ctrlSetText "";
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_TEXT_IDC) ctrlSetText "DEEP STOP";
-				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_DEPTH_IDC) ctrlSetText format ["%1M", GVAR(depth2deepStop]);
+				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_DEPTH_IDC) ctrlSetText format ["%1M", GVAR(depth2deepStop)];
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_TIME_IDC) ctrlSetText format ["%1", GVAR(deepStopTime)];
 
 				switch (true) do {
@@ -140,29 +140,20 @@ GVAR(OPEN) = true;
 			} else {
 				for "_i" from 1 to 9 do {
 					if(GVAR(narcFactor) < _i) exitWith {
-						(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText format[ QPATHTOF(data\images\right_0%1.paa), _i];
+						(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText format [ QPATHTOF(data\images\right_0%1.paa), _i];
 					};
 				};
-				/*
-				_getenhancedDivingN2Texture = {
-					_n2Index = {
-						if (_this < _x)  exitWith{_forEachIndex};
-					}forEach [1, 2, 3, 4, 5, 6, 7, 8, 9];
-					format[ QPATHTOF(data\images\right_0%1.paa), _n2Index];
-				};
-			(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText (GVAR(narcFactor) call _getenhancedDivingN2Texture);
-			*/
 		};
-		(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank];
+		(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank)];
 	}else{
-		if (GVAR(METRIC)) then {
+		if (GVAR(metric)) then {
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";
-			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "BAR";
-			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format["%1",(round(((getPosASL player) select 2) *10))/10];
+			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC) ctrlSetText "BAR";
+			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round(((getPosASL player) select 2) *10))/10];
 		}else{
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "FT";
-			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "PSI";
-			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format["%1",(round((((getPosASL player) select 2)*3.28) *10))/10];
+			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC) ctrlSetText "PSI";
+			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round((((getPosASL player) select 2)*3.28) *10))/10];
 		};
 	};
 }, 1, []] call CBA_fnc_addPerFrameHandler;

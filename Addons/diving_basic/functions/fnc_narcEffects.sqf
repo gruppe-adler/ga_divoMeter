@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 
-diag_log "Narc Effect fired";
-
-GVAR(narcActiv) = true;
+GVAR(narcActive) = true;
 _narcColor = ppEffectCreate ["colorCorrections", 1001];
 _narcBlur = ppEffectCreate ["radialBlur", 1002];
 _narcDynBlur = ppEffectCreate ["DynamicBlur", 1003];
@@ -19,7 +17,7 @@ titleText ["","BLACK OUT",2];
 		ppEffectDestroy _narcDynBlur;
 		ppEffectDestroy _narcChroma;
 		ppEffectDestroy _narcColor;
-		GVAR(narcActiv) = false;
+		GVAR(narcActive) = false;
 	};
 
 	[{
@@ -39,7 +37,7 @@ titleText ["","BLACK OUT",2];
 		_narcDynBlur ppEffectCommit 4;
 		_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
 		_bodyPart = selectRandom ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
-		[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (GVAR(narcFactor/50), player, "explosive", -1] call ace_medical_fnc_handleDamage;
+		[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (GVAR(narcFactor)/50), player, "explosive", -1] call ace_medical_fnc_handleDamage;
 
 		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;
 

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-GVAR(dcsActiv = true;
+GVAR(dcsActive) = true;
 _DCSColor = ppEffectCreate ["colorCorrections", 1001];
 _DCSBlur = ppEffectCreate ["radialBlur", 1002];
 _DCSDynBlur = ppEffectCreate ["DynamicBlur", 1003];
@@ -17,7 +17,7 @@ titleText ["","BLACK OUT",1];
 		ppEffectDestroy _HeToxDynBlur;
 		ppEffectDestroy _HeToxChroma;
 		ppEffectDestroy _HeToxColor;
-		GVAR(dcsActiv) = false;
+		GVAR(dcsActive) = false;
 	};
 
 	[{

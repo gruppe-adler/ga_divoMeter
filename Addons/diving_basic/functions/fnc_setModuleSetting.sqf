@@ -12,9 +12,9 @@ diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _enabled, GVAR(
 
 if (_enabled) then {
 
-	GVAR(ON) = false;
-	GVAR(METRIC) = true;
-	GVAR(OPEN) = false;
+	GVAR(on) = false;
+	GVAR(metric) = true;
+	GVAR(open) = false;
 	GVAR(WATCHON) = false;
 
 /*
@@ -37,7 +37,7 @@ if (_enabled) then {
 		{
 			diag_log format ["ED Take Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in GVAR(DIVINGVEST)) : {
+				case ((_this select 2) in GVAR(divingVest)) : {
 					_value = (backpackContainer player) getVariable _container;
 					if (isNil "_value") then {
 						_value = (vestContainer player) getVariable _container;
@@ -55,7 +55,7 @@ if (_enabled) then {
 		{
 			diag_log format ["ED Put Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in GVAR(DIVINGVEST)) : {
+				case ((_this select 2) in GVAR(divingVest)) : {
 					_value = (backpackContainer player) getVariable _container;
 					if (isNil "_value") then {
 						_value = (vestContainer player) getVariable _container;
@@ -69,16 +69,16 @@ if (_enabled) then {
 		}
 	];
 
-	if ((vest player) in GVAR(DIVINGVEST)) then {
-		GVAR(ON) = true;
+	if ((vest player) in GVAR(divingVest)) then {
+		GVAR(on) = true;
 		[true, (vest player), (vestcontainer player)] call FUNC(addGasVariables);
 	};
-	if ((backpack player) in GVAR(DIVINGVEST)) then {
-		GVAR(ON) = true;
+	if ((backpack player) in GVAR(divingVest)) then {
+		GVAR(on) = true;
 		[true, (backpack player), (backpackContainer player)] call FUNC(addGasVariables);
 	};
 
-	diag_log format ["ED Gear: %1, Vest: %2, Backpack: %3", GVAR(ON), (vest player), (backpack player)];
+	diag_log format ["ED Gear: %1, Vest: %2, Backpack: %3", GVAR(on), (vest player), (backpack player)];
 
 	[] call FUNC(divingCalc);
 };

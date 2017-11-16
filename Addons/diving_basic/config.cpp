@@ -6,7 +6,7 @@ class CfgPatches {
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"grad_enhancedDiving_main"};
+		requiredAddons[] = {"enhanced_diving_main"};
 		units[] = {
 			QGVAR(params)
 		};

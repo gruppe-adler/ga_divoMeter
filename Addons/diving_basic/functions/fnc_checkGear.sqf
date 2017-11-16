@@ -19,5 +19,4 @@ if ((_percentO2 +_percentN2 +_percentHe) != 1) exitWith {
 
 if (_percentO2 < 0.09) exitWith {systemChat format ["DM: Error in init argument: You need at least 9% O2 in your tank. O2 percentage = %1", _percentO2];};
 
-diag_log format ["CHECKGEAR: %1", _value];
 _value;

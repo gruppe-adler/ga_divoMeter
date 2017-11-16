@@ -2,7 +2,7 @@
 params ["_bool", "_obj", "_container"];
 
 if (_bool) then {
-	if ((vest player) in GVAR(DIVINGVEST)) exitWith {GVAR(ON) = false; systemChat "Please put on a Diving Vest!"; removeBackpack player};
+	if ((vest player) in GVAR(divingVest)) exitWith {GVAR(on) = false; systemChat "Please put on a Diving Vest!"; removeBackpack player};
 	_value = _container getVariable "GVAR(DIVE_GAS1";
 	_upperClass = "CfgWeapons";
 
@@ -34,9 +34,9 @@ if (_bool) then {
 	  _container setVariable ["GVAR(DIVE_GAS1)", [_bar, _o2, _n2, _he]];
 	};
 
-	GVAR(ON) = true;
+	GVAR(on) = true;
 
-	if ((_obj in GVAR(DIVINGDOUBLE)) && GVAR(ON)) then {
+	if ((_obj in GVAR(DIVINGDOUBLE)) && GVAR(on)) then {
 		_value = _obj getVariable "GVAR(DIVE_GAS2)";
 		if (isNil "_value")then {
 			_bar = 0;
@@ -66,5 +66,5 @@ if (_bool) then {
 	};
 
 }else{
-	GVAR(ON) = false;
+	GVAR(on) = false;
 };

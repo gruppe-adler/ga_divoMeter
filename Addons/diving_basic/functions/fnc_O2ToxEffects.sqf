@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 
-diag_log "O2 Tox Effect fired";
-
-GVAR(o2Activ) = true;
+GVAR(o2Active) = true;
 _O2ToxColor = ppEffectCreate ["colorCorrections", 1001];
 _O2ToxBlur = ppEffectCreate ["radialBlur", 1002];
 _O2ToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
@@ -19,7 +17,7 @@ titleText ["","BLACK OUT",2];
 		ppEffectDestroy _O2ToxDynBlur;
 		ppEffectDestroy _O2ToxChroma;
 		ppEffectDestroy _O2ToxColor;
-		GVAR(o2Activ) = false;
+		GVAR(o2Active) = false;
 	};
 
 	[{

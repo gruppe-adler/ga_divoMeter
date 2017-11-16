@@ -1,7 +1,6 @@
 #include "script_component.hpp"
-diag_log "HE Tox Effect fired";
 
-GVAR(heActiv) = true;
+GVAR(heActive) = true;
 _HeToxColor = ppEffectCreate ["colorCorrections", 1001];
 _HeToxBlur = ppEffectCreate ["radialBlur", 1002];
 _HeToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
@@ -18,7 +17,7 @@ titleText ["","BLACK OUT",2];
 		ppEffectDestroy _HeToxDynBlur;
 		ppEffectDestroy _HeToxChroma;
 		ppEffectDestroy _HeToxColor;
-		GVAR(heActiv) = false;
+		GVAR(heActive) = false;
 	};
 
 	[{

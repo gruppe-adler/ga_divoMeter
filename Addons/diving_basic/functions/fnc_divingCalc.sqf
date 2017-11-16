@@ -45,7 +45,7 @@ GVAR(pressureB) = 0;
 GVAR(oTot) = 0;
 GVAR(oPercent) = 0;
 GVAR(O2TisTot) = 0;
-GVAR(pOAlv = 0;
+GVAR(pOAlv) = 0;
 //N2
 GVAR(nTot) = 0;
 GVAR(nPercent) = 0;
@@ -62,7 +62,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 	params ["_args","_handle"];
 	if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
-	diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4, Breath: %5", GVAR(ON), GVAR(METRIC), GVAR(OPEN), ((eyePos player select 2) < 0), isAbleToBreathe player];
+	diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4, Breath: %5", GVAR(on), GVAR(metric), GVAR(open), ((eyePos player select 2) < 0), isAbleToBreathe player];
 
 	if (GVAR(switchTank)) then {
 		if !(isNil QGVAR(maxBar)) then {
@@ -86,7 +86,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 		GVAR(switchTank = false;
 	};
 
-	if (((eyePos player select 2) < 0) && GVAR(ON)) then {
+	if (((eyePos player select 2) < 0) && GVAR(on)) then {
 		if (isNil QGVAR(maxBar)) then {
 			_value = [] call FUNC(checkGear));
 			if (isNil "_value") exitWith {};
@@ -144,7 +144,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 		}else{GVAR(upDepth = 0;};
 
 		//DCS effects
-		if (GVAR(dDepth > 9.1 && GVAR(maxDepth > 20 && !(GVAR(dcsActiv)) then {
+		if (GVAR(dDepth > 9.1 && GVAR(maxDepth > 20 && !(GVAR(dcsActive)) then {
 			[]call FUNC(DCSEffects);
 		};
 
@@ -232,7 +232,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 		};
 
 		//Check ppHe and init tox effects if surpassed
-		if (GVAR(pHeAlv) > 8 && !(GVAR(heActiv))) then {
+		if (GVAR(pHeAlv) > 8 && !(GVAR(heActive))) then {
 			[] call FUNC(HeToxEffects);
 		};
 
@@ -252,7 +252,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 		};
 
 		//Check if player surpasses Maximum Operating Depth and init O2 Tox effects
-		if (GVAR(depth) > (((GVAR(maxppO)/GVAR(percentO2)) -1) *10) && !(GVAR(o2Activ))) then {
+		if (GVAR(depth) > (((GVAR(maxppO)/GVAR(percentO2)) -1) *10) && !(GVAR(o2Active))) then {
 			[] call FUNC(O2ToxEffects);
 		};
 
