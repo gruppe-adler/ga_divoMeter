@@ -15,7 +15,7 @@ if (_enabled) then {
 	GVAR(on) = false;
 	GVAR(metric) = true;
 	GVAR(open) = false;
-	GVAR(WATCHON) = false;
+	GVAR(on) = false;
 
 /*
 	player addEventHandler ["HITPART",
@@ -37,15 +37,10 @@ if (_enabled) then {
 		{
 			diag_log format ["ED Take Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in GVAR(divingVest)) : {
-					_value = (backpackContainer player) getVariable _container;
-					if (isNil "_value") then {
-						_value = (vestContainer player) getVariable _container;
-						if (isNil "_value") then {_obj = (vestContainer player);};
-					}else {
-						_obj = (backpackContainer player);
-					};
-					[true, (_this select 2), _obj] call FUNC(addGasVariables);
+				case ((_this select 2) in GVAR(Vest)) : {
+						[] call FUNC(checkVest);
+				case ((_this select 2) in GVAR(Tank)) : {
+					[true, (_this select 2), v] call FUNC(addGasVariables);
 				};
 			};
 		}
@@ -55,10 +50,10 @@ if (_enabled) then {
 		{
 			diag_log format ["ED Put Gear: %1",(_this select 2)];
 			switch (true) do {
-				case ((_this select 2) in GVAR(divingVest)) : {
-					_value = (backpackContainer player) getVariable _container;
+				case ((_this select 2) in GVAR(Vest)) : {
+					_value = (backpackContainer player) getVariable QGVAR(DIVE_GAS1);
 					if (isNil "_value") then {
-						_value = (vestContainer player) getVariable _container;
+						_value = (vestContainer player) getVariable QGVAR(DIVE_GAS1);
 						if (isNil "_value") then {_obj = (vestContainer player);};
 					}else {
 						_obj = (backpackContainer player);
@@ -69,11 +64,11 @@ if (_enabled) then {
 		}
 	];
 
-	if ((vest player) in GVAR(divingVest)) then {
+	if ((vest player) in GVAR(Vest)) then {
 		GVAR(on) = true;
 		[true, (vest player), (vestcontainer player)] call FUNC(addGasVariables);
 	};
-	if ((backpack player) in GVAR(divingVest)) then {
+	if ((backpack player) in GVAR(Tank)) then {
 		GVAR(on) = true;
 		[true, (backpack player), (backpackContainer player)] call FUNC(addGasVariables);
 	};

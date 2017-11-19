@@ -12,9 +12,6 @@ class CfgWeapons {
 		scope=2;
 		displayName="Diving Vest";
 		descriptionShort="Diving vest";
-		GVAR(gasClass1) = 7;
-		GVAR(tankSize1) = 10;
-		GVAR(maxBar1) = 200;
 		hiddenSelections[] = {"camo","hide","unhide","unhide2"};
 		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
 		hiddenUnderwaterSelections[] = {};

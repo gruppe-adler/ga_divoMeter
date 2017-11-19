@@ -129,7 +129,7 @@ class RscTitles {
         };
         class slb_pressureValue: slb_distanzeUnit {
             idc = 1122;
-            text = "---";
+            text = "  ---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
             x = safeZoneX+(safeZoneW*0.805);

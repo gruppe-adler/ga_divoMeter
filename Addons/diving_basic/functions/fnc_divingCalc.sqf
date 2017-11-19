@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+diag_log "Starting diving calc";
 
 //Starting vars
 GVAR(selectedTank) = 1;

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-(["GVAR(DivingComputer"] call BIS_fnc_rscLayer) cutRsc ["slb_divingComputer", "PLAIN", 0, true];
+(["GRAD_DivingComputer"] call BIS_fnc_rscLayer) cutRsc ["slb_divingComputer", "PLAIN", 0, true];
 if (isNull (uiNamespace getVariable ["slb_divingComputerUI", displayNull])) exitWith {};
 
 GVAR(open) = true;

@@ -18,7 +18,7 @@ class CfgVehicles
           displayName = $STR_Enhanced_Diving_Settings;
           icon = QPATHTOF(data\images\modul_logo.paa);
           category = "enhancedDiving";
-          function = "grad_enhancedDiving_fnc_setModuleSetting";
+          function = QUOTE(DFUNC(setModuleSetting));
           functionPriority = 0;
           isGlobal = 1;
           isTriggerActivated = 0;
@@ -68,6 +68,9 @@ class CfgVehicles
       hiddenSelectionsTextures[]={};
       maximumLoad = 0;
       mass = 20;
+      GVAR(gasClass1) = 7;
+  		GVAR(tankSize1) = 10;
+  		GVAR(maxBar1) = 200;
   };
 };
 
