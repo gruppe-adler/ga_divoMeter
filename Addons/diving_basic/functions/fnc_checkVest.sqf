@@ -2,7 +2,7 @@
 
 _playerVest = vest player;
 _playerBackpack = backpack player;
-switch (true) then {
+switch (true) do {
 	case ((_playerVest in GVAR(Vest)) && ((_playerBackpack in GVAR(Tank)) || (_playerBackpack in GVAR(Double)))) : {
 			//removeVest player;
 			//_place = GVAR(Vest) find _playerVest;

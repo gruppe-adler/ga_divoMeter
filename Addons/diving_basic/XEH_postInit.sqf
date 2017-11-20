@@ -1,12 +1,11 @@
 #include "script_component.hpp"
 #include "\a3\editor_f\Data\Scripts\dikCodes.h"
 
-diag_log "Setting up Postinit";
-
 ["GRAD Enhanced Diving", QGVAR(diveComputer), "Diving Computer Toggle", {
     // Conditions: canInteract
     //if !([ACE_player, objNull, ["isNotEscorting", "isNotInside"]] call ace_common_canInteractWith) exitWith {false};
     diag_log "Setting up Postinit";
+    
     if (!('GRAD_DivingComputer' in assignedItems player)) exitWith {false};
     if !(GVAR(Open)) then {
         [] call FUNC(watchDisplay);

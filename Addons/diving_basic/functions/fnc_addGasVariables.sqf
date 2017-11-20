@@ -1,17 +1,14 @@
 #include "script_component.hpp"
 params ["_bool", "_obj", "_container"];
 
-diag_log format ["Adding Gas Variables: %1", _bool];
-
 if (_bool) then {
-	if (!((vest player) in GVAR(Vest)) || !((vest player) in GVAR(VestAir))) exitWith {GVAR(on) = false; systemChat "Please put on a Diving Vest!"; removeBackpack player};
+	if (!((vest player) in GVAR(Vest)) && !((vest player) in GVAR(Vestair))) exitWith {GVAR(on) = false; systemChat "Please put on a Diving Vest!"; removeBackpack player};
 	_value = _container getVariable QGVAR(DIVE_GAS1);
-	_upperClass = "CfgWeapons";
 
 	if (isNil "_value")then {
 		_bar = 0;
-		_class = getNumber (configFile >> _upperClass >> _obj >> QGVAR(gasClass1));
-		_bar = getNumber (configFile >> _upperClass >> _obj >> QGVAR(maxBar1));
+		_class = getNumber (configFile >> "CfgVehicles" >> _obj >> QGVAR(gasClass1));
+		_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> QGVAR(maxBar1));
 		_o2 = -1;
 		_n2 = -1;
 		_he = -1;
@@ -30,9 +27,6 @@ if (_bool) then {
 			case 10	: { _o2 = 0.10; 	_n2 = 0.40; 	_he = 0.50;};	//Trimax
 			case 11	: { _o2 = 0.15; 	_n2 = 0.30; 	_he = 0.55;};	//Trimax 15/55
 		};
-
-		diag_log format ["ED: Class: %1, Bar: %2, O2: %3, N2: %4, HE:%5", _class, _bar, _o2, _n2, _he];
-
 	  _container setVariable [QGVAR(DIVE_GAS1), [_bar, _o2, _n2, _he]];
 	};
 
@@ -42,8 +36,8 @@ if (_bool) then {
 		_value = _obj getVariable QGVAR(DIVE_GAS2);
 		if (isNil "_value")then {
 			_bar = 0;
-			_class = getNumber (configFile >> _upperClass >> _obj >> "GVAR(gasClass2)");
-			_bar = getNumber (configFile >> _upperClass >> _obj >> "GVAR(maxBar2)");
+			_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "GVAR(gasClass2)");
+			_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "GVAR(maxBar2)");
 			_o2 = -1;
 			_n2 = -1;
 			_he = -1;

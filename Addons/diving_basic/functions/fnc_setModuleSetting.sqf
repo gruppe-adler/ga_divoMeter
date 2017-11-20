@@ -39,8 +39,9 @@ if (_enabled) then {
 			switch (true) do {
 				case ((_this select 2) in GVAR(Vest)) : {
 						[] call FUNC(checkVest);
+					};
 				case ((_this select 2) in GVAR(Tank)) : {
-					[true, (_this select 2), v] call FUNC(addGasVariables);
+					[true, (_this select 2), (backpackContainer player)] call FUNC(addGasVariables);
 				};
 			};
 		}
@@ -51,13 +52,9 @@ if (_enabled) then {
 			diag_log format ["ED Put Gear: %1",(_this select 2)];
 			switch (true) do {
 				case ((_this select 2) in GVAR(Vest)) : {
-					_value = (backpackContainer player) getVariable QGVAR(DIVE_GAS1);
-					if (isNil "_value") then {
-						_value = (vestContainer player) getVariable QGVAR(DIVE_GAS1);
-						if (isNil "_value") then {_obj = (vestContainer player);};
-					}else {
-						_obj = (backpackContainer player);
-					};
+					 [] call FUNC(checkVest);
+				};
+				case ((_this select 2) in GVAR(Tank)) : {
 					[false, (_this select 2), _obj] call FUNC(addGasVariables);
 				};
 			};
@@ -65,15 +62,10 @@ if (_enabled) then {
 	];
 
 	if ((vest player) in GVAR(Vest)) then {
-		GVAR(on) = true;
-		[true, (vest player), (vestcontainer player)] call FUNC(addGasVariables);
+		[] call FUNC(checkVest);
 	};
 	if ((backpack player) in GVAR(Tank)) then {
-		GVAR(on) = true;
 		[true, (backpack player), (backpackContainer player)] call FUNC(addGasVariables);
 	};
-
-	diag_log format ["ED Gear: %1, Vest: %2, Backpack: %3", GVAR(on), (vest player), (backpack player)];
-
 	[] call FUNC(divingCalc);
 };
