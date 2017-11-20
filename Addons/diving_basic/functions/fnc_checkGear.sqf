@@ -1,12 +1,7 @@
 #include "script_component.hpp"
 
-private _obj = backpack player;
-private _container = format [QGVAR(Dive_Gas%1), GVAR(selectedTank)];
-private _value = _obj getVariable _container;
-hint format ["CheckGear Container: %1, Object: %2, Value: %3", _container, _obj, _value];
-
+private _value = (backpackContainer player) getVariable (format [QGVAR(Dive_Gas%1), GVAR(selectedTank)]);
 if (isNil "_value") exitWith {diag_log "ED: No values found";};
-
 _value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
 
 //Check if gear has valid percentages for breathing gas
@@ -23,8 +18,5 @@ GVAR(percentO2) = _percentO2;
 GVAR(percentN2) = _percentN2;
 GVAR(percentHe) = _percentHe;
 
-private _tankSize = format [QGVAR(tankSize%1), GVAR(selectedTank)];
-private _maxBar = format [QGVAR(maxBar%1), GVAR(selectedTank)];
-
-GVAR(maxBar) = getNumber (configFile >> "CfgVehicles" >> _obj >> _maxBar);
-GVAR(filling) = (getNumber (configFile >> "CfgVehicles" >> _obj >> _tankSize)) * GVAR(bar);
+GVAR(maxBar) = getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(maxBar%1), GVAR(selectedTank)]));
+GVAR(filling) = (getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(tankSize%1), GVAR(selectedTank)]))) * GVAR(bar);

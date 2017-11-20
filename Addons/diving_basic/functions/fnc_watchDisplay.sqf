@@ -53,7 +53,7 @@ GVAR(open) = true;
 
 		(_displayUI displayCtrl DISPLAY_DIVING_TIME_TEXT_IDC) ctrlSetText "TIME";
 		(_displayUI displayCtrl DISPLAY_DIVING_DECO_FREE_TIME_IDC) ctrlSetText format ["%1", round (((GVAR(timeleft)) + .01)/60)];
-		(_displayUI displayCtrl DISPLAY_DIVING_O2_PERCENTAGE_IDC) ctrlSetText format ["%1", (round (GVAR(percentO2) * 100))/100];
+		(_displayUI displayCtrl DISPLAY_DIVING_O2_PERCENTAGE_IDC) ctrlSetText format ["%1%", round (GVAR(percentO2) * 100)];
 
 		switch (true) do {
 			case (!GVAR(doDeco)): {

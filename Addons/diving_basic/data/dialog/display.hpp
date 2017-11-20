@@ -50,10 +50,10 @@ class RscTitles {
         };
         class slb_decoFreeTime: slb_distanzeUnit {
             idc = 1114;
-            text = "--";
+            text = "  ---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
-            x = safeZoneX+(safeZoneW*0.87);
+            x = safeZoneX+(safeZoneW*0.875);
             y = safeZoneY+(safeZoneH*0.48);
             w = safeZoneW* 0.03;
             h = safeZoneH* 0.03;
@@ -129,7 +129,7 @@ class RscTitles {
         };
         class slb_pressureValue: slb_distanzeUnit {
             idc = 1122;
-            text = "  ---";
+            text = " ---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
             x = safeZoneX+(safeZoneW*0.805);
@@ -229,7 +229,7 @@ class RscTitles {
         class slb_schowChoosenTank: slb_distanzeUnit {
             idc = 1132;
             text = "";
-            sizeEx = 0.025;
+            sizeEx = 0.027;
             x = safeZoneX+(safeZoneW*0.791);
             y = safeZoneY+(safeZoneH*0.485);
             w = safeZoneW* 0.025;
