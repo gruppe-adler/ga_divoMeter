@@ -20,3 +20,5 @@ GVAR(percentHe) = _percentHe;
 
 GVAR(maxBar) = getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(maxBar%1), GVAR(selectedTank)]));
 GVAR(filling) = (getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(tankSize%1), GVAR(selectedTank)]))) * GVAR(bar);
+
+diag_log format ["Bar: %1, MaxBar: %2, O2: %3, N2: %4, He: %5, Filling: %6", GVAR(bar), GVAR(maxBar), GVAR(percentO2), GVAR(percentN2), GVAR(percentHe), GVAR(filling)];

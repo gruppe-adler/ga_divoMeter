@@ -23,12 +23,12 @@ GVAR(open) = true;
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";
 			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round(GVAR(depth) *10))/10];
 			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "BAR";
-			_bar = round(GVAR(filling)/100);
+			_bar = round(GVAR(filling)/10);
 		}else {
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "FT";
 			(_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",((round((GVAR(depth) * 3.28) *10))/10)];
 			(_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "PSI";
-			_bar = round((GVAR(filling)/100) * 14.5038);
+			_bar = round((GVAR(filling)/10) * 14.5038);
 		};
 		if (GVAR(filling) > 50) then {
 			if ((ctrlText DISPLAY_DIVING_PRESSURE_VALUE_IDC) == "") then {

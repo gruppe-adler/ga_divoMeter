@@ -11,7 +11,7 @@ class RscTitles {
     onLoad = "uiNamespace setVariable ['slb_divingComputerUI', _this select 0]";
      class controls {
         class slb_image: RscPicture {
-            idc = -1;
+            idc = DISPLAY_DIVING_COMPUTER_IMAGE_IDC;
             text = QPATHTOF(data\images\divingWatch.paa);
             x = safeZoneX+(safeZoneW*0.71);
             y = safeZoneY+(safeZoneH*0.32);
@@ -19,7 +19,7 @@ class RscTitles {
             h = safeZoneH* 0.48;
         };
         class slb_distanzeUnit: RscText {
-            idc = 1111;
+            idc = DISPLAY_DIVING_DISTANCE_UNIT_IDC;
             text = "";
             font = "TahomaB";
             colorText[] = {1,1,1,1};
@@ -30,7 +30,7 @@ class RscTitles {
             h = 0.02 * safezoneH;
         };
         class slb_decoTag: slb_distanzeUnit {
-            idc = 1112;
+            idc = DISPLAY_DIVING_DECO_TAG_IDC;
             text = "NO DECO";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
@@ -40,7 +40,7 @@ class RscTitles {
             h = 0.02 * safezoneH;
         };
         class slb_height: slb_distanzeUnit {
-            idc = 1113;
+            idc = DISPLAY_DIVING_HEIGHT_IDC;
             text = "";
             sizeEx = 0.07;
             x = (0.805 * safezoneW) + safezoneX;
@@ -49,7 +49,7 @@ class RscTitles {
             h = 0.03 * safezoneH;
         };
         class slb_decoFreeTime: slb_distanzeUnit {
-            idc = 1114;
+            idc = DISPLAY_DIVING_DECO_FREE_TIME_IDC;
             text = "  ---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
@@ -59,7 +59,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_tts: slb_distanzeUnit {
-            idc = 1115;
+            idc = DISPLAY_DIVING_TIME_TO_SURFACE_TEXT_IDC;
             text = "TTS";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.03;
@@ -69,7 +69,7 @@ class RscTitles {
             h = safeZoneH* 0.02;
         };
         class slb_diveT: slb_distanzeUnit {
-            idc = 1116;
+            idc = DISPLAY_DIVING_DIVE_TIME_IDC;
             text = "DIVE-T";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.03;
@@ -79,7 +79,7 @@ class RscTitles {
             h = safeZoneH* 0.02;
         };
         class slb_timeToSurface: slb_distanzeUnit {
-            idc = 1117;
+            idc = DISPLAY_DIVING_TIME_TO_SURFACE_IDC;
             text = "--";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.05;
@@ -89,7 +89,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_divingTime: slb_distanzeUnit {
-            idc = 1118;
+            idc = DISPLAY_DIVING_DIVING_TIME_IDC;
             text = "--";
             colorText[] = {0.29,0.835,0.89,1};
             sizeEx = 0.05;
@@ -99,17 +99,17 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_o2Percent: slb_distanzeUnit {
-            idc = 1119;
-            text = "";
+            idc = DISPLAY_DIVING_O2_PERCENTAGE_IDC;
+            text = "21%";
             sizeEx = 0.025;
-            x = safeZoneX+(safeZoneW*0.785);
+            x = safeZoneX+(safeZoneW*0.79);
             y = safeZoneY+(safeZoneH*0.5);
             w = safeZoneW* 0.025;
             h = safeZoneH* 0.2;
         };
         class slb_pressureUnit: slb_distanzeUnit {
-            idc = 1120;
-            text = "";
+            idc = DISPLAY_DIVING_PRESSURE_UNIT_IDC;
+            text = "BAR";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
             x = safeZoneX+(safeZoneW*0.813);
@@ -118,7 +118,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_time: slb_distanzeUnit {
-            idc = 1121;
+            idc = DISPLAY_DIVING_TIME_TEXT_IDC;
             text = "TIME";
             colorText[] = {0,1,0,1};
             sizeEx = 0.03;
@@ -128,7 +128,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_pressureValue: slb_distanzeUnit {
-            idc = 1122;
+            idc = DISPLAY_DIVING_PRESSURE_VALUE_IDC;
             text = " ---";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
@@ -138,7 +138,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_timeNumber: slb_distanzeUnit {
-            idc = 1123;
+            idc = DISPLAY_DIVING_TIME_NUMBER_IDC;
             text = "00:00";
             colorText[] = {0,1,0,1};
             sizeEx = 0.07;
@@ -148,7 +148,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_deepStop: slb_distanzeUnit {
-            idc = 1124;
+            idc = DISPLAY_DIVING_DEEP_STOP_IDC;
             text = "";
             sizeEx = 0.025;
             x = safeZoneX+(safeZoneW*0.903);
@@ -157,7 +157,7 @@ class RscTitles {
             h = safeZoneH* 0.04;
         };
         class slb_emergencyText: slb_distanzeUnit {
-            idc = 1125;
+            idc = DISPLAY_DIVING_EMERGENCY_TEXT_IDC;
             text = "";
             colorText[] = {1,0,0,1};
             sizeEx = 0.035;
@@ -167,7 +167,7 @@ class RscTitles {
             h = safeZoneH* 1;
         };
         class slb_emergencyDepth: slb_distanzeUnit {
-            idc = 1126;
+            idc = DISPLAY_DIVING_EMERGENCY_DEPTH_IDC;
             text = "";
             colorText[] = {1,0,0,1};
             sizeEx = 0.05;
@@ -177,7 +177,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_emergencyTime: slb_distanzeUnit {
-            idc = 1127;
+            idc = DISPLAY_DIVING_EMERGENCY_TIME_IDC;
             text = "";
             colorText[] = {1,0,0,1};
             sizeEx = 0.05;
@@ -187,7 +187,7 @@ class RscTitles {
             h = safeZoneH* 0.03;
         };
         class slb_asendBar: RscPicture {
-            idc = 1128;
+            idc = DISPLAY_DIVING_ASENDBAR_IDC;
             text = "";
             colorText[] = {};
             sizeEx = 1;
@@ -197,7 +197,7 @@ class RscTitles {
             h = safeZoneH* 0.23;
         };
         class slb_n2Bar: RscPicture {
-            idc = 1129;
+            idc = DISPLAY_DIVING_N2_BAR_IDC;
             text = "";
             colorText[] = {};
             sizeEx = 1;
@@ -207,7 +207,7 @@ class RscTitles {
             h = safeZoneH* 0.13;
         };
         class slb_emergencyArrowUP: RscPicture {
-            idc = 1130;
+            idc = DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC;
             text = "";
             colorText[] = {};
             sizeEx = 1;
@@ -217,7 +217,7 @@ class RscTitles {
             h = safeZoneH* 0.025;
         };
         class slb_emergencyArrowDOWN: RscPicture {
-            idc = 1131;
+            idc = DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC;
             text = "";
             colorText[] = {};
             sizeEx = 1;
@@ -227,7 +227,7 @@ class RscTitles {
             h = safeZoneH* 0.025;
         };
         class slb_schowChoosenTank: slb_distanzeUnit {
-            idc = 1132;
+            idc = DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC;
             text = "";
             sizeEx = 0.027;
             x = safeZoneX+(safeZoneW*0.791);

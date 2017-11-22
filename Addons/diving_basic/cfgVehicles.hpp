@@ -58,7 +58,7 @@ class CfgVehicles
     };
 
   class Bag_Base;
-  class B_GRAD_Diving_Tank: Bag_Base
+  class B_GA_Diving_Tank: Bag_Base
   {
       author = "Salbei";
       scope = 2;

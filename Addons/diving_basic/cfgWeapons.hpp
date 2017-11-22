@@ -8,12 +8,13 @@ class CfgWeapons {
 		class ItemInfo;
 	};
 
-	class V_GRAD_DivingVest_Rgr: V_RebreatherB {
-		scope=2;
-		displayName="Diving Vest";
-		descriptionShort="Diving Vest";
-		hiddenSelections[] = {"camo","hide","unhide","unhide2"};
-		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+	class V_GA_DivingVest_Rgr: V_RebreatherB {
+		scope = 2;
+		author = "Salbei";
+		displayName = "Diving Vest";
+		model = QPATHTOF(data\models\diving_vest_belt.p3d);
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {};
 		hiddenUnderwaterSelections[] = {};
 		shownUnderwaterSelections[] = {};
 		hiddenUnderwaterSelectionsTextures[] = {};
@@ -21,9 +22,9 @@ class CfgWeapons {
 		class ItemInfo: ItemInfo {
 			author = "Salbei";
 			containerClass = "Supply5";
-			hiddenSelections[] = {"camo","hide","unhide","unhide2"};
+			hiddenSelections[] = {"camo"};
 			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+			hiddenSelectionsTextures[] = {};
 			hiddenUnderwaterSelectionsTextures[] = {};
 			shownUnderwaterSelections[] = {};
 		};
@@ -52,7 +53,7 @@ class CfgWeapons {
 	*/
 
 	class ItemWatch;
-	 class GRAD_DivingComputer: ItemWatch {
+	class GA_DivingComputer: ItemWatch {
 			 ACE_hideItemType = "Watch";
 
 			 author = "Salbei";
