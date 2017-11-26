@@ -12,7 +12,7 @@ class CfgPatches {
 		};
 		weapons[] = {};
 		VERSION_CONFIG;
-        authors[] = {"Salbei"};
+    authors[] = {"Salbei"};
 	};
 };
 
