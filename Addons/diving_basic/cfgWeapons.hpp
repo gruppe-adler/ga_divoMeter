@@ -13,44 +13,17 @@ class CfgWeapons {
 		author = "Salbei";
 		displayName = "Diving Vest";
 		model = QPATHTOF(data\models\diving_vest_belt.p3d);
-		hiddenSelections[] = {"camo"};
-		hiddenSelectionsTextures[] = {};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
+		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_blk_CA.paa"; /// this icon fits the vest surprisingly well
+		hiddenSelectionsTextures[] = {QPATHTOF(data\images\diving_vest_belt.paa)};
 
 		class ItemInfo: ItemInfo {
 			author = "Salbei";
+			uniformModel   = QPATHTOF(data\models\diving_vest_belt.p3d);
 			containerClass = "Supply5";
-			hiddenSelections[] = {"camo"};
-			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {};
-			hiddenUnderwaterSelectionsTextures[] = {};
-			shownUnderwaterSelections[] = {};
+			//hiddenSelections[] = {"camo"};
+			//overlaySelectionsInfo[] = {"ghillie_hide"};
 		};
 	};
-/*
-	class V_GRAD_DivingVest_Rgr: V_RebreatherB {
-		scope=1;
-		displayName="Diving Vest Air";
-		descriptionShort="Diving Vest Air";
-		hiddenSelections[] = {"camo","hide","unhide","unhide2"};
-		hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
-		hiddenUnderwaterSelections[] = {};
-		shownUnderwaterSelections[] = {};
-		hiddenUnderwaterSelectionsTextures[] = {};
-
-		class ItemInfo: ItemInfo {
-			author = "Salbei";
-			containerClass = "Supply5";
-			hiddenSelections[] = {"camo","hide","unhide","unhide2"};
-			hiddenUnderwaterSelections[] = {};
-			hiddenSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
-			hiddenUnderwaterSelectionsTextures[] = {};
-			shownUnderwaterSelections[] = {};
-		};
-	};
-	*/
 
 	class ItemWatch;
 	class GA_DivingComputer: ItemWatch {
