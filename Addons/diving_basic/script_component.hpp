@@ -2,8 +2,8 @@
 
 //#define DISABLE_COMPILE_CACHE
 
-#include "\x\enhanced_diving\Addons\main\script_mod.hpp"
-#include "\x\enhanced_diving\Addons\main\script_macros.hpp"
+#include "\x\grad_enhancedDiving\Addons\main\script_mod.hpp"
+#include "\x\grad_enhancedDiving\Addons\main\script_macros.hpp"
 
 #define DISPLAY_DIVING_COMPUTER_IMAGE_IDC         1110
 #define DISPLAY_DIVING_DISTANCE_UNIT_IDC          1111

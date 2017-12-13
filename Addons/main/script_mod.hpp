@@ -1,4 +1,4 @@
-#define PREFIX enhanced_diving
+#define PREFIX grad_enhancedDiving
 #define MAINPREFIX x
 
 #define MAJOR 0

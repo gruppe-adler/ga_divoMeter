@@ -65,7 +65,8 @@ class CfgVehicles
       model = QPATHTOF(data\models\taucherflasche.p3d);
       displayName = "Diving Tank";
       picture = "\A3\weapons_f\ammoboxes\bags\data\ui\icon_B_C_Compact_dgtl_ca.paa";
-      hiddenSelectionsTextures[]={};
+      hiddenSelections[] = {"camo"};
+      hiddenSelectionsTextures[] = {"\x\grad_enhancedDiving\Addons\diving_basic\data\images\taucherflasche_ca.paa"};
       maximumLoad = 0;
       mass = 20;
       GVAR(gasClass1) = 7;
