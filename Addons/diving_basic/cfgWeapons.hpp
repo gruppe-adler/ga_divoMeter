@@ -7,7 +7,7 @@ class CfgWeapons {
 	class V_RebreatherB: Vest_Camo_Base {
 		class ItemInfo;
 	};
-/*
+
 	class V_GA_DivingVest_Rgr: V_RebreatherB {
 		scope = 2;
 		author = "Salbei";
@@ -24,7 +24,7 @@ class CfgWeapons {
 			//overlaySelectionsInfo[] = {"ghillie_hide"};
 		};
 	};
-*/
+
 	class ItemWatch;
 	class GA_DivingComputer: ItemWatch {
 			 ACE_hideItemType = "Watch";

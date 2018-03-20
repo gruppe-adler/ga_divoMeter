@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 class CfgVehicles
 {
 	class Items_base_F;

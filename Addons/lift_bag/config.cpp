@@ -6,7 +6,7 @@ class CfgPatches {
 		name = QUOTE(ADDON);
 		url = "$STR_grad_URL";
 		requiredVersion = 1.0;
-		requiredAddons[] = {"A3_Structures_F_Items", "enhanced_diving_main"};
+		requiredAddons[] = {"A3_Structures_F_Items", "grad_enhancedDiving_main"};
 		units[] = {
 			"GA_Lift_Bag"
 		};

@@ -12,7 +12,10 @@ _attachedLifter = [];
 	};
 } forEach attachedObjects _hookedObj;
 
-if ((count _attachedLifter) > 3) exitWith{diag_log format ["ED: To many attached Objekts(%1), for %2!", count _attachedLifter, _hookedObj]; hint "To many attached Objekts!";}
+if ((count _attachedLifter) > 3) exitWith{
+	diag_log format ["ED: To many attached Objekts(%1), for %2!", count _attachedLifter, _hookedObj];
+	 hint "To many attached Objekts!";
+ };
 
 switch (count _attachedLifter) do {
 	case 0 : {_ballonTyp = "GA_Lift_Bag";};
