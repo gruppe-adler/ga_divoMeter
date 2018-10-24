@@ -121,8 +121,8 @@ GVAR(open) = true;
 					(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText QPATHTOF(data\images\left_06.paa);
 				};
 			}else{
-				_getenhancedDivingRiseTexture = {
-					_riseIndex = {
+				private _getenhancedDivingRiseTexture = {
+					private _riseIndex = {
 						if (_this < _x)  exitWith{_forEachIndex};
 					}forEach [1.5, 3, 4.6, 6.1, 7.6, 9];
 					format[QPATHTOF(data\images\left_0%1.paa), _riseIndex];
@@ -144,7 +144,7 @@ GVAR(open) = true;
 					};
 				};
 		};
-		(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank)];
+		(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText QGVAR(selectedTank);
 	}else{
 		if (GVAR(metric)) then {
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";

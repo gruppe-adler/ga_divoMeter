@@ -55,7 +55,7 @@ if (_enabled) then {
 					 [] call FUNC(checkVest);
 				};
 				case ((_this select 2) in GVAR(Tank)) : {
-					[false, (_this select 2), _obj] call FUNC(addGasVariables);
+					[false, (_this select 2), objectParent (_this select 2)] call FUNC(addGasVariables);
 				};
 			};
 		}

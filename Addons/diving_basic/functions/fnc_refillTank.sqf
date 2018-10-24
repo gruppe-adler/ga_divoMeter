@@ -5,8 +5,8 @@ params ["_bool", "_class", "_tank"];
 private _obj = Nil;
 private _objTank = "";
 
-private _container = format ["GVAR(DIVE_GAS%1)", _tank];
-_private barName = format ["GVAR(enhancedDiving_maxBar%1)", _tank];
+private _container = (QGVAR(DIVE_GAS) + (format ["%1", _tank]));
+private _barName = (QGVAR(maxBar) + (format ["%1", _tank]));
 
 private _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {

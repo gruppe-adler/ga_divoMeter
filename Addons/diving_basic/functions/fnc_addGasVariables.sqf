@@ -33,10 +33,10 @@ if (_bool) then {
 	GVAR(on) = true;
 
 	if ((_obj in GVAR(Double)) && GVAR(on)) then {
-		private _value = _obj getVariable QGVAR(DIVE_GAS2);
+		_value = _obj getVariable QGVAR(DIVE_GAS2);
 		if (isNil "_value")then {
 			private _bar = 0;
-			_class = getNumber (configFile >> "CfgVehicles" >> _obj >> "GVAR(gasClass2)");
+			private _class = getNumber (configFile >> "CfgVehicles" >> _obj >> "GVAR(gasClass2)");
 			_bar = getNumber (configFile >> "CfgVehicles" >> _obj >> "GVAR(maxBar2)");
 			private _o2 = -1;
 			private _n2 = -1;

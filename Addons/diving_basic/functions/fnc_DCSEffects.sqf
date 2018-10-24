@@ -9,7 +9,7 @@ titleText ["","BLACK OUT",1];
 
 [{
 	params ["_args","_handle"];
-	_args params ["_HeToxColor", "_HeToxBlur", "_HeToxDynBlur", "_HeToxChroma"];
+	_args params ["_DCSColor", "_DCSBlur", "_DCSDynBlur", "_DCSChroma"];
 	if (GVAR(dDepth) < 9.1) exitWith {
 		[_handle] call CBA_fnc_removePerFrameHandler;
 		titleText ["","BLACK IN",4];
@@ -35,11 +35,11 @@ titleText ["","BLACK OUT",1];
 		_DCSChroma ppEffectCommit 1;
 		_DCSBlur ppEffectCommit 1;
 		_DCSDynBlur ppEffectCommit 1;
-		_damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
-		_bodyPart = selectRandom ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
+		private _damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
+		private _bodyPart = selectRandom ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
 		[player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (1-(GVAR(nTisTot) *1.25)), player, "explosive", -1] call ace_medical_fnc_handleDamage;
 
 		[{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;
 
 	}, [_DCSColor, _DCSBlur, _DCSDynBlur, _DCSChroma], 4] call CBA_fnc_waitAndExecute;
-}, 8, [_O2ToxColor, _O2ToxBlur, _O2ToxDynBlur, _O2ToxChroma]] call CBA_fnc_addPerFrameHandler;
+}, 8, [_DCSColor, _DCSBlur, _DCSDynBlur, _DCSChroma]] call CBA_fnc_addPerFrameHandler;
