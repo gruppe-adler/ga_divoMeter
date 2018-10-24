@@ -3,7 +3,3 @@ release/**
 *.pbo
 *.cache
 *.biprivatekey
-
-lift_bag/
-
-scooter/
