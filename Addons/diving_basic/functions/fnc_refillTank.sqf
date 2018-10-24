@@ -1,15 +1,14 @@
 #include "script_component.hpp"
 
-private ["_obj", "_container"];
 params ["_bool", "_class", "_tank"];
 
-_obj = Nil;
-_objTank = "";
+private _obj = Nil;
+private _objTank = "";
 
-_container = format ["GVAR(DIVE_GAS%1)", _tank];
-_barName = format ["GVAR(enhancedDiving_maxBar%1)", _tank];
+private _container = format ["GVAR(DIVE_GAS%1)", _tank];
+_private barName = format ["GVAR(enhancedDiving_maxBar%1)", _tank];
 
-_value = (backpackContainer player) getVariable _container;
+private _value = (backpackContainer player) getVariable _container;
 if (isNil "_value") then {
 	_value = (vestContainer player) getVariable _container;
 	if (isNil "_value") then {
@@ -27,7 +26,7 @@ GVAR(refill_o2Perc) = _o2Perc;
 GVAR(refill_n2Perc) = _n2Perc;
 GVAR(refill_hePerc) = _hePerc;
 
-_maxBar = getNumber (configFile >> "CfgVehicles" >> _objTank >> _barName);
+private _maxBar = getNumber (configFile >> "CfgVehicles" >> _objTank >> _barName);
 
 if (_bool) then {
 	[{

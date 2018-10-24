@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
 GVAR(dcsActive) = true;
-_DCSColor = ppEffectCreate ["colorCorrections", 1001];
-_DCSBlur = ppEffectCreate ["radialBlur", 1002];
-_DCSDynBlur = ppEffectCreate ["DynamicBlur", 1003];
-_DCSChroma = ppEffectCreate ["chromAberration", 1004];
+private _DCSColor = ppEffectCreate ["colorCorrections", 1001];
+private _DCSBlur = ppEffectCreate ["radialBlur", 1002];
+private _DCSDynBlur = ppEffectCreate ["DynamicBlur", 1003];
+private _DCSChroma = ppEffectCreate ["chromAberration", 1004];
 titleText ["","BLACK OUT",1];
 
 [{

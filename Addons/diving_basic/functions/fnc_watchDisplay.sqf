@@ -17,7 +17,7 @@ GVAR(open) = true;
 	(_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank)];
 
 	if (((eyePos player select 2) < 0) && GVAR(on)) then {
-		_bar = 0;
+		private _bar = 0;
 
 		if (GVAR(metric)) then {
 			(_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";

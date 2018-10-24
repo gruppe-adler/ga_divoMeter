@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
 GVAR(o2Active) = true;
-_O2ToxColor = ppEffectCreate ["colorCorrections", 1001];
-_O2ToxBlur = ppEffectCreate ["radialBlur", 1002];
-_O2ToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
-_O2ToxChroma = ppEffectCreate ["chromAberration", 1004];
+private _O2ToxColor = ppEffectCreate ["colorCorrections", 1001];
+private _O2ToxBlur = ppEffectCreate ["radialBlur", 1002];
+private _O2ToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
+private _O2ToxChroma = ppEffectCreate ["chromAberration", 1004];
 titleText ["","BLACK OUT",2];
 
 [{

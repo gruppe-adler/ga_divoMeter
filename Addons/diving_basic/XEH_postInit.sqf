@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 #include "\a3\editor_f\Data\Scripts\dikCodes.h"
 
-_actionKey = (actionKeys "Watch");
-_key = if (count _actionKey == 0) then {DIK_O} else {_actionKey select 0};
+private _actionKey = (actionKeys "Watch");
+private _key = if (count _actionKey == 0) then {DIK_O} else {_actionKey select 0};
 
 ["GRAD Enhanced Diving", QGVAR(diveComputer), "Diving Computer Toggle", {
     // Conditions: canInteract

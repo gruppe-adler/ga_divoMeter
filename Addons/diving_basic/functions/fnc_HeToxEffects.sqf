@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
 GVAR(heActive) = true;
-_HeToxColor = ppEffectCreate ["colorCorrections", 1001];
-_HeToxBlur = ppEffectCreate ["radialBlur", 1002];
-_HeToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
-_HeToxChroma = ppEffectCreate ["chromAberration", 1004];
+private _HeToxColor = ppEffectCreate ["colorCorrections", 1001];
+private _HeToxBlur = ppEffectCreate ["radialBlur", 1002];
+private _HeToxDynBlur = ppEffectCreate ["DynamicBlur", 1003];
+private _HeToxChroma = ppEffectCreate ["chromAberration", 1004];
 titleText ["","BLACK OUT",2];
 
 [{

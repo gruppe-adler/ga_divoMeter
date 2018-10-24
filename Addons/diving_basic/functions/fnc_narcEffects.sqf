@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
 GVAR(narcActive) = true;
-_narcColor = ppEffectCreate ["colorCorrections", 1001];
-_narcBlur = ppEffectCreate ["radialBlur", 1002];
-_narcDynBlur = ppEffectCreate ["DynamicBlur", 1003];
-_narcChroma = ppEffectCreate ["chromAberration", 1004];
+private _narcColor = ppEffectCreate ["colorCorrections", 1001];
+private _narcBlur = ppEffectCreate ["radialBlur", 1002];
+private _narcDynBlur = ppEffectCreate ["DynamicBlur", 1003];
+private _narcChroma = ppEffectCreate ["chromAberration", 1004];
 titleText ["","BLACK OUT",2];
 
 [{

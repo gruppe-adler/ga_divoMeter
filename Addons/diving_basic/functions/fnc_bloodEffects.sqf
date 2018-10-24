@@ -15,8 +15,8 @@ _position = _position call {
 	_this
 };
 
-_damage = (_damage min 1) max 0;
-_source = "#particlesource" createVehicle _position;
+private _damage = (_damage min 1) max 0;
+private _source = "#particlesource" createVehicle _position;
 _source setPosATL _position;
 
 _source setParticleParams [

@@ -233,9 +233,9 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 			//player setStamina 0;
 			//player setOxygenRemaining 0;
 		}else{
-			_container = format [QGVAR(DIVE_GAS%1), GVAR(selectedTank)];
+			private _container = format [QGVAR(DIVE_GAS%1), GVAR(selectedTank)];
 			if (isNil "_obj") then {
-				_value = (backpackContainer player) getVariable _container;
+				private _value = (backpackContainer player) getVariable _container;
 				if (isNil "_value") then {
 					_value = (vestContainer player) getVariable _container;
 				}else{

@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 
 if (isDedicated) exitWith {diag_log "ED: Exiting Module, it is Clientside"};
-_logic = param [0,objNull,[objNull]];
+private _logic = param [0,objNull,[objNull]];
 
-_enabled		 	= 	_logic getVariable ["enabled", false];
+private _enabled		 	= 	_logic getVariable ["enabled", false];
 GVAR(maxppO) 		= 	_logic getVariable ["maxppO",1.11];
 GVAR(tempC)			= 	_logic getVariable ["tempC",29];
 GVAR(refillRate) 	=	_logic getVariable ["rate", 24];

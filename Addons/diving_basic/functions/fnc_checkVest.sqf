@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
-_playerVest = vest player;
-_playerBackpack = backpack player;
+private _playerVest = vest player;
+private _playerBackpack = backpack player;
 switch (true) do {
 	case ((_playerVest in GVAR(Vest)) && ((_playerBackpack in GVAR(Tank)) || (_playerBackpack in GVAR(Double)))) : {
 			//removeVest player;
