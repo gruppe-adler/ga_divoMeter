@@ -13,10 +13,10 @@ titleText ["","BLACK OUT",1];
 	if (GVAR(dDepth) < 9.1) exitWith {
 		[_handle] call CBA_fnc_removePerFrameHandler;
 		titleText ["","BLACK IN",4];
-		ppEffectDestroy _HeToxBlur;
-		ppEffectDestroy _HeToxDynBlur;
-		ppEffectDestroy _HeToxChroma;
-		ppEffectDestroy _HeToxColor;
+		ppEffectDestroy _DCSBlur;
+		ppEffectDestroy _DCSDynBlur;
+		ppEffectDestroy _DCSChroma;
+		ppEffectDestroy _DCSColor;
 		GVAR(dcsActive) = false;
 	};
 

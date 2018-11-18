@@ -12,9 +12,10 @@ class CfgWeapons {
 		scope = 2;
 		author = "Salbei";
 		displayName = "Diving Vest";
-		model = QPATHTOF(data\models\diving_vest_belt.p3d);
+		model = "\A3\Characters_F_Jets\Vests\V_DeckCrew_F.p3d";
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_blk_CA.paa"; /// this icon fits the vest surprisingly well
-		hiddenSelectionsTextures[] = {QPATHTOF(data\images\diving_vest_belt.paa)};
+		hiddenSelections[] = {"camo"};
+		hiddenSelectionsTextures[] = {"\A3\Characters_F_Jets\Vests\Data\V_DeckCrew_blue_CO.paa"};
 
 		class ItemInfo: ItemInfo {
 			author = "Salbei";
