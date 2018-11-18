@@ -19,7 +19,7 @@ class CfgWeapons {
 
 		class ItemInfo: ItemInfo {
 			author = "Salbei";
-			uniformModel   = QPATHTOF(data\models\diving_vest_belt.p3d);
+			uniformModel = "\A3\Characters_F_Jets\Vests\V_DeckCrew_F.p3d";
 			containerClass = "Supply5";
 			//hiddenSelections[] = {"camo"};
 			//overlaySelectionsInfo[] = {"ghillie_hide"};
