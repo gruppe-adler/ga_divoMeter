@@ -12,7 +12,7 @@ class RscTitles {
      class controls {
         class slb_image: RscPicture {
             idc = DISPLAY_DIVING_COMPUTER_IMAGE_IDC;
-            text = QPATHTOEF(assets,data\images\divingWatchDisplay.paa);
+          text = QPATHTOEF(assets,data\images\divingWatchDisplay.paa);
             x = safeZoneX+(safeZoneW*0.71);
             y = safeZoneY+(safeZoneH*0.32);
             w = safeZoneW* 0.30;
