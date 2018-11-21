@@ -14,6 +14,5 @@ class CfgPatches {
 	};
 };
 
-#include "dialog\display.hpp"
-#include "CfgEventHandlers.hpp"
+#include "cfgWeapons.hpp"
 #include "cfgVehicles.hpp"

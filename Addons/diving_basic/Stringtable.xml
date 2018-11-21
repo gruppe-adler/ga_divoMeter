@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="ED">
+<Project name="GRAD">
     <Package name="EnhancedDiving">
 		<Key ID="STR_Enhanced_Diving_Settings">
             <Original>Enhanced Diving Settings</Original>
@@ -81,15 +81,5 @@
             <English>Switch Tank</English>
             <German>Flasche Wechseln</German>
         </Key>
-       <Key ID="STR_grad_enhancedDiving_computer">
-               <Original>Diving Computer</Original>
-               <English>Diving Computer</English>
-               <German>Tauchcomputer</German>
-           </Key>
-         <Key ID="STR_grad_enhancedDiving_computer_desc">
-                <Original>Diving Computer</Original>
-                <English>Diving Computer</English>
-                <German>Tauchcomputer </German>
-           </Key>
     </Package>
 </Project>

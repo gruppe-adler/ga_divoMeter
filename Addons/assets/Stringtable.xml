@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="GRAD">
+    <Package name="ED_Assests">
+      <Key ID="STR_grad_enhancedDiving_computer">
+              <Original>Diving Computer</Original>
+              <English>Diving Computer</English>
+              <German>Tauchcomputer</German>
+          </Key>
+        <Key ID="STR_grad_enhancedDiving_computer_desc">
+               <Original>Diving Computer</Original>
+               <English>Diving Computer</English>
+               <German>Tauchcomputer </German>
+          </Key>
+      </Package>
+</Project>

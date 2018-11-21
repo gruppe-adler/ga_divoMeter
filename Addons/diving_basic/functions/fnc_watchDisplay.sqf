@@ -75,8 +75,8 @@ GVAR(open) = true;
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_TEXT_IDC) ctrlSetText "DECO STOP";
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_DEPTH_IDC) ctrlSetText format ["%1M", GVAR(depth2deco)];
 				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_TIME_IDC) ctrlSetText format ["%1", GVAR(deepStopTime)];
-				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOF(data\images\triangle_down_divider.paa);
-				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOF(data\images\triangle_up_divider.paa);
+				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_down_divider.paa);
+				(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_up_divider.paa);
 			};
 			case (GVAR(doDeepStop) && !(GVAR(depth2deepStop) < -6) && !(GVAR(depth2deepStop) > 6)): {
 				(_displayUI displayCtrl DISPLAY_DIVING_DEEP_STOP_IDC) ctrlSetText "";
@@ -86,26 +86,26 @@ GVAR(open) = true;
 
 				switch (true) do {
 					case (GVAR(depth2deepStop) > 1.5) : {
-						if ((ctrlText DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) == QPATHTOF(data\images\triangle_down_divider.paa)) then {
+						if ((ctrlText DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) == QPATHTOEF(assets,data\images\triangle_down_divider.paa)) then {
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText "";
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText "";
 						}else{
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText "";
-							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOF(data\images\triangle_down_divider.paa);
+							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_down_divider.paa);
 						};
 					};
 					case (GVAR(depth2deepStop) < -1.5) : {
-						if ((ctrlText DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) == QPATHTOF(data\images\triangle_up_divider.paa)) then {
+						if ((ctrlText DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) == QPATHTOEF(assets,data\images\triangle_up_divider.paa)) then {
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText "";
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText "";
 						}else{
-							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOF(data\images\triangle_up_divider.paa);
+							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_up_divider.paa);
 							(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText "";
 						};
 					};
 					case (GVAR(depth2deepStop) < 1.5 && GVAR(depth2deepStop) > -1.5) : {
-						(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOF(data\images\triangle_up_divider.paa);
-						(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOF(data\images\triangle_down_divider.paa);
+						(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_UP_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_up_divider.paa);
+						(_displayUI displayCtrl DISPLAY_DIVING_EMERGENCY_ARROW_DOWN_IDC) ctrlSetText QPATHTOEF(assets,data\images\triangle_down_divider.paa);
 					};
 				};
 			};
@@ -115,32 +115,32 @@ GVAR(open) = true;
 				(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText "";
 		}else{
 			if (GVAR(upDepth) >= 9) then {
-				if ((ctrlText DISPLAY_DIVING_ASENDBAR_IDC) == QPATHTOF(data\images\left_06.paa))then {
+				if ((ctrlText DISPLAY_DIVING_ASENDBAR_IDC) == QPATHTOEF(assets,data\images\left_06.paa))then {
 					(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText "";
 				}else{
-					(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText QPATHTOF(data\images\left_06.paa);
+					(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText QPATHTOEF(assets,data\images\left_06.paa);
 				};
 			}else{
 				private _getenhancedDivingRiseTexture = {
 					private _riseIndex = {
 						if (_this < _x)  exitWith{_forEachIndex};
 					}forEach [1.5, 3, 4.6, 6.1, 7.6, 9];
-					format[QPATHTOF(data\images\left_0%1.paa), _riseIndex];
+					format[QPATHTOEF(assets,data\images\left_0%1.paa), _riseIndex];
 				};
 				(_displayUI displayCtrl DISPLAY_DIVING_ASENDBAR_IDC) ctrlSetText (GVAR(upDepth) call _getenhancedDivingRiseTexture);
 			};
 		};
 
 		if (GVAR(narcFactor) >= 9.1) then {
-				if ((ctrlText DISPLAY_DIVING_N2_BAR_IDC) == QPATHTOF(data\images\right_09.paa)) then {
+				if ((ctrlText DISPLAY_DIVING_N2_BAR_IDC) == QPATHTOEF(assets,data\images\right_09.paa)) then {
 					(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText "";
 				} else {
-					(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText QPATHTOF(data\images\right_09.paa);
+					(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText QPATHTOEF(assets,data\images\right_09.paa);
 				};
 			} else {
 				for "_i" from 1 to 9 do {
 					if(GVAR(narcFactor) < _i) exitWith {
-						(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText format [ QPATHTOF(data\images\right_0%1.paa), _i];
+						(_displayUI displayCtrl DISPLAY_DIVING_N2_BAR_IDC) ctrlSetText format [ QPATHTOEF(assets,data\images\right_0%1.paa), _i];
 					};
 				};
 		};

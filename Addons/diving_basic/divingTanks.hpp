@@ -6,8 +6,8 @@ class B_GRAD_DivingTank {
 	displayName = "Diving Tank 10L (Air)";
 	vehicleClass = Backpacks;
 	model = "\grad_enhancedDiving\models\tank_10l";
-	picture = "\grad_enhancedDiving\images\tank_10l.paa";
-	icon = "\grad_enhancedDiving\images\tank_10l_icon.paa";
+	picture = "\grad_enhancedDiving\textures\tank_10l.paa";
+	icon = "\grad_enhancedDiving\textures\tank_10l_icon.paa";
 	hiddenSelections[] = {};
 	hiddenSelectionsTextures[] = {};
 	hiddenUnderwaterSelections[] = {};
