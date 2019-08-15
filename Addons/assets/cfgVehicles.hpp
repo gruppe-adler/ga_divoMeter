@@ -1,23 +1,23 @@
 class CfgVehicles
 {
-	class Items_base_F;
-	class GRAD_Lift_Bag : Items_base_F
-	{
-    author = "Salbei";
-		scope = 2;
-		model = QPATHTOF(data\models\liftballon.p3d);
-		displayName = "Lift Bag";
-		vehicleClass = "small_items";
     /*
-		slingLoadCargoMemoryPoints[] =
-		{
-			"SlingLoadCargo1",
-			"SlingLoadCargo2",
-			"SlingLoadCargo3",
-			"SlingLoadCargo4"
-		};
-		*/
-	};
+    class Items_base_F;
+    class GRAD_Lift_Bag : Items_base_F
+    {
+    author = "Salbei";
+        scope = 2;
+        model = QPATHTOF(data\models\liftballon.p3d);
+        displayName = "Lift Bag";
+        vehicleClass = "small_items";
+
+        slingLoadCargoMemoryPoints[] =
+        {
+            "SlingLoadCargo1",
+            "SlingLoadCargo2",
+            "SlingLoadCargo3",
+            "SlingLoadCargo4"
+        };
+    };
 
   class Bag_Base;
   class B_GRAD_Diving_Tank: Bag_Base
@@ -32,7 +32,8 @@ class CfgVehicles
       maximumLoad = 0;
       mass = 20;
       GVAR(gasClass1) = 7;
-  		GVAR(tankSize1) = 10;
-  		GVAR(maxBar1) = 200;
+      GVAR(tankSize1) = 10;
+      GVAR(maxBar1) = 200;
   };
+  */
 };

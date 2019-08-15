@@ -23,7 +23,7 @@ python sqf_validator.py
 result=$?
 
 if (("$result" != 0)); then 
-	exit_code=$((exit_code + 100))
+    exit_code=$((exit_code + 100))
 fi
 
 echo 
@@ -34,7 +34,7 @@ python config_style_checker.py
 result=$?
 
 if (("$result" != 0)); then 
-	exit_code=$((exit_code + 200))
+    exit_code=$((exit_code + 200))
 fi
 
 exit "$exit_code"

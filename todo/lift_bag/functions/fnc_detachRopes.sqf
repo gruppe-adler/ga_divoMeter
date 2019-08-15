@@ -4,5 +4,5 @@ params ["_obj"];
 _ropeArray = _obj getVariable "Grad_Liftbag_Ropes";
 
 {
-	ropeDestroy _x;
+    ropeDestroy _x;
 }forEach _ropeArray;

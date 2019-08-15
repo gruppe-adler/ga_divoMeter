@@ -60,10 +60,10 @@ class CfgVehicles
 
 class CfgFactionClasses
 {
-  	class NO_CATEGORY;
-  	class enhancedDiving: NO_CATEGORY	{
-  		displayName = "Enhanced Diving";
+      class NO_CATEGORY;
+      class enhancedDiving: NO_CATEGORY    {
+          displayName = "Enhanced Diving";
       priority = 2;
       side = 7;
-  	};
+      };
 };

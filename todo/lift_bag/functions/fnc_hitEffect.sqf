@@ -21,25 +21,25 @@ _source setParticleParams [
 "",
 "",
 ""
-					];
+                    ];
 
 // RANDOM / TOLERANCE PARAMS
 _source setParticleRandom [
-	10,							//LifeTime
-	[0,0,0],					//Position
-	[0,0,0],					//MoveVelocity
-	0,							//rotationVel
-	0.005,			    		//Scale
-	[0,0,0,1],					//Color
-	0.003,						//randDirPeriod
-	0						//randDirIntesity
+    10,                            //LifeTime
+    [0,0,0],                    //Position
+    [0,0,0],                    //MoveVelocity
+    0,                            //rotationVel
+    0.005,                        //Scale
+    [0,0,0,1],                    //Color
+    0.003,                        //randDirPeriod
+    0                        //randDirIntesity
 ];
 
 _source setDropInterval (0.01 * (1.1 - _damage));
 [
-	{
-		deleteVehicle _this;
-	},
-	_source,
-	10
+    {
+        deleteVehicle _this;
+    },
+    _source,
+    10
 ] call CBA_fnc_waitAndExecute;

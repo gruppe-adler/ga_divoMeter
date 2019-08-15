@@ -1,5 +1,7 @@
 release/**
+export/**
 
 *.pbo
 *.cache
 *.biprivatekey
+*.zip

@@ -6,13 +6,12 @@ class CfgPatches {
         name = QUOTE(ADDON);
         url = "$STR_grad_URL";
         requiredVersion = 1.0;
-        requiredAddons[] = {"grad_enhancedDiving_main"};
-        units[] = {QGVAR(params)};
+        requiredAddons[] = {"A3_Structures_F_Items", "grad_enhancedDiving_main"};
+        units[] = {};
         weapons[] = {};
         VERSION_CONFIG;
-        authors[] = {"Salbei"};
+    authors[] = {"Salbei"};
     };
 };
 
-#include "cfgWeapons.hpp"
-#include "cfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"
