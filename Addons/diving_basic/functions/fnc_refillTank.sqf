@@ -8,16 +8,16 @@ private _objTank = "";
 private _container = (QGVAR(DIVE_GAS) + (format ["%1", _tank]));
 private _barName = (QGVAR(maxBar) + (format ["%1", _tank]));
 
-private _value = (backpackContainer player) getVariable _container;
+private _value = (backpackContainer ace_player) getVariable _container;
 if (isNil "_value") then {
-    _value = (vestContainer player) getVariable _container;
+    _value = (vestContainer ace_player) getVariable _container;
     if (isNil "_value") then {
-        _obj = (vestContainer player);
-        _objTank = (vest player);
+        _obj = (vestContainer ace_player);
+        _objTank = (vest ace_player);
     };
 }else {
-    _obj = (backpackContainer player);
-    _objTank = (backpack player);
+    _obj = (backpackContainer ace_player);
+    _objTank = (backpack ace_player);
 };
 
 _value params ["_barTank", "_o2Perc", "_n2Perc", "_hePerc"];

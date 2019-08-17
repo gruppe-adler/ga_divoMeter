@@ -36,10 +36,10 @@ titleText ["","BLACK OUT",2];
         _O2ToxBlur ppEffectCommit 4;
         _O2ToxDynBlur ppEffectCommit 4;
 
-        private _damageVar = player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
+        private _damageVar = ace_player getvariable ["ace_medical_bodyPartStatus", [0,0,0,0,0,0]];
         private _bodyPart = selectRandom ["head", "body", "arm_r", "arm_l", "leg_r", "leg_l"];
         
-        [player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (GVAR(O2TisTot)/6), player, "explosive", -1] call ace_medical_fnc_handleDamage;
+        [ace_player, _bodyPart, (_damageVar select ([_bodyPart] call ace_medical_fnc_selectionNameToNumber)) + (GVAR(O2TisTot)/6), ace_player, "explosive", -1] call ace_medical_fnc_handleDamage;
 
         [{titleText ["","BLACK OUT",4];}, _this, 4] call CBA_fnc_waitAndExecute;
 

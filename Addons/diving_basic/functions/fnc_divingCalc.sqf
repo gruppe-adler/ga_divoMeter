@@ -61,9 +61,9 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
 
 [{
     params ["_args","_handle"];
-    if !(alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
+    if !(alive ace_player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler;};
 
-    diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4, Breathe: %5", GVAR(on), GVAR(metric), GVAR(open), ((eyePos player select 2) < 0), isAbleToBreathe player];
+    diag_log format ["ED: Gear: %1, Metric: %2, Open: %3, Underwater: %4, Breathe: %5", GVAR(on), GVAR(metric), GVAR(open), ((eyePos ace_player select 2) < 0), isAbleToBreathe ace_player];
     if (GVAR(switchTank)) then {
         if !(isNil QGVAR(maxBar)) then {
             [] call FUNC(checkGear);
@@ -71,7 +71,7 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
         GVAR(switchTank) = false;
     };
 
-    if (((eyePos player select 2) < 0) && GVAR(on)) then {
+    if (((eyePos ace_player select 2) < 0) && GVAR(on)) then {
         if (isNil QGVAR(maxBar)) then {
             [] call FUNC(checkGear);
         };
@@ -79,14 +79,14 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
         if (isNil QGVAR(maxBar)) exitWith {systemchat "The object you are wearing is not properly set up!";};
 
         GVAR(diveTime) = GVAR(diveTime) +1;
-        GVAR(depth) = (abs ((getPosASL player) select 2)); //in meter
+        GVAR(depth) = (abs ((getPosASL ace_player) select 2));                  //in meter
         GVAR(pressure) = ((GVAR(depth) /10) +1);
         GVAR(depth2deco) = GVAR(depth) - GVAR(AscCeil);
         GVAR(airConsumption) = (GVAR(pressure) * GVAR(sacRT));
         GVAR(filling) = (GVAR(filling) - (GVAR(airConsumption) /60));
         GVAR(timeleft) = (GVAR(filling) /(GVAR(airConsumption) /60));
         GVAR(depthB) = GVAR(depthA);
-        GVAR(depthA) = (abs ((getPosASL player) select 2));
+        GVAR(depthA) = (abs ((getPosASL ace_player) select 2));
         GVAR(pressureA) = ((GVAR(depthA) /10) +1);
         GVAR(pressureB) = ((GVAR(depthB) /10) +1);
         GVAR(dDepth) = GVAR(depthA) - GVAR(depthB);
@@ -223,21 +223,27 @@ GVAR(sacRT) = round (25 * (random [0.8,1,1.2]));
             GVAR(ascTime) = 99;
         };
 
-        //Check if player surpasses Maximum Operating Depth and init O2 Tox effects
+        //Check if ace_player surpasses Maximum Operating Depth and init O2 Tox effects
         if (GVAR(depth) > (((GVAR(maxppO)/GVAR(percentO2)) -1) *10) && !(GVAR(o2Active))) then {
             [] call FUNC(O2ToxEffects);
         };
 
         //Running out of air results in big Problems
         if (GVAR(filling) <= 0) then {
-            //player setStamina 0;
-            //player setOxygenRemaining 0;
+            //ace_player setStamina 0;
+            //ace_player setOxygenRemaining 0;
         }else{
             private _container = format [QGVAR(DIVE_GAS%1), GVAR(selectedTank)];
-            private _obj = (backpackContainer player);
-            if (isNil "_obj") then {
-                    _obj = (vestContainer player);
+            private _obj = objNull;
+
+            if (isNil "_obj" || {!((backpack ace_player) in GVAR(Tank) || (backpack ace_player) in GVAR(Double))}) then {
+                _obj = backpackContainer ace_player;
             };
+
+            if (isNil "_obj" || {!((vest ace_player) in GVAR(Rebreather))}) then {
+                _obj = vestContainer ace_player;
+            };
+
             GVAR(bar) = GVAR(filling) / GVAR(tankSize);
             _obj setVariable [_container, [GVAR(bar), GVAR(percentO2), GVAR(percentN2), GVAR(percentHe)]];
         };

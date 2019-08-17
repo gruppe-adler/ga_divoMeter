@@ -42,7 +42,7 @@ class RscTitles {
         class slb_height: slb_distanzeUnit {
             idc = DISPLAY_DIVING_HEIGHT_IDC;
             text = "";
-            sizeEx = 0.07;
+            sizeEx = 0.06;
             x = (0.805 * safezoneW) + safezoneX;
             y = (0.48 * safezoneH) + safezoneY;
             w = 0.05 * safezoneW;
@@ -52,7 +52,7 @@ class RscTitles {
             idc = DISPLAY_DIVING_DECO_FREE_TIME_IDC;
             text = "  ---";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.07;
+            sizeEx = 0.06;
             x = safeZoneX+(safeZoneW*0.875);
             y = safeZoneY+(safeZoneH*0.48);
             w = safeZoneW* 0.03;
@@ -131,7 +131,7 @@ class RscTitles {
             idc = DISPLAY_DIVING_PRESSURE_VALUE_IDC;
             text = " ---";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.07;
+            sizeEx = 0.06;
             x = safeZoneX+(safeZoneW*0.805);
             y = safeZoneY+(safeZoneH*0.62);
             w = safeZoneW* 0.04;
@@ -141,7 +141,7 @@ class RscTitles {
             idc = DISPLAY_DIVING_TIME_NUMBER_IDC;
             text = "00:00";
             colorText[] = {0,1,0,1};
-            sizeEx = 0.07;
+            sizeEx = 0.06;
             x = safeZoneX+(safeZoneW*0.87);
             y = safeZoneY+(safeZoneH*0.62);
             w = safeZoneW* 0.05;
@@ -203,7 +203,7 @@ class RscTitles {
             sizeEx = 1;
             x = safezoneX + (0.916 * safezoneW);
             y = safezoneY + (0.452 * safezoneH);
-            w = safeZoneW* 0.07;
+            w = safeZoneW* 0.06;
             h = safeZoneH* 0.13;
         };
         class slb_emergencyArrowUP: RscPicture {

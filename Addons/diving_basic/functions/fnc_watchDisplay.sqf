@@ -16,7 +16,7 @@ GVAR(open) = true;
     (_displayUI displayCtrl DISPLAY_DIVING_TIME_NUMBER_IDC) ctrlSetText format ["%1:%2", ([(date select 3), 2] call CBA_fnc_formatNumber), ([(date select 4), 2] call CBA_fnc_formatNumber)];
     (_displayUI displayCtrl DISPLAY_DIVING_SHOW_CHOOSEN_TANK_IDC) ctrlSetText format ["%1", GVAR(selectedTank)];
 
-    if (((eyePos player select 2) < 0) && GVAR(on)) then {
+    if (((eyePos ace_player select 2) < 0) && GVAR(on)) then {
         private _bar = 0;
 
         if (GVAR(metric)) then {
@@ -30,6 +30,8 @@ GVAR(open) = true;
             (_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC ) ctrlSetText "PSI";
             _bar = round((GVAR(filling)/10) * 14.5038);
         };
+
+        diag_log str _bar;
         if (GVAR(filling) > 50) then {
             if ((ctrlText DISPLAY_DIVING_PRESSURE_VALUE_IDC) == "") then {
                 (_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_VALUE_IDC) ctrlSetTextColor [0, 0, 1, 1];
@@ -149,11 +151,11 @@ GVAR(open) = true;
         if (GVAR(metric)) then {
             (_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "M";
             (_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC) ctrlSetText "BAR";
-            (_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round(((getPosASL player) select 2) *10))/10];
+            (_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round(((getPosASL ace_player) select 2) *10))/10];
         }else{
             (_displayUI displayCtrl DISPLAY_DIVING_DISTANCE_UNIT_IDC) ctrlSetText "FT";
             (_displayUI displayCtrl DISPLAY_DIVING_PRESSURE_UNIT_IDC) ctrlSetText "PSI";
-            (_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round((((getPosASL player) select 2)*3.28) *10))/10];
+            (_displayUI displayCtrl DISPLAY_DIVING_HEIGHT_IDC) ctrlSetText format ["%1",(round((((getPosASL ace_player) select 2)*3.28) *10))/10];
         };
     };
 }, 1, []] call CBA_fnc_addPerFrameHandler;

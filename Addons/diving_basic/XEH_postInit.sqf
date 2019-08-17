@@ -6,9 +6,9 @@ private _key = if (count _actionKey == 0) then {DIK_O} else {_actionKey select 0
 
 ["GRAD Enhanced Diving", QGVAR(diveComputer), "Diving Computer Toggle", {
     // Conditions: canInteract
-    if !([ACE_player, objNull, ["isNotEscorting", "isNotInside"]] call ace_common_canInteractWith) exitWith {false};
+    if !([ACE_ace_player, objNull, ["isNotEscorting", "isNotInside"]] call ace_common_canInteractWith) exitWith {false};
 
-    if (!('GRAD_DivingComputer' in assignedItems player)) exitWith {false};
+    if !("GRAD_DivingComputer" in assignedItems ace_player) exitWith {false};
     if !(GVAR(Open)) then {
         [] call FUNC(watchDisplay);
     } else {
@@ -19,7 +19,7 @@ private _key = if (count _actionKey == 0) then {DIK_O} else {_actionKey select 0
 
 /*
 ["GRAD Enhanced Diving", QGVAR(asending), "Emergency Asent", {
-  if (eyePos player select 2 < 0) then {
+  if (eyePos ace_player select 2 < 0) then {
       [] call FUNC(emergencyAsent);
   };
 }, {false}, [DIK_T, [true, true, false]], false] call CBA_fnc_addKeybind;

@@ -1,7 +1,6 @@
 PREP(addRefillMenu);
 PREP(addGasVariables);
 PREP(checkGear);
-PREP(checkVest);
 PREP(closeWatch);
 PREP(divingCalc);
 PREP(emergencyAscent);

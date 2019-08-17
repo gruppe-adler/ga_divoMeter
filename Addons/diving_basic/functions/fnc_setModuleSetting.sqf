@@ -1,26 +1,23 @@
 #include "script_component.hpp"
 
 if (isDedicated) exitWith {diag_log "ED: Exiting Module, it is Clientside"};
-private _logic = param [0,objNull,[objNull]];
+private _logic = param [0, objNull, [objNull]];
 
-private _enabled             =     _logic getVariable ["enabled", false];
-GVAR(maxppO)         =     _logic getVariable ["maxppO",1.11];
-GVAR(tempC)            =     _logic getVariable ["tempC",29];
-GVAR(refillRate)     =    _logic getVariable ["rate", 24];
-
-diag_log format ["ED Activ: %1, MaxPPO: %2, Temp: %3, Rate: %4", _enabled, GVAR(maxppO), GVAR(tempC), GVAR(refillRate)];
+private _enabled    =   _logic getVariable ["enabled", false];
+GVAR(maxppO)        =   _logic getVariable ["maxppO", 1.11];
+GVAR(tempC)         =   _logic getVariable ["tempC", 29];
+GVAR(refillRate)    =   _logic getVariable ["rate", 24];
 
 if (_enabled) then {
 
     GVAR(on) = false;
     GVAR(metric) = true;
     GVAR(open) = false;
-    GVAR(on) = false;
 
 /*
-    player addEventHandler ["HITPART",
+    ace_player addEventHandler ["HITPART",
         {
-            if ((eyePos player) < 0)then {
+            if ((eyePos ace_player) < 0)then {
                 {
                     diag_log format ["EDHIT: %1", _x];
                     if (_x select 10) then {
@@ -33,26 +30,26 @@ if (_enabled) then {
     ];
 */
 
-    player addEventHandler ["TAKE",
+    ace_player addEventHandler ["TAKE",
         {
             diag_log format ["ED Take Gear: %1",(_this select 2)];
             switch (true) do {
-                case ((_this select 2) in GVAR(Vest)) : {
-                        [] call FUNC(checkVest);
-                    };
+                case ((_this select 2) in GVAR(Rebreather)) : {
+                    [true, (_this select 2), (backpackContainer ace_player)] call FUNC(addGasVariables);
+                };
                 case ((_this select 2) in GVAR(Tank)) : {
-                    [true, (_this select 2), (backpackContainer player)] call FUNC(addGasVariables);
+                    [true, (_this select 2), (backpackContainer ace_player)] call FUNC(addGasVariables);
                 };
             };
         }
     ];
 
-    player addEventHandler ["PUT",
+    ace_player addEventHandler ["PUT",
         {
             diag_log format ["ED Put Gear: %1",(_this select 2)];
             switch (true) do {
-                case ((_this select 2) in GVAR(Vest)) : {
-                     [] call FUNC(checkVest);
+                case ((_this select 2) in GVAR(Rebreather)) : {
+                    [false, (_this select 2), objectParent (_this select 2)] call FUNC(addGasVariables);
                 };
                 case ((_this select 2) in GVAR(Tank)) : {
                     [false, (_this select 2), objectParent (_this select 2)] call FUNC(addGasVariables);
@@ -61,11 +58,14 @@ if (_enabled) then {
         }
     ];
 
-    if ((vest player) in GVAR(Vest)) then {
-        [] call FUNC(checkVest);
+    if ((vest ace_player) in GVAR(Rebreather)) then {
+        diag_log "GRAD ED Setting Variables to object";
+        [true, (vest ace_player), (vestContainer ace_player)] call FUNC(addGasVariables);
     };
-    if ((backpack player) in GVAR(Tank)) then {
-        [true, (backpack player), (backpackContainer player)] call FUNC(addGasVariables);
+
+    if ((backpack ace_player) in GVAR(Tank)) then {
+        [true, (backpack ace_player), (backpackContainer ace_player)] call FUNC(addGasVariables);
     };
+
     [] call FUNC(divingCalc);
 };

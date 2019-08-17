@@ -1,17 +1,17 @@
 #include "script_component.hpp"
 
-private _playerVest = vest player;
-private _playerBackpack = backpack player;
+private _ace_playerVest = vest ace_player;
+private _ace_playerBackpack = backpack ace_player;
 switch (true) do {
-    case ((_playerVest in GVAR(Vest)) && ((_playerBackpack in GVAR(Tank)) || (_playerBackpack in GVAR(Double)))) : {
-            //removeVest player;
-            //_place = GVAR(Vest) find _playerVest;
-            //player addVest (GVAR(Vestair) select _place);
+    case ((_ace_playerVest in GVAR(Vest)) && ((_ace_playerBackpack in GVAR(Tank)) || (_ace_playerBackpack in GVAR(Double)))) : {
+            //removeVest ace_player;
+            //_place = GVAR(Vest) find _ace_playerVest;
+            //ace_player addVest (GVAR(Vestair) select _place);
     };
-    case ((_playerVest in GVAR(Vestair)) && ((_playerBackpack in GVAR(Tank)) || (_playerBackpack in GVAR(Double)))) : {};
-    case ((_playerVest in GVAR(Vestair)) && !((_playerBackpack in GVAR(Tank)) || (_playerBackpack in GVAR(Double)))) : {
-        //removeVest player;
-        //_place = GVAR(Vestair) find _playerVest;
-        //player addVest (GVAR(Vest) select _place);
+    case ((_ace_playerVest in GVAR(Vestair)) && ((_ace_playerBackpack in GVAR(Tank)) || (_ace_playerBackpack in GVAR(Double)))) : {};
+    case ((_ace_playerVest in GVAR(Vestair)) && !((_ace_playerBackpack in GVAR(Tank)) || (_ace_playerBackpack in GVAR(Double)))) : {
+        //removeVest ace_player;
+        //_place = GVAR(Vestair) find _ace_playerVest;
+        //ace_player addVest (GVAR(Vest) select _place);
     };
 };

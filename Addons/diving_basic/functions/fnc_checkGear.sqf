@@ -1,6 +1,21 @@
 #include "script_component.hpp"
 
-private _value = (backpackContainer player) getVariable (format [QGVAR(Dive_Gas%1), GVAR(selectedTank)]);
+private _typeOf = objNull;
+private _container = objNull;
+
+if (backpack ace_player in GVAR(Tank) || backpack ace_player in GVAR(Double)) then {
+    _typeOf = backpack ace_player;
+    _container = backpackContainer ace_player;
+};
+
+if (vest ace_player in GVAR(Rebreather)) then {
+    _typeOf = vest ace_player;
+    _container = vestContainer ace_player;
+};
+
+if (isNull _typeOf ||{isNull _container}) exitWith {};
+
+private _value = _container getVariable (format [QGVAR(Dive_Gas%1), GVAR(selectedTank)]);
 if (isNil "_value") exitWith {diag_log "ED: No values found";};
 _value params ["_bar", "_percentO2", "_percentN2", "_percentHe"];
 
@@ -18,7 +33,7 @@ GVAR(percentO2) = _percentO2;
 GVAR(percentN2) = _percentN2;
 GVAR(percentHe) = _percentHe;
 
-GVAR(maxBar) = getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(maxBar%1), GVAR(selectedTank)]));
-GVAR(filling) = (getNumber (configFile >> "CfgVehicles" >> (backpack player) >> (format [QGVAR(tankSize%1), GVAR(selectedTank)]))) * GVAR(bar);
+GVAR(maxBar) = getNumber (configFile >> "CfgVehicles" >> _typeOf >> (format [QGVAR(maxBar%1), GVAR(selectedTank)]));
+GVAR(filling) = (getNumber (configFile >> "CfgVehicles" >> _typeOf >> (format [QGVAR(tankSize%1), GVAR(selectedTank)]))) * GVAR(bar);
 
 diag_log format ["Bar: %1, MaxBar: %2, O2: %3, N2: %4, He: %5, Filling: %6", GVAR(bar), GVAR(maxBar), GVAR(percentO2), GVAR(percentN2), GVAR(percentHe), GVAR(filling)];

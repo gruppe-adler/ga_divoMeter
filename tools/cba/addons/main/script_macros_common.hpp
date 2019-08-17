@@ -36,7 +36,7 @@
    - Evaluate "Debug" features..
    - Evaluate "create mini function per precompiled script, that will load the script on first usage, rather than on init"
    - Also saw "Namespace" typeName, evaluate which we need :P
-   - Single/Multi player gamelogics? (Incase of MP, you would want only 1 gamelogic per component, which is pv'ed from server, etc)
+   - Single/Multi ace_player gamelogics? (Incase of MP, you would want only 1 gamelogic per component, which is pv'ed from server, etc)
  */
 
 #ifndef MAINPREFIX
@@ -416,7 +416,7 @@ Parameters:
 
 Example:
     (begin example)
-        TRACE_3("After takeoff",_vehicle player,getPos (_vehicle player), getPosASL (_vehicle player));
+        TRACE_3("After takeoff",_vehicle ace_player,getPos (_vehicle ace_player), getPosASL (_vehicle ace_player));
     (end)
 
 Author:
@@ -1625,7 +1625,7 @@ Parameters:
 Example:
     (begin example)
         // In Arma2, currentWeapon command made the CBA_fMyWeapon function obsolete:
-        OBSOLETE_SYS(CBA_fMyWeapon,{ currentWeapon player });
+        OBSOLETE_SYS(CBA_fMyWeapon,{ currentWeapon ace_player });
     (end)
 
 Author:
@@ -1654,7 +1654,7 @@ Parameters:
 Example:
     (begin example)
         // In Arma2, currentWeapon command made the CBA_fMyWeapon function obsolete:
-        OBSOLETE(fMyWeapon,{ currentWeapon player });
+        OBSOLETE(fMyWeapon,{ currentWeapon ace_player });
     (end)
 
 Author:
@@ -1688,7 +1688,7 @@ Author:
 
 /* -------------------------------------------
 Macro: IS_ADMIN
-    Check if the local machine is an admin in the multiplayer environment.
+    Check if the local machine is an admin in the multiace_player environment.
 
     Reports 'true' for logged and voted in admins.
 
@@ -1697,7 +1697,7 @@ Parameters:
 
 Example:
     (begin example)
-        // print "true" if player is admin
+        // print "true" if ace_player is admin
         systemChat str IS_ADMIN;
     (end)
 
@@ -1708,16 +1708,16 @@ Author:
 
 /* -------------------------------------------
 Macro: IS_ADMIN_LOGGED
-    Check if the local machine is a logged in admin in the multiplayer environment.
+    Check if the local machine is a logged in admin in the multiace_player environment.
 
-    Reports 'false' if the player was voted to be the admin.
+    Reports 'false' if the ace_player was voted to be the admin.
 
 Parameters:
     None
 
 Example:
     (begin example)
-        // print "true" if player is admin and entered in the server password
+        // print "true" if ace_player is admin and entered in the server password
         systemChat str IS_ADMIN_LOGGED;
     (end)
 

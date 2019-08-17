@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-private _actionAttach = ["Attach Liftbag", "Attach Liftbag", "", {[(_this select 0)] call FUNC(initAttach);}, {"GA_Lift_Bag_f" in (items player)}] call ace_interact_menu_fnc_createAction;
+private _actionAttach = ["Attach Liftbag", "Attach Liftbag", "", {[(_this select 0)] call FUNC(initAttach);}, {"GA_Lift_Bag_f" in (items ace_player)}] call ace_interact_menu_fnc_createAction;
 private _actionDetach = ["Detach Liftbag", "Detach Liftbag", "", {[(_this select 0)] call FUNC(detachRopes);}, {"GA_Lift_Bag" in (attachedObjects (_this select 0))}] call ace_interact_menu_fnc_createAction;
 
 {

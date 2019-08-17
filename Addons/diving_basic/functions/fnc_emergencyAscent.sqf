@@ -1,5 +1,5 @@
 #include "script_component.hpp"
 
-player setMass 1;
+ace_player setMass 1;
 
-[{eyePos player select 2 > 0},{player setMass 0;},[]] call CBA_fnc_waitUntilAndExecute;
+[{eyePos ace_player select 2 > 0},{ace_player setMass 0;},[]] call CBA_fnc_waitUntilAndExecute;

@@ -8,18 +8,18 @@ class CfgWeapons {
         class ItemInfo;
     };
 
-    class V_GA_Rebreather: V_RebreatherB {
+    class V_GRAD_Rebreather: V_RebreatherB {
         scope = 2;
         author = "Salbei";
         displayName = "Rebreather";
 
         GVAR(gasClass1) = 7;
-        GVAR(tankSize1) = 10;
+        GVAR(tankSize1) = 100;
         GVAR(maxBar1) = 200;
     };
 
     /*
-    class V_GA_DivingVest_Rgr: V_RebreatherB {
+    class V_GRAD_DivingVest_Rgr: V_RebreatherB {
         scope = 2;
         author = "Salbei";
         displayName = "Diving Vest";
@@ -39,7 +39,7 @@ class CfgWeapons {
     */
 
     class ItemWatch;
-    class GA_DivingComputer: ItemWatch {
+    class GRAD_DivingComputer: ItemWatch {
              ACE_hideItemType = "Watch";
 
              author = "Salbei";
